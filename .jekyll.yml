@@ -13,6 +13,7 @@ meta:
 exclude:
   - Gemfile
   - LICENSE*
+  - SUPPORT.md
 
 # CSS
 sass:
