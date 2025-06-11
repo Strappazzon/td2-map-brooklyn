@@ -39,9 +39,9 @@ layout: none
 	<link rel="preconnect" href="https://cdnjs.cloudflare.com">
 	<link rel="preconnect" href="https://cdn.jsdelivr.net">
 	{%- comment -%} Favicons {%- endcomment -%}
-	<link rel="icon" href="/assets/favicon.ico" sizes="48x48">
-	<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" sizes="any">
-	<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+	<link rel="icon" href="{{ '/assets/favicon.ico' | prepend: site.url }}" sizes="48x48">
+	<link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | prepend: site.url }}" sizes="any">
+	<link rel="apple-touch-icon" href="{{ '/assets/favicon-180.png' | prepend: site.url }}">
 	{%- comment -%} Fonts {%- endcomment -%}
 	<link href="https://fonts.bunny.net/css?family=chakra-petch:400,700&display=swap" rel="stylesheet">
 	{%- comment -%} Stylesheets {%- endcomment -%}
@@ -65,7 +65,7 @@ layout: none
 				<aside class="d-flex flex-column flex-wrap justify-content-between">
 					<div class="description d-flex flex-row flex-wrap">
 						<div class="header d-flex flex-row flex-wrap justify-content-center">
-							<img src="/assets/img/logo.png" alt="The Division 2 Logo" draggable="false">
+							<img src="{{ '/assets/img/logo.png' | prepend: site.url }}" alt="The Division 2 Logo" draggable="false">
 						</div>
 						<hr>
 						<div class="map-switcher d-flex flex-row flex-wrap justify-content-center">
