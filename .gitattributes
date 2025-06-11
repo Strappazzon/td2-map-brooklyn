@@ -10,4 +10,4 @@ Gemfile* text eol=lf
 
 # GitHub language statistics
 # See: https://github.com/github/linguist/blob/master/docs/overrides.md
-*.html    linguist-language=Liquid
+*.html linguist-language=Liquid

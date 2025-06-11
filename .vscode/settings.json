@@ -1,0 +1,153 @@
+{
+	"[javascript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features",
+		"editor.formatOnPaste": true,
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": true,
+		"editor.rulers": [
+			160
+		],
+		"editor.tabSize": 2
+	},
+	"[json][jsonc]": {
+		"editor.formatOnPaste": true,
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[liquid]": {
+		"editor.defaultFormatter": null,
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+		"editor.insertSpaces": true,
+		"editor.quickSuggestions": {
+			"other": "off"
+		},
+		"editor.tabSize": 2,
+		"files.trimTrailingWhitespace": false
+	},
+	"[plaintext][txt]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"files.insertFinalNewline": false,
+		"files.trimTrailingWhitespace": false
+	},
+	"[scminput]": {
+		"editor.rulers": [
+			70
+		]
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "vscode.css-language-features",
+		"editor.formatOnPaste": true,
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": true,
+		"editor.rulers": [
+			160
+		],
+		"editor.tabSize": 2
+	},
+	"[svg]": {
+		"editor.defaultFormatter": "jock.svg",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[yaml]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml",
+		"editor.formatOnPaste": true,
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2
+	},
+	"editor.defaultFormatter": null,
+	"editor.detectIndentation": false,
+	"editor.rulers": [],
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"Gemfile": "Gemfile.lock"
+	},
+	"files.associations": {
+		"*.html": "liquid"
+	},
+	"files.exclude": {
+		"**/.jekyll-cache": true,
+		"**/.ruby-lsp": true,
+		"**/_site*": true,
+		"*.swp": true
+	},
+	"files.insertFinalNewline": true,
+	"files.readonlyInclude": {
+		"**/.ruby-lsp": true,
+		"**/_site*": true,
+		"**/Gemfile.lock": true,
+		"**/LICENSE*": true
+	},
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true,
+	"git.inputValidation": true,
+	"git.inputValidationLength": 70,
+	"git.inputValidationSubjectLength": 70,
+	"javascript.format.enable": true,
+	"javascript.format.insertSpaceAfterConstructor": true,
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+	"javascript.format.semicolons": "insert",
+	"javascript.preferences.importModuleSpecifier": "relative",
+	"javascript.preferences.importModuleSpecifierEnding": "index",
+	"javascript.preferences.jsxAttributeCompletionStyle": "auto",
+	"javascript.preferences.quoteStyle": "single",
+	"javascript.preferences.renameMatchingJsxTags": true,
+	"javascript.validate.enable": true,
+	"liquid.config.method": "workspace",
+	"liquid.engine": "jekyll",
+	"markdown.validate.enabled": false,
+	"rubyLsp.formatter": "none",
+	"scss.format.braceStyle": "collapse",
+	"scss.format.enable": true,
+	"scss.format.maxPreserveNewLines": 2,
+	"scss.format.newlineBetweenRules": false,
+	"scss.format.newlineBetweenSelectors": true,
+	"scss.format.preserveNewLines": true,
+	"scss.format.spaceAroundSelectorSeparator": true,
+	"scss.lint.argumentsInColorFunction": "error",
+	"scss.lint.boxModel": "ignore",
+	"scss.lint.compatibleVendorPrefixes": "warning",
+	"scss.lint.duplicateProperties": "warning",
+	"scss.lint.emptyRules": "warning",
+	"scss.lint.float": "ignore",
+	"scss.lint.fontFaceProperties": "error",
+	"scss.lint.hexColorLength": "error",
+	"scss.lint.idSelector": "ignore",
+	"scss.lint.ieHack": "error",
+	"scss.lint.important": "warning",
+	"scss.lint.importStatement": "ignore",
+	"scss.lint.propertyIgnoredDueToDisplay": "warning",
+	"scss.lint.universalSelector": "ignore",
+	"scss.lint.unknownAtRules": "error",
+	"scss.lint.unknownProperties": "ignore",
+	"scss.lint.unknownVendorSpecificProperties": "ignore",
+	"scss.lint.vendorPrefix": "warning",
+	"scss.lint.zeroUnits": "error",
+	"scss.validate": true,
+	"search.exclude": {
+		"**/.jekyll-cache": true,
+		"**/.ruby-lsp": true,
+		"**/_site*": true,
+		"*.swp": true
+	},
+	"svg.preview.background": "transparent",
+	"terminal.integrated.defaultProfile.windows": "WSL",
+	"terminal.integrated.profiles.windows": {
+		"WSL": {
+			"icon": "terminal-linux",
+			"path": "${env:windir}\\system32\\wsl.exe"
+		}
+	},
+	"yaml.schemas": {
+		"https://json.schemastore.org/github-issue-config.json": ".github/ISSUE_TEMPLATE/config.yml",
+		"https://json.schemastore.org/jekyll.json": ".jekyll.yml"
+	}
+}
