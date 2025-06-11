@@ -35,7 +35,7 @@ body {
 }
 
 aside {
-  background: var(--bg-color--sidebar) url('/assets/img/bg-sidebar.jpg');
+  background: var(--bg-color--sidebar) url('img/bg-sidebar.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -134,7 +134,7 @@ aside {
     border-radius: 0;
   }
   &-control-layers-toggle {
-    background-image: url('/assets/img/leaflet/layers.png');
+    background-image: url('img/leaflet/layers.png');
   }
   &-popup {
     &-close-button {
