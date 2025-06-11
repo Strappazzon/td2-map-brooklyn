@@ -1,0 +1,154 @@
+:root {
+  --font-text: 'Chakra Petch';
+  --font-family: var(--font-text, _), system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Segoe UI Symbol';
+
+  --text-color: #000000;
+  --bg-color: #f5f5f5;
+  --bg-color-btn--secondary: #00000022;
+  --bg-color--map: #675e5a;
+  --bg-color--sidebar: #ded7cd;
+  --accent-color: #ff6a13;
+  --accent-color--secondary: #ff6a1340;
+}
+
+body {
+  font-size: 16px;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  .button {
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    &.secondary {
+      border: 1px dotted var(--text-color);
+      padding: 0.125em 0.5em;
+      color: var(--text-color);
+      &:hover {
+        background-color: var(--bg-color-btn--secondary);
+      }
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+aside {
+  background: var(--bg-color--sidebar) url('/assets/img/bg-sidebar.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: color-burn;
+  padding: 1rem;
+  a {
+    color: var(--accent-color);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  hr {
+    width: 100%;
+    margin: 1rem 0;
+    border: none;
+    border-top: 1px solid var(--text-color);
+  }
+  .description {
+    .header {
+      width: 100%;
+      img {
+        margin-bottom: 0.5rem;
+        max-width: 100%;
+      }
+    }
+    .map-switcher {
+      width: 100%;
+      gap: 1rem;
+    }
+  }
+  .credits {
+    .heading {
+      width: 100%;
+      text-transform: uppercase;
+      font-size: 1.125em;
+      margin: 1rem 0;
+      font-weight: 700;
+    }
+    ul {
+      margin-left: 1rem;
+      list-style-type: square;
+    }
+  }
+}
+
+body,
+aside {
+  height: 100dvh;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+/// Leaflet
+
+.leaflet {
+  font-family: inherit;
+  background-color: var(--bg-color--map);
+  h1 {
+    font-size: 1.1rem;
+    margin: 0;
+    & + p {
+      margin-top: 0.33em;
+    }
+  }
+  p {
+    margin: 0;
+  }
+  &-touch {
+    .leaflet-bar {
+      a {
+        border-bottom: 0;
+      }
+      a:first-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      a:last-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: 0;
+      }
+    }
+    .leaflet-bar,
+    .leaflet-control-layers {
+      border: 0;
+    }
+  }
+  &-bar,
+  &-control-layers,
+  &-popup-content-wrapper {
+    border-radius: 0;
+  }
+  &-control-layers-toggle {
+    background-image: url('/assets/img/leaflet/layers.png');
+  }
+  &-popup {
+    &-close-button {
+      display: none;
+    }
+    &-content {
+      margin: 0;
+      &-wrapper {
+        padding: 0.66rem;
+      }
+    }
+  }
+}
+
+#map {
+  height: 100dvh;
+}

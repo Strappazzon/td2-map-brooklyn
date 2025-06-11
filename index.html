@@ -1,0 +1,121 @@
+---
+layout: none
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{%- comment -%} Meta Data {%- endcomment -%}
+	<meta charset="utf-8">
+	<title>{{ site.meta.title }} - {{ site.meta.name }}</title>
+	<meta name="description" content="{{ site.meta.description }}">
+	<meta name="keywords" content="{{ site.meta.keywords | uniq | join: ',' }}">
+	<meta name="author" content="{{ site.meta.author }}">
+	<meta name="robots" content="index,follow">
+	<meta name="generator" content="Jekyll v{{ jekyll.version }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#ff872d">
+	{%- comment -%} Open Graph Data {%- endcomment -%}
+	<meta property="og:description" content="{{ page.description }}">
+	<meta property="og:title" content="{{ site.meta.title }}">
+	<meta property="og:site_name" content="{{ site.meta.name }}">
+	<meta property="og:url" content="{{ site.url }}">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="{{ '/assets/img/og.jpg' | prepend: site.url }}">
+	<meta property="og:image:alt" content="{{ site.meta.name }}">
+	<meta property="og:image:width" content="1280">
+	<meta property="og:image:height" content="640">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:locale" content="en_US">
+	{%- comment -%} Twitter Cards Data {%- endcomment -%}
+	<meta name="twitter:description" content="{{ page.description }}">
+	<meta name="twitter:title" content="{{ site.meta.title }}">
+	<meta name="twitter:image" content="{{ '/assets/img/og.jpg' | prepend: site.url }}">
+	<meta name="twitter:image:alt" content="{{ site.meta.name }}">
+	{%- comment -%} Link Relationships {%- endcomment -%}
+	<link rel="canonical" href="{{ site.url }}">
+	<link rel="me" href="https://bsky.app/profile/strappazzon.xyz">
+	<link rel="preconnect" href="https://fonts.bunny.net">
+	<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+	<link rel="preconnect" href="https://cdn.jsdelivr.net">
+	{%- comment -%} Favicons {%- endcomment -%}
+	<link rel="icon" href="/assets/favicon.ico" sizes="48x48">
+	<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" sizes="any">
+	<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+	{%- comment -%} Fonts {%- endcomment -%}
+	<link href="https://fonts.bunny.net/css?family=chakra-petch:400,700&display=swap" rel="stylesheet">
+	{%- comment -%} Stylesheets {%- endcomment -%}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gardevoir@1.0.0/dist/index.min.css" integrity="sha512-RHNftUH/GSFZspMQu4hFmsj3tzn/+wmgGd7+jNFyC7HDM3dCVjRKwEFUzeCJOU1Wlnn9wSddyPCvRaHKaj6dkw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap-grid.min.css" integrity="sha512-i1b/nzkVo97VN5WbEtaPebBG8REvjWeqNclJ6AItj7msdVcaveKrlIIByDpvjk5nwHjXkIqGZscVxOrTb9tsMA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="{{ '/assets/index.css' | prepend: site.url }}">
+	{%- comment -%} Scripts {%- endcomment -%}
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script defer type="module" src="{{ '/assets/leaflet.js' | prepend: site.url }}"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="g-0 col order-1">
+				<main>
+					<div id="map" class="leaflet"></div>
+				</main>
+			</div>
+			<div class="sidebar g-0 col-3 order-2">
+				<aside class="d-flex flex-column flex-wrap justify-content-between">
+					<div class="description d-flex flex-row flex-wrap">
+						<div class="header d-flex flex-row flex-wrap justify-content-center">
+							<img src="/assets/img/logo.png" alt="The Division 2 Logo" draggable="false">
+						</div>
+						<hr>
+						<div class="map-switcher d-flex flex-row flex-wrap justify-content-center">
+							<a href="https://division2map.com/" class="button secondary">
+								Washington D.C. Map
+							</a>
+							<a href="https://division2map.com/nyc" class="button secondary">
+								New York Map
+							</a>
+						</div>
+						<hr>
+						<p>Simple Brooklyn interactive map.</p>
+						<p>
+							If you encounter any issue or want to suggest a change, please open a ticket on the
+							<a href="https://github.com/Strappazzon/td2-map-brooklyn/issues/new">Issue tracker.</a>
+						</p>
+					</div>
+					<div class="credits d-flex flex-row flex-wrap">
+						<span class="heading">Credits</span>
+						<p>This website wouldn't be possible without these resources:</p>
+						<ul>
+							<li>
+								Brooklyn map image from
+								<a href="https://thedivision.fandom.com/wiki/Map:Brooklyn">Fandom Wiki</a>
+							</li>
+							<li>
+								Map markers from
+								<a href="https://the-division-2-map.com/">The Division 2 Interactive Map</a>
+								and
+								<a href="https://www.svgrepo.com/">SVG Repo</a>
+							</li>
+							<li>
+								<a href="https://icons8.com/icon/0e6Oroh5Uyg9/adjust">Adjust</a>
+								icon from
+								<a href="https://icons8.com/">Icons8</a>
+							</li>
+							<li>
+								Logos adapted from The Division 2 promo toolkits.
+							</li>
+						</ul>
+						<p>
+							The usage of these materials does not negatively affect the original creators' ability
+							to market or profit from their copyrighted material. If you believe that copyrighted
+							materials have been used in a way that goes beyond fair use, please
+							<a href="https://strappazzon.xyz/contact/">contact me.</a>
+						</p>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

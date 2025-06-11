@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<style>
+		g {
+			fill: #ffffff;
+			filter: drop-shadow(2px 2px 4px #000000);
+		}
+	</style>
+	<g>
+		<polygon class="st1" points="13.9,3.5 13.9,60.5 19,60.5 19,38 38.1,31.3 37.8,11.5" />
+		<polygon class="st1" points="44.6,16.8 43.1,27.1 39.8,31.7 46.7,33 62.1,25.8" />
+	</g>
+</svg>

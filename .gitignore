@@ -1,0 +1,22 @@
+# VS Code
+.vscode/*
+!.vscode/*.code-snippets
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+
+# Jekyll
+/_site*/
+/.jekyll-cache/
+/.jekyll-metadata
+
+# Bundler
+/.bundle/
+/vendor/
+
+# Junk files (Linux)
+**/*.swp
+
+# Junk files (Windows)
+**/Thumbs.db
+**/[Dd]esktop.ini
