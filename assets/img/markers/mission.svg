@@ -1,12 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
 	<style>
 		.c0      { fill: #11b3a1; }
 		.p1, .p2 { fill: #75fced; }
-		g        { filter: drop-shadow(2px 2px 4px #000000) }
 	</style>
-	<g>
-		<circle class="c0" cx="32" cy="32" r="21.591" />
-		<path class="p1" d="M18.6,24.3v15.4L32,47.4l13.4-7.7V24.3L32,16.6L18.6,24.3z M41.3,37.4L32,42.8l-9.3-5.4V26.6l9.3-5.4l9.3,5.4 V37.4z" />
-		<path class="p2" d="M32,5L8.6,18.5v27L32,59l23.4-13.5v-27L32,5z M49.3,42L32,51.9L14.7,42V22l17.3-10l17.3,10V42z" />
-	</g>
+	<circle class="c0" cx="32" cy="32" r="21.591" />
+	<path class="p1" d="M18.6,24.3v15.4L32,47.4l13.4-7.7V24.3L32,16.6L18.6,24.3z M41.3,37.4L32,42.8l-9.3-5.4V26.6l9.3-5.4l9.3,5.4 V37.4z" />
+	<path class="p2" d="M32,5L8.6,18.5v27L32,59l23.4-13.5v-27L32,5z M49.3,42L32,51.9L14.7,42V22l17.3-10l17.3,10V42z" />
 </svg>

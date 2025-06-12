@@ -101,6 +101,20 @@ aside {
   p {
     margin: 0;
   }
+  &-marker-icon {
+    filter: drop-shadow(1px 1px 2px var(--text-color));
+  }
+  &-popup {
+    &-close-button {
+      display: none;
+    }
+    &-content {
+      margin: 0;
+      &-wrapper {
+        padding: 0.66rem;
+      }
+    }
+  }
   &-touch {
     .leaflet-bar {
       a {
@@ -130,17 +144,6 @@ aside {
   &-popup-tip {
     background: var(--bg-color--sidebar);
     color: var(--text-color);
-  }
-  &-popup {
-    &-close-button {
-      display: none;
-    }
-    &-content {
-      margin: 0;
-      &-wrapper {
-        padding: 0.66rem;
-      }
-    }
   }
   &-control-layers-toggle {
     background-image: url('img/leaflet/layers.png');

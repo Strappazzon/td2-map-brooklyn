@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
 	<style>
-		circle { filter: drop-shadow(2px 2px 4px #000000); }
 		.g0 { fill: #511620; }
 		.p1 { fill: #ffc800; }
 		.p2 {
