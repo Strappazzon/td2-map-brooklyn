@@ -8,6 +8,8 @@
   --bg-color-btn--secondary: #00000022;
   --bg-color--map: #384153;
   --bg-color--sidebar: #ded7cd;
+  --scrollbar-fg: #636363bb;
+  --scrollbar-bg: transparent;
 }
 
 body {
@@ -61,6 +63,8 @@ aside {
     }
   }
   .credits {
+    max-height: 25%;
+    overflow-y: auto;
     .heading {
       display: block;
       text-transform: uppercase;
@@ -71,6 +75,15 @@ aside {
     ul {
       margin-left: 1rem;
       list-style-type: square;
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    &-thumb {
+      background: var(--scrollbar-fg);
+    }
+    &-track {
+      background: var(--scrollbar-bg);
     }
   }
 }
