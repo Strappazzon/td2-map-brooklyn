@@ -6,48 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     return [ height - y, x ];
   }
 
-  // Icons
-
-  let controlPointIcon = L.icon({
-    iconUrl: 'assets/img/markers/control-point.svg',
-    iconSize: [ 32, 32 ],
-    iconAnchor: [ 16, 32 ],
-    popupAnchor: [ 0, -32 ]
-  });
-
-  let missionIcon = L.icon({
-    iconUrl: 'assets/img/markers/mission.svg',
-    iconSize: [ 32, 32 ],
-    iconAnchor: [ 16, 32 ],
-    popupAnchor: [ 0, -32 ]
-  });
-
-  let namedEliteIcon = L.icon({
-    iconUrl: 'assets/img/markers/named-elite.svg',
-    iconSize: [ 32, 32 ],
-    iconAnchor: [ 16, 32 ],
-    popupAnchor: [ 0, -32 ]
-  });
-
-  let safeHouseIcon = L.icon({
-    iconUrl: 'assets/img/markers/safe-house.svg',
-    iconSize: [ 32, 32 ],
-    iconAnchor: [ 16, 32 ],
-    popupAnchor: [ 0, -32 ]
-  });
-
-  let settlementBridgeIcon = L.icon({
-    iconUrl: 'assets/img/markers/bridge.svg',
-    iconSize: [ 32, 32 ],
-    iconAnchor: [ 16, 32 ],
-    popupAnchor: [ 0, -32 ]
-  });
-
   // Config
+
+  let mapBounds = [
+    [ 0, 0 ],
+    [ 2600, 4100 ]
+  ];
 
   let map = L.map('map', {
     crs: L.CRS.Simple,
-    center: [ 1300, 2050 ],
+    center: [ (mapBounds[ 1 ][ 0 ] / 2), (mapBounds[ 1 ][ 1 ] / 2) ],
     zoom: -1,       // Initial zoom
     minZoom: -1.75, // Most zoomed out
     maxZoom: 1,     // Most zoomed in
@@ -57,12 +25,38 @@ document.addEventListener('DOMContentLoaded', () => {
     attributionControl: false
   });
 
-  let mapBounds = [ [ 0, 0 ], [ 2600, 4100 ] ];
+  // Markers: Icons
 
-  L.control.zoom({ position: 'bottomleft' }).addTo(map);
-  L.imageOverlay('assets/img/map.jpg', mapBounds).addTo(map);
-  // map.fitBounds(mapBounds);
-  map.setMaxBounds(mapBounds);
+  let iconOptions = {
+    iconSize: [ 32, 32 ],
+    iconAnchor: [ 16, 32 ],
+    popupAnchor: [ 0, -32 ]
+  };
+
+  let controlPointIcon = L.icon({
+    iconUrl: 'assets/img/markers/control-point.svg',
+    ...iconOptions
+  });
+
+  let missionIcon = L.icon({
+    iconUrl: 'assets/img/markers/mission.svg',
+    ...iconOptions
+  });
+
+  let namedEliteIcon = L.icon({
+    iconUrl: 'assets/img/markers/named-elite.svg',
+    ...iconOptions
+  });
+
+  let safeHouseIcon = L.icon({
+    iconUrl: 'assets/img/markers/safe-house.svg',
+    ...iconOptions
+  });
+
+  let settlementBridgeIcon = L.icon({
+    iconUrl: 'assets/img/markers/bridge.svg',
+    ...iconOptions
+  });
 
   // Markers: Definitions
 
@@ -106,6 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   let layerControl = L.control.layers({}, mapOverlays, { position: 'topleft' }).addTo(map);
+
+  // Initialize map
+
+  L.control.zoom({ position: 'bottomleft' }).addTo(map);
+  L.imageOverlay('assets/img/map.jpg', mapBounds).addTo(map);
+  map.setMaxBounds(mapBounds);
 
   // Layers displayed by default
   mapControlPoints.addTo(map);
