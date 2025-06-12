@@ -47,46 +47,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let map = L.map('map', {
     crs: L.CRS.Simple,
-    center: [ 426, 714 ],
-    zoom: 0,
-    minZoom: -1,
-    maxZoom: 0,
-    zoomSnap: 0.15,
-    zoomDelta: 0.15,
+    center: [ 1300, 2050 ],
+    zoom: -1,       // Initial zoom
+    minZoom: -1.75, // Most zoomed out
+    maxZoom: 1,     // Most zoomed in
+    zoomSnap: 0.1,
+    zoomDelta: 0.1,
     zoomControl: false,
     attributionControl: false
   });
 
-  let mapBounds = [ [ 0, 0 ], [ 1724, 2856 ] ];
+  let mapBounds = [ [ 0, 0 ], [ 2600, 4100 ] ];
 
   L.control.zoom({ position: 'bottomleft' }).addTo(map);
   L.imageOverlay('assets/img/map.jpg', mapBounds).addTo(map);
-  map.fitBounds(mapBounds);
+  // map.fitBounds(mapBounds);
+  map.setMaxBounds(mapBounds);
 
   // Markers: Definitions
 
-  let mapControlPoint1 = L.marker(convertCoords(1428, 1274, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup("<h1>Cadman Plaza</h1><p>Rikers</p>");
-  let mapControlPoint2 = L.marker(convertCoords(1135, 542, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup("<h1>Fulton Ferry Market</h1><p>Rikers</p>");
-  let mapControlPoint3 = L.marker(convertCoords(1874, 288, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup("<h1>The Warehouse</h1><p>Cleaners</p>");
-  let mapControlPoint4 = L.marker(convertCoords(2305, 544, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup("<h1>The Farm</h1><p>Cleaners</p>");
+  let mapControlPoint1 = L.marker(convertCoords(1676, 1887, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup("<h1>Cadman Plaza</h1><p>Rikers</p>");
+  let mapControlPoint2 = L.marker(convertCoords(1519, 697, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup("<h1>Fulton Ferry Market</h1><p>Rikers</p>");
+  let mapControlPoint3 = L.marker(convertCoords(2692, 541, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup("<h1>The Warehouse</h1><p>Cleaners</p>");
+  let mapControlPoint4 = L.marker(convertCoords(3241, 1101, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup("<h1>The Farm</h1><p>Cleaners</p>");
 
-  let mapMission1 = L.marker(convertCoords(649, 1095, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup("<h1>Bridge Park Pier</h1><p>Mission</p>");
-  let mapMission2 = L.marker(convertCoords(1011, 1473, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup("<h1>Clark Street</h1><p>Mission</p>");
-  let mapMission3 = L.marker(convertCoords(2577, 361, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup("<h1>DUMBO Skate Park</h1><p>Mission</p>");
-  let mapMission4 = L.marker(convertCoords(2573, 786, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup("<h1>CERA Clinic</h1><p>Mission</p>");
+  let mapMission1 = L.marker(convertCoords(656, 1364, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup("<h1>Bridge Park Pier</h1><p>Mission</p>");
+  let mapMission2 = L.marker(convertCoords(1044, 2025, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup("<h1>Clark Street</h1><p>Mission</p>");
+  let mapMission3 = L.marker(convertCoords(3715, 902, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup("<h1>DUMBO Skate Park</h1><p>Mission</p>");
+  let mapMission4 = L.marker(convertCoords(3581, 1535, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup("<h1>CERA Clinic</h1><p>Mission</p>");
 
-  let mapNamedElite1 = L.marker(convertCoords(686, 1004, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
-  let mapNamedElite2 = L.marker(convertCoords(933, 836, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
-  let mapNamedElite3 = L.marker(convertCoords(815, 505, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
-  let mapNamedElite4 = L.marker(convertCoords(1390, 217, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
-  let mapNamedElite5 = L.marker(convertCoords(2340, 215, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
-  let mapNamedElite6 = L.marker(convertCoords(1992, 836, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1><p>Underground</p>");
-  let mapNamedElite7 = L.marker(convertCoords(2366, 809, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
+  let mapNamedElite1 = L.marker(convertCoords(771, 1259, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
+  let mapNamedElite2 = L.marker(convertCoords(1086, 548, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
+  let mapNamedElite3 = L.marker(convertCoords(1145, 1071, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
+  let mapNamedElite4 = L.marker(convertCoords(2013, 310, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
+  let mapNamedElite5 = L.marker(convertCoords(3403, 590, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
+  let mapNamedElite6 = L.marker(convertCoords(2710, 1417, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1><p>Underground</p>");
+  let mapNamedElite7 = L.marker(convertCoords(3241, 1489, mapBounds[ 1 ][ 0 ]), { icon: namedEliteIcon }).bindPopup("<h1>Named Elite</h1>");
 
-  let mapSafeHouse1 = L.marker(convertCoords(970, 970, mapBounds[ 1 ][ 0 ]), { icon: safeHouseIcon }).bindPopup("<h1>The Lookout</h1><p>Safe House</p>");
-  let mapSafeHouse2 = L.marker(convertCoords(2210, 180, mapBounds[ 1 ][ 0 ]), { icon: safeHouseIcon }).bindPopup("<h1>The Retreat</h1><p>Safe House</p>");
+  let mapSafeHouse1 = L.marker(convertCoords(1162, 1291, mapBounds[ 1 ][ 0 ]), { icon: safeHouseIcon }).bindPopup("<h1>The Lookout</h1><p>Safe House</p>");
+  let mapSafeHouse2 = L.marker(convertCoords(3178, 517, mapBounds[ 1 ][ 0 ]), { icon: safeHouseIcon }).bindPopup("<h1>The Retreat</h1><p>Safe House</p>");
 
-  let mapSettlement1 = L.marker(convertCoords(1710, 815, mapBounds[ 1 ][ 0 ]), { icon: settlementBridgeIcon }).bindPopup("<h1>The Bridge</h1><p>Settlement</p>");
+  let mapSettlement1 = L.marker(convertCoords(2305, 1244, mapBounds[ 1 ][ 0 ]), { icon: settlementBridgeIcon }).bindPopup("<h1>The Bridge</h1><p>Settlement</p>");
 
   // Markers: Overlays
 
