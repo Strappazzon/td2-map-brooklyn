@@ -118,15 +118,6 @@ aside {
       margin-top: 0.33rem;
     }
   }
-  &-container {
-    a {
-      color: var(--link-color);
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
   &-marker-icon {
     filter: drop-shadow(1px 1px 2px var(--text-color));
   }
@@ -136,6 +127,13 @@ aside {
     }
     &-content {
       margin: 0;
+      a {
+        color: var(--link-color);
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
       &-wrapper {
         padding: 0.66rem;
       }
