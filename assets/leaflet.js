@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ...iconOptions
   });
 
+  let hunterIcon = L.icon({
+    iconUrl: 'assets/img/markers/hunter.png',
+    ...iconOptions
+  });
+
   let missionIcon = L.icon({
     iconUrl: 'assets/img/markers/mission.svg',
     ...iconOptions
@@ -65,6 +70,19 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapControlPoint3 = L.marker(convertCoords(2692, 541, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup('<h1>The Warehouse</h1><p>Cleaners</p>');
   let mapControlPoint4 = L.marker(convertCoords(3241, 1101, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup('<h1>The Farm</h1><p>Cleaners</p>');
 
+  let mapHunterCipher = L.marker(convertCoords(2017, 636, mapBounds[ 1 ][ 0 ]), { icon: hunterIcon })
+    .bindPopup('<h1>Hunter: Cipher</h1><p>Shoot the word "ROBOTO" on the AC units and the Hunter will spawn.</p></p><p><a href="https://redd.it/1kx76zh">Full guide.</a></p>');
+  let mapHunterLumen = L.marker(convertCoords(1792, 745, mapBounds[ 1 ][ 0 ]), { icon: hunterIcon })
+    .bindPopup('<h1>Hunter: Lumen</h1><p>Trip the switch inside the garage and follow the UV lights. The Hunter will spawn at the final location.</p><p><a href="https://redd.it/1kwzqez">Full guide.</a></p>');
+  let mapHunterMerry = L.marker(convertCoords(1917, 323, mapBounds[ 1 ][ 0 ]), { icon: hunterIcon })
+    .bindPopup('<h1>Hunter: Merry</h1><p><a href="https://redd.it/1kx6yjh">Full guide.</a></p>');
+  let mapHunterNecronos = L.marker(convertCoords(2886, 588, mapBounds[ 1 ][ 0 ]), { icon: hunterIcon })
+    .bindPopup('<h1>Hunter: Necronos</h1><p><a href="https://redd.it/1kyek7o">Full guide.</a></p>');
+  let mapHunterRedtail = L.marker(convertCoords(2898, 823, mapBounds[ 1 ][ 0 ]), { icon: hunterIcon })
+    .bindPopup('<h1>Hunter: Redtail</h1><p><a href="https://redd.it/1kx49yp">Full guide.</a></p>');
+  let mapHunterTracker = L.marker(convertCoords(3507, 1145, mapBounds[ 1 ][ 0 ]), { icon: hunterIcon })
+    .bindPopup('<h1>Hunter: Tracker</h1><p><a href="https://redd.it/1kye8fv">Full guide.</a></p>');
+
   let mapMission1 = L.marker(convertCoords(656, 1364, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup('<h1>Bridge Park Pier</h1><p>Mission</p>');
   let mapMission2 = L.marker(convertCoords(1044, 2025, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup('<h1>Clark Street</h1><p>Mission</p>');
   let mapMission3 = L.marker(convertCoords(3715, 902, mapBounds[ 1 ][ 0 ]), { icon: missionIcon }).bindPopup('<h1>DUMBO Skate Park</h1><p>Mission</p>');
@@ -86,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Markers: Overlays
 
   let mapControlPoints = L.layerGroup([ mapControlPoint1, mapControlPoint2, mapControlPoint3, mapControlPoint4 ]);
+  let mapHunters = L.layerGroup([ mapHunterCipher, mapHunterLumen, mapHunterMerry, mapHunterNecronos, mapHunterRedtail, mapHunterTracker ]);
   let mapMissions = L.layerGroup([ mapMission1, mapMission2, mapMission3, mapMission4 ]);
   let mapNamedElites = L.layerGroup([ mapNamedElite1, mapNamedElite2, mapNamedElite3, mapNamedElite4, mapNamedElite5, mapNamedElite6, mapNamedElite7 ]);
   let mapSafeHouses = L.layerGroup([ mapSafeHouse1, mapSafeHouse2 ]);
@@ -93,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let mapOverlays = {
     'Control Points': mapControlPoints,
+    'Hunters': mapHunters,
     'Missions': mapMissions,
     'Named Elites': mapNamedElites,
     'Safe Houses': mapSafeHouses,
