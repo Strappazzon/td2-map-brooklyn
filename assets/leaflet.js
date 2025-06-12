@@ -121,6 +121,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let layerControl = L.control.layers({}, mapOverlays, { position: 'topleft' }).addTo(map);
 
+  // Markers: Sidebar filters
+
+  // Sync layer state
+  map.on('overlayadd overlayremove', (e) => {
+    const CHK_EL = document.querySelector(`.filters input[data-layer="${e.name}"]`);
+    if (CHK_EL) CHK_EL.checked = (e.type === 'overlayadd');
+  });
+
+  document.querySelectorAll('.filters input[type="checkbox"]').forEach(chk => {
+    chk.addEventListener('change', function () {
+      const LAYER_ID = this.dataset.layer;
+      this.checked ? mapOverlays[ LAYER_ID ].addTo(map) : mapOverlays[ LAYER_ID ].removeFrom(map);
+    });
+  });
+
   // Initialize map
 
   L.control.zoom({ position: 'bottomleft' }).addTo(map);
@@ -129,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Layers displayed by default
   mapControlPoints.addTo(map);
+  mapHunters.addTo(map);
   mapMissions.addTo(map);
   mapNamedElites.addTo(map);
   mapSafeHouses.addTo(map);

@@ -8,6 +8,7 @@
   --bg-color-btn--secondary: #00000022;
   --bg-color--map: #384153;
   --bg-color--sidebar: #ded7cd;
+  --accent-color: #ff6a13;
   --scrollbar-fg: #636363bb;
   --scrollbar-bg: transparent;
 }
@@ -52,29 +53,67 @@ aside {
     border: none;
     border-top: 1px solid var(--text-color);
   }
-  .description {
-    .header {
-      img {
-        max-width: 100%;
+  .heading {
+    display: block;
+    text-transform: uppercase;
+    font-size: 1.125em;
+    margin: 1rem 0;
+    font-weight: 700;
+  }
+  .top {
+    .description {
+      .header {
+        img {
+          max-width: 100%;
+        }
+      }
+      .map-switcher {
+        gap: 1rem;
       }
     }
-    .map-switcher {
-      gap: 1rem;
+    .filters {
+      &__container {
+        grid-template-columns: repeat(2, 1fr);
+        // grid-template-rows: repeat(3, 1fr);
+        gap: 0.33rem;
+        @media screen and (max-width: 1200px) {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        input {
+          &[type='checkbox'] {
+            position: relative;
+            top: 0.1em;
+            width: 0.875rem;
+            height: 0.875rem;
+            font-size: 1em;
+            appearance: none;
+            background-color: var(--bg-color-btn--secondary);
+            border: 0;
+            &:checked {
+              background-color: var(--accent-color);
+              &::before {
+                // Check Mark
+                content: '\002713';
+                position: absolute;
+                top: 0.0825em;
+                left: 0.233em;
+                color: var(--bg-color);
+                font-size: 0.725em;
+              }
+            }
+          }
+        }
+      }
     }
   }
-  .credits {
+  .bottom {
     max-height: 25%;
     overflow-y: auto;
-    .heading {
-      display: block;
-      text-transform: uppercase;
-      font-size: 1.125em;
-      margin: 1rem 0;
-      font-weight: 700;
-    }
-    ul {
-      margin-left: 1rem;
-      list-style-type: square;
+    .credits {
+      ul {
+        margin-left: 1rem;
+        list-style-type: square;
+      }
     }
   }
   ::-webkit-scrollbar {
@@ -169,7 +208,12 @@ aside {
     background: var(--bg-color--sidebar);
     color: var(--text-color);
   }
-  &-control-layers-toggle {
-    background-image: url('img/leaflet/layers.png');
+  &-control-layers {
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    &-toggle {
+      background-image: url('img/leaflet/layers.png');
+    }
   }
 }

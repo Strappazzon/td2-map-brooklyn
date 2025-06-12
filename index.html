@@ -63,60 +63,93 @@ layout: none
 			</div>
 			<div class="sidebar g-0 col-3 order-2">
 				<aside class="d-flex flex-row flex-wrap align-content-between">
-					<section class="description">
-						<div class="header d-flex flex-row justify-content-center">
-							<img src="{{ '/assets/img/logo.png' | prepend: site.url }}" alt="The Division 2 Logo" draggable="false">
-						</div>
-						<hr>
-						<div class="map-switcher d-flex flex-row flex-wrap align-items-center justify-content-center">
-							<a href="https://division2map.com/" class="button secondary">
-								Washington D.C. Map
-							</a>
-							<a href="https://division2map.com/nyc" class="button secondary">
-								New York Map
-							</a>
-						</div>
-						<hr>
-						<p>Simple Brooklyn interactive map.</p>
-						<p>
-							If you encounter any issue or want to suggest a change, please open a ticket on the
-							<a href="https://github.com/Strappazzon/td2-map-brooklyn/issues/new">Issue tracker.</a>
-						</p>
-					</section>
-					<section class="credits">
-						<span class="heading">Credits</span>
-						<p>This website wouldn't be possible without these resources:</p>
-						<ul>
-							<li>
-								Map markers from
-								<ul>
-									<li>
-										<a href="https://the-division-2-map.com/">The Division 2 Interactive Map</a>
-									</li>
-									<li>
-										<a href="https://www.ubisoft.com/en-us/game/the-division/the-division-1">The Division</a>
-									</li>
-									<li>
-										<a href="https://www.svgrepo.com/">SVG Repo</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="https://icons8.com/icon/0e6Oroh5Uyg9/adjust">Adjust</a>
-								icon from
-								<a href="https://icons8.com/">Icons8</a>
-							</li>
-							<li>
-								Logo adapted from The Division 2 Promo Toolkit
-							</li>
-						</ul>
-						<p>
-							The usage of these materials does not negatively affect the original creators' ability
-							to market or profit from their copyrighted material. If you believe that copyrighted
-							materials have been used in a way that goes beyond fair use, please
-							<a href="https://strappazzon.xyz/contact/">contact me.</a>
-						</p>
-					</section>
+					<div class="top">
+						<section class="description">
+							<div class="header d-flex flex-row justify-content-center">
+								<img src="{{ '/assets/img/logo.png' | prepend: site.url }}" alt="The Division 2 Logo" draggable="false">
+							</div>
+							<hr>
+							<div class="map-switcher d-flex flex-row flex-wrap align-items-center justify-content-center">
+								<a href="https://division2map.com/" class="button secondary">
+									Washington D.C. Map
+								</a>
+								<a href="https://division2map.com/nyc" class="button secondary">
+									New York Map
+								</a>
+							</div>
+							<hr>
+							<p>Simple Brooklyn interactive map.</p>
+							<p>
+								If you encounter any issue or want to suggest a change, please open a ticket on the
+								<a href="https://github.com/Strappazzon/td2-map-brooklyn/issues/new">Issue tracker.</a>
+							</p>
+						</section>
+						<section class="filters">
+							<span class="heading">Filters</span>
+							<div class="filters__container d-grid">
+								<label>
+									<input type="checkbox" checked="true" data-layer="Control Points">
+									Control Points
+								</label>
+								<label>
+									<input type="checkbox" checked="true" data-layer="Hunters">
+									Hunters
+								</label>
+								<label>
+									<input type="checkbox" checked="true" data-layer="Missions">
+									Missions
+								</label>
+								<label>
+									<input type="checkbox" checked="true" data-layer="Named Elites">
+									Named Elites
+								</label>
+								<label>
+									<input type="checkbox" checked="true" data-layer="Safe Houses">
+									Safe Houses
+								</label>
+								<label>
+									<input type="checkbox" checked="true" data-layer="Settlements">
+									Settlements
+								</label>
+							</div>
+						</section>
+					</div>
+					<div class="bottom">
+						<section class="credits">
+							<span class="heading">Credits</span>
+							<p>This website wouldn't be possible without these resources:</p>
+							<ul>
+								<li>
+									Map markers from
+									<ul>
+										<li>
+											<a href="https://the-division-2-map.com/">The Division 2 Interactive Map</a>
+										</li>
+										<li>
+											<a href="https://www.ubisoft.com/en-us/game/the-division/the-division-1">The Division</a>
+										</li>
+										<li>
+											<a href="https://www.svgrepo.com/">SVG Repo</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a href="https://icons8.com/icon/0e6Oroh5Uyg9/adjust">Adjust</a>
+									icon from
+									<a href="https://icons8.com/">Icons8</a>
+								</li>
+								<li>
+									Logo adapted from The Division 2 Promo Toolkit
+								</li>
+							</ul>
+							<p>
+								The usage of these materials does not negatively affect the original creators' ability
+								to market or profit from their copyrighted material. If you believe that copyrighted
+								materials have been used in a way that goes beyond fair use, please
+								<a href="https://strappazzon.xyz/contact/">contact me.</a>
+							</p>
+						</section>
+					</div>
 				</aside>
 			</div>
 		</div>
