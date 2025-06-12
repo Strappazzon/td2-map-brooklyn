@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   let namedEliteIcon = L.icon({
-    iconUrl: 'assets/img/markers/named-elite.svg',
+    iconUrl: 'assets/img/markers/named-elite.png',
     ...iconOptions
   });
 
