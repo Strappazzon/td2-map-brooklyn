@@ -102,6 +102,7 @@ aside {
 /// Leaflet
 
 .leaflet {
+  height: 100dvh;
   font-family: inherit;
   background-color: var(--bg-color--map);
   h1 {
@@ -161,8 +162,4 @@ aside {
   &-control-layers-toggle {
     background-image: url('img/leaflet/layers.png');
   }
-}
-
-#map {
-  height: 100dvh;
 }
