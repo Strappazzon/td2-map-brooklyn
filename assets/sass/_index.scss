@@ -126,8 +126,10 @@ aside {
   &-popup-content-wrapper {
     border-radius: 0;
   }
-  &-control-layers-toggle {
-    background-image: url('img/leaflet/layers.png');
+  &-popup-content-wrapper,
+  &-popup-tip {
+    background: var(--bg-color--sidebar);
+    color: var(--text-color);
   }
   &-popup {
     &-close-button {
@@ -139,6 +141,9 @@ aside {
         padding: 0.66rem;
       }
     }
+  }
+  &-control-layers-toggle {
+    background-image: url('img/leaflet/layers.png');
   }
 }
 
