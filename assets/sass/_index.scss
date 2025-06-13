@@ -9,8 +9,6 @@
   --bg-color--map: #384153;
   --bg-color--sidebar: #ded7cd;
   --accent-color: #ff6a13;
-  --scrollbar-fg: #636363bb;
-  --scrollbar-bg: transparent;
 }
 
 body {
@@ -107,34 +105,38 @@ aside {
       }
       &-toggle {
         margin-bottom: 1rem;
-        .button {
-          font-size: 0.875em;
-          font-weight: 700;
-        }
       }
     }
   }
   .bottom {
-    max-height: 25%;
-    overflow-y: auto;
+    width: 100%;
     .credits {
-      ul {
-        margin-left: 1rem;
-        list-style-type: square;
+      word-break: break-word;
+    }
+    .links {
+      a {
+        text-decoration: none;
+        &:not(:last-child) {
+          margin-right: 0.25em;
+        }
+      }
+      svg {
+        height: 1em;
+        width: 1em;
+        vertical-align: middle;
       }
     }
   }
   .map-switcher,
-  .filters-toggle {
+  .filters-toggle,
+  .bottom {
     gap: 1rem;
   }
-  ::-webkit-scrollbar {
-    width: 8px;
-    &-thumb {
-      background: var(--scrollbar-fg);
-    }
-    &-track {
-      background: var(--scrollbar-bg);
+  .filters-toggle,
+  .bottom {
+    .button {
+      font-size: 0.875em;
+      font-weight: 700;
     }
   }
 }
