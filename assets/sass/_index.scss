@@ -23,12 +23,16 @@ body {
     text-transform: uppercase;
     line-height: 1.2;
     cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
     &.secondary {
       border: 1px dotted var(--text-color);
       padding: 0.125em 0.5em;
       color: var(--text-color);
       &:hover {
         background-color: var(--bg-color-btn--secondary);
+        text-decoration: none;
       }
     }
   }
@@ -67,9 +71,6 @@ aside {
           max-width: 100%;
         }
       }
-      .map-switcher {
-        gap: 1rem;
-      }
     }
     .filters {
       &__container {
@@ -104,6 +105,13 @@ aside {
           }
         }
       }
+      &-toggle {
+        margin-bottom: 1rem;
+        .button {
+          font-size: 0.875em;
+          font-weight: 700;
+        }
+      }
     }
   }
   .bottom {
@@ -115,6 +123,10 @@ aside {
         list-style-type: square;
       }
     }
+  }
+  .map-switcher,
+  .filters-toggle {
+    gap: 1rem;
   }
   ::-webkit-scrollbar {
     width: 8px;

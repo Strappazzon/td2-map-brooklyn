@@ -175,16 +175,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Markers: Sidebar filters
 
+  const TOGGLE_CHK = document.querySelectorAll('.filters input[type="checkbox"]');
+
   // Sync layer state
   map.on('overlayadd overlayremove', (e) => {
     const CHK_EL = document.querySelector(`.filters input[data-layer="${e.name}"]`);
     if (CHK_EL) CHK_EL.checked = (e.type === 'overlayadd');
   });
 
-  document.querySelectorAll('.filters input[type="checkbox"]').forEach(chk => {
+  TOGGLE_CHK.forEach(chk => {
     chk.addEventListener('change', function () {
       const LAYER_ID = this.dataset.layer;
       this.checked ? mapOverlays[ LAYER_ID ].addTo(map) : mapOverlays[ LAYER_ID ].removeFrom(map);
+    });
+  });
+
+  const HIDEALL_BTN = document.querySelector('.filters-toggle #hideall');
+  const SHOWALL_BTN = document.querySelector('.filters-toggle #showall');
+
+  HIDEALL_BTN.addEventListener('click', () => {
+    TOGGLE_CHK.forEach(chk => {
+      chk.checked = false;
+      const LAYER_ID = chk.dataset.layer;
+      mapOverlays[ LAYER_ID ].removeFrom(map);
+    });
+  });
+
+  SHOWALL_BTN.addEventListener('click', () => {
+    TOGGLE_CHK.forEach(chk => {
+      chk.checked = true;
+      const LAYER_ID = chk.dataset.layer;
+      mapOverlays[ LAYER_ID ].addTo(map);
     });
   });
 
