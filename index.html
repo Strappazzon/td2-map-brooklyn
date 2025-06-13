@@ -19,7 +19,7 @@ layout: none
 	<meta property="og:description" content="{{ site.meta.description }}">
 	<meta property="og:title" content="{{ site.meta.title }}">
 	<meta property="og:site_name" content="{{ site.meta.name }}">
-	<meta property="og:url" content="{{ site.url }}">
+	<meta property="og:url" content="{{ site.baseurl | prepend: site.url }}">
 	<meta property="og:type" content="website">
 	<meta property="og:image" content="{{ site.baseurl | prepend: site.url }}/assets/img/og.jpg">
 	<meta property="og:image:alt" content="{{ site.meta.name }}">
