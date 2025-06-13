@@ -33,6 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     popupAnchor: [ 0, -32 ]
   };
 
+  let echoIcon = L.icon({
+    iconUrl: 'assets/img/markers/echo.svg',
+    ...iconOptions
+  });
+
   let commsIcon = L.icon({
     iconUrl: 'assets/img/markers/comms.svg',
     ...iconOptions
@@ -103,6 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapControlPoint3 = L.marker(convertCoords(2692, 541), { icon: controlPointIcon }).bindPopup('<h1>The Warehouse</h1><p>Cleaners</p>');
   let mapControlPoint4 = L.marker(convertCoords(3241, 1101), { icon: controlPointIcon }).bindPopup('<h1>The Farm</h1><p>Cleaners</p>');
 
+  // let mapEcho1 = L.marker(convertCoords(0, 0), { icon: echoIcon }).bindPopup('<h1></h1>');
+  // let mapEcho2 = L.marker(convertCoords(0, 0), { icon: echoIcon }).bindPopup('<h1></h1>');
+  let mapEcho3 = L.marker(convertCoords(1710, 277), { icon: echoIcon })
+    .bindPopup('<h1>Faye</h1><p>Requires all 12 Denver\'s Network cards. <a href="https://redd.it/1kz9y7r">Full guide.</a></p>');
+
   let mapHunterCipher = L.marker(convertCoords(2017, 636), { icon: hunterIcon })
     .bindPopup('<h1>Hunter: Cipher</h1><p>Shoot the word "ROBOTO" on the AC units and the Hunter will spawn.</p></p><p><a href="https://redd.it/1kx76zh">Full guide.</a></p>');
   let mapHunterLumen = L.marker(convertCoords(1792, 745), { icon: hunterIcon })
@@ -143,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mapCommsHistory1, mapCommsHistory2, mapCommsHistory3, mapCommsHistory4, mapCommsHistory5, mapCommsHistory6, mapCommsHistory7, mapCommsHistory8
   ]);
   let mapControlPoints = L.layerGroup([ mapControlPoint1, mapControlPoint2, mapControlPoint3, mapControlPoint4 ]);
+  let mapEcho = L.layerGroup([ mapEcho3 ]);
   let mapHunters = L.layerGroup([ mapHunterCipher, mapHunterLumen, mapHunterMerry, mapHunterNecronos, mapHunterRedtail, mapHunterTracker ]);
   let mapMissions = L.layerGroup([ mapMission1, mapMission2, mapMission3, mapMission4 ]);
   let mapNamedElites = L.layerGroup([ mapNamedElite1, mapNamedElite2, mapNamedElite3, mapNamedElite4, mapNamedElite5, mapNamedElite6, mapNamedElite7 ]);
@@ -152,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapOverlays = {
     'Comms': mapComms,
     'Control Points': mapControlPoints,
+    'ECHO': mapEcho,
     'Hunters': mapHunters,
     'Missions': mapMissions,
     'Named Elites': mapNamedElites,
@@ -185,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Layers displayed by default
   mapComms.addTo(map);
   mapControlPoints.addTo(map);
+  mapEcho.addTo(map);
   mapHunters.addTo(map);
   mapMissions.addTo(map);
   mapNamedElites.addTo(map);
