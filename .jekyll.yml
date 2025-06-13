@@ -1,6 +1,6 @@
 # Website
-url: https://strappazzon.github.io/td2-map-brooklyn
-baseurl: /
+url: https://strappazzon.github.io
+baseurl: /td2-map-brooklyn
 
 meta:
   name: The Division 2 Map
