@@ -33,6 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     popupAnchor: [ 0, -32 ]
   };
 
+  let commsIcon = L.icon({
+    iconUrl: 'assets/img/markers/comms.svg',
+    ...iconOptions
+  });
+
   let controlPointIcon = L.icon({
     iconUrl: 'assets/img/markers/control-point.svg',
     ...iconOptions
@@ -64,6 +69,34 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Markers: Definitions
+
+  let mapCommsBridge1 = L.marker(convertCoords(2233, 1155, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Resources</h1><p>Bridge</p>');
+  let mapCommsBridge2 = L.marker(convertCoords(2271, 1184, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Fishy</h1><p>Bridge</p>');
+  let mapCommsBridge3 = L.marker(convertCoords(2240, 1217, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Sarah</h1><p>Bridge</p>');
+  let mapCommsBridge4 = L.marker(convertCoords(2359, 1210, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Reunited</h1><p>Bridge</p>');
+  let mapCommsBridge5 = L.marker(convertCoords(2335, 1286, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Maral</h1><p>Bridge</p>');
+  let mapCommsBridge6 = L.marker(convertCoords(2229, 1338, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Marauders</h1><p>Bridge</p>');
+  let mapCommsHostiles1 = L.marker(convertCoords(1630, 2257, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Negotiations</h1><p>Hostiles</p>');
+  let mapCommsHostiles2 = L.marker(convertCoords(456, 1283, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Tech</h1><p>Hostiles</p>');
+  let mapCommsHostiles3 = L.marker(convertCoords(2721, 1379, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Meret</h1><p>Hostiles</p>');
+  let mapCommsHostiles4 = L.marker(convertCoords(2869, 1185, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Collab</h1><p>Hostiles</p>');
+  let mapCommsHostiles5 = L.marker(convertCoords(3556, 1326, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Clinic</h1><p>Hostiles</p>');
+  let mapCommsHostiles6 = L.marker(convertCoords(3700, 1257, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Attack</h1><p>Hostiles</p>');
+  let mapCommsHostiles7 = L.marker(convertCoords(3558, 1005, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>SFX</h1><p>Hostiles</p>');
+  let mapCommsHostiles8 = L.marker(convertCoords(3793, 1049, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Director</h1><p>Hostiles</p>');
+  let mapCommsHostiles9 = L.marker(convertCoords(3432, 708, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Guard Rails</h1><p>Hostiles</p>');
+  let mapCommsFriendly1 = L.marker(convertCoords(383, 1355, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Power Stations</h1><p>Friendly</p>');
+  let mapCommsFriendly2 = L.marker(convertCoords(740, 856, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Expectations</h1><p>Friendly</p>');
+  let mapCommsFriendly3 = L.marker(convertCoords(2324, 509, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Cleaners</h1><p>Friendly</p>');
+  let mapCommsFriendly4 = L.marker(convertCoords(3520, 1548, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Sacrifice</h1><p>Friendly</p>');
+  let mapCommsHistory1 = L.marker(convertCoords(548, 1663, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Territory</h1><p>History</p>');
+  let mapCommsHistory2 = L.marker(convertCoords(1466, 1921, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Hostage</h1><p>History</p>');
+  let mapCommsHistory3 = L.marker(convertCoords(1610, 1445, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Ready</h1><p>History</p>');
+  let mapCommsHistory4 = L.marker(convertCoords(1172, 1293, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Building Bridges</h1><p>History</p>');
+  let mapCommsHistory5 = L.marker(convertCoords(1248, 969, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Weapons</h1><p>History</p>');
+  let mapCommsHistory6 = L.marker(convertCoords(3257, 1247, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Police</h1><p>History</p>');
+  let mapCommsHistory7 = L.marker(convertCoords(2765, 692, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Free</h1><p>History</p>');
+  let mapCommsHistory8 = L.marker(convertCoords(3165, 550, mapBounds[ 1 ][ 0 ]), { icon: commsIcon }).bindPopup('<h1>Baby</h1><p>History</p>');
 
   let mapControlPoint1 = L.marker(convertCoords(1676, 1887, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup('<h1>Cadman Plaza</h1><p>Rikers</p>');
   let mapControlPoint2 = L.marker(convertCoords(1519, 697, mapBounds[ 1 ][ 0 ]), { icon: controlPointIcon }).bindPopup('<h1>Fulton Ferry Market</h1><p>Rikers</p>');
@@ -103,6 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Markers: Overlays
 
+  let mapComms = L.layerGroup([
+    mapCommsBridge1, mapCommsBridge2, mapCommsBridge3, mapCommsBridge4, mapCommsBridge5, mapCommsBridge6,
+    mapCommsHostiles1, mapCommsHostiles2, mapCommsHostiles3, mapCommsHostiles4, mapCommsHostiles5, mapCommsHostiles6, mapCommsHostiles7, mapCommsHostiles8, mapCommsHostiles9,
+    mapCommsFriendly1, mapCommsFriendly2, mapCommsFriendly3, mapCommsFriendly4,
+    mapCommsHistory1, mapCommsHistory2, mapCommsHistory3, mapCommsHistory4, mapCommsHistory5, mapCommsHistory6, mapCommsHistory7, mapCommsHistory8
+  ]);
   let mapControlPoints = L.layerGroup([ mapControlPoint1, mapControlPoint2, mapControlPoint3, mapControlPoint4 ]);
   let mapHunters = L.layerGroup([ mapHunterCipher, mapHunterLumen, mapHunterMerry, mapHunterNecronos, mapHunterRedtail, mapHunterTracker ]);
   let mapMissions = L.layerGroup([ mapMission1, mapMission2, mapMission3, mapMission4 ]);
@@ -111,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapSettlements = L.layerGroup([ mapSettlement1 ]);
 
   let mapOverlays = {
+    'Comms': mapComms,
     'Control Points': mapControlPoints,
     'Hunters': mapHunters,
     'Missions': mapMissions,
@@ -143,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
   map.setMaxBounds(mapBounds);
 
   // Layers displayed by default
+  mapComms.addTo(map);
   mapControlPoints.addTo(map);
   mapHunters.addTo(map);
   mapMissions.addTo(map);
