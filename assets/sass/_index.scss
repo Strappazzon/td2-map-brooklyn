@@ -9,6 +9,8 @@
   --bg-color--map: #384153;
   --bg-color--sidebar: #ded7cd;
   --accent-color: #ff6a13;
+  --scrollbar-fg: #636363bb;
+  --scrollbar-bg: transparent;
 }
 
 body {
@@ -34,15 +36,25 @@ body {
       }
     }
   }
+  ::-webkit-scrollbar {
+    width: 8px;
+    &-thumb {
+      background: var(--scrollbar-fg);
+    }
+    &-track {
+      background: var(--scrollbar-bg);
+    }
+  }
 }
 
-aside {
+.panel {
   background: var(--bg-color--sidebar) url('../img/bg-sidebar.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: color-burn;
   padding: 1rem;
+  overflow-y: auto;
   a:not(.button) {
     color: var(--link-color);
     text-decoration: none;
@@ -63,6 +75,7 @@ aside {
     font-weight: 700;
   }
   .top {
+    margin-bottom: 1rem;
     .description {
       .header {
         img {
@@ -128,8 +141,7 @@ aside {
     }
   }
   .map-switcher,
-  .filters-toggle,
-  .bottom {
+  .filters-toggle {
     gap: 1rem;
   }
   .filters-toggle,
@@ -142,7 +154,7 @@ aside {
 }
 
 body,
-aside {
+.panel {
   height: 100dvh;
 }
 
