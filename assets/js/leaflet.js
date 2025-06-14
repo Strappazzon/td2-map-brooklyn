@@ -111,33 +111,44 @@ document.addEventListener('DOMContentLoaded', () => {
   // let mapEcho1 = L.marker(convertCoords(0, 0), { icon: echoIcon }).bindPopup('<h1></h1>');
   // let mapEcho2 = L.marker(convertCoords(0, 0), { icon: echoIcon }).bindPopup('<h1></h1>');
   let mapEcho3 = L.marker(convertCoords(1710, 277), { icon: echoIcon })
-    .bindPopup('<h1>Faye</h1><p>Requires all 12 Denver\'s Network cards. <a href="https://redd.it/1kz9y7r">Full guide.</a></p>');
+    .bindPopup('<h1>Faye</h1><p><strong>Requirements:</strong> Collect all 16 Danver\'s Network cards.</p><p><a href="https://redd.it/1kz9y7r">Full guide.</a></p>');
 
   let mapHunterCipher = L.marker(convertCoords(2017, 636), { icon: hunterIcon })
-    .bindPopup('<h1>Hunter: Cipher</h1><p>Shoot the word "ROBOTO" on the AC units and the Hunter will spawn.</p></p><p><a href="https://redd.it/1kx76zh">Full guide.</a></p>');
+    .bindPopup('<h1>Hunter Spawn</h1><p><strong>Steps:</strong> Shoot the word "ROBOTO" on the AC units and the Hunter will spawn.</p><p><a href="https://redd.it/1kx76zh">Full guide.</a></p><p><strong>Mask:</strong> Cipher</p>');
   let mapHunterLumen = L.marker(convertCoords(1792, 745), { icon: hunterIcon })
-    .bindPopup('<h1>Hunter: Lumen</h1><p>Trip the switch inside the garage and follow the UV lights. The Hunter will spawn at the final location.</p><p><a href="https://redd.it/1kwzqez">Full guide.</a></p>');
+    .bindPopup('<h1>Hunter Spawn</h1><p><strong>Steps:</strong> Trip the switch inside the garage and follow the UV lights. The Hunter will spawn at the final location.</p><p><a href="https://redd.it/1kwzqez">Full guide.</a></p><p><strong>Mask:</strong> Lumen</p>');
   let mapHunterMerry = L.marker(convertCoords(1917, 323), { icon: hunterIcon })
-    .bindPopup('<h1>Hunter: Merry</h1><p><a href="https://redd.it/1kx6yjh">Full guide.</a></p>');
+    .bindPopup('<h1>Hunter Spawn</h1><p><strong>Steps:</strong> Pick up the Legs, Torso, Tail and Head of a Merry-Go-Round horse and assemble them at the Merry-Go-Round where then the Hunter will spawn.</p><p><a href="https://redd.it/1kx6yjh">Full guide.</a></p><p><strong>Mask:</strong> Merry</p>');
   let mapHunterNecronos = L.marker(convertCoords(2886, 588), { icon: hunterIcon })
-    .bindPopup('<h1>Hunter: Necronos</h1><p><a href="https://redd.it/1kyek7o">Full guide.</a></p>');
+    .bindPopup('<h1>Hunter Spawn</h1><p><strong>Requirements:</strong> Complete all prior 7 Hunter encounters.</p><p><strong>Steps:</strong> <a href="https://redd.it/1kyek7o">Full guide.</a></p><p><strong>Mask:</strong> Necronos</p>');
   let mapHunterRedtail = L.marker(convertCoords(2898, 823), { icon: hunterIcon })
-    .bindPopup('<h1>Hunter: Redtail</h1><p><a href="https://redd.it/1kx49yp">Full guide.</a></p>');
+    .bindPopup('<h1>Hunter Spawn</h1><p><strong>Steps:</strong> <a href="https://redd.it/1kx49yp">Full guide.</a></p><p><strong>Mask:</strong> Redtail</p>');
   let mapHunterTracker = L.marker(convertCoords(3507, 1145), { icon: hunterIcon })
-    .bindPopup('<h1>Hunter: Tracker</h1><p><a href="https://redd.it/1kye8fv">Full guide.</a></p>');
+    .bindPopup('<h1>Hunter Spawn</h1><p><strong>Steps:</strong> <a href="https://redd.it/1kye8fv">Full guide.</a></p><p><strong>Mask:</strong> Tracker</p>');
 
-  let mapMission1 = L.marker(convertCoords(656, 1364), { icon: missionIcon }).bindPopup('<h1>Bridge Park Pier</h1><p>Mission</p>');
-  let mapMission2 = L.marker(convertCoords(1044, 2025), { icon: missionIcon }).bindPopup('<h1>Clark Street</h1><p>Mission</p>');
-  let mapMission3 = L.marker(convertCoords(3715, 902), { icon: missionIcon }).bindPopup('<h1>DUMBO Skate Park</h1><p>Mission</p>');
-  let mapMission4 = L.marker(convertCoords(3581, 1535), { icon: missionIcon }).bindPopup('<h1>CERA Clinic</h1><p>Mission</p>');
+  let mapMission1 = L.marker(convertCoords(656, 1364), { icon: missionIcon })
+    .bindPopup('<h1>Bridge Park Pier</h1><p><strong>Type:</strong> World Mission</p><p><strong>Bosses:</strong> Bombshell</p>');
+  let mapMission2 = L.marker(convertCoords(1044, 2025), { icon: missionIcon })
+    .bindPopup('<h1>Clark Street</h1><p><strong>Type:</strong> World Mission</p><p><strong>Bosses:</strong> Auto</p>');
+  let mapMission3 = L.marker(convertCoords(3715, 902), { icon: missionIcon })
+    .bindPopup('<h1>DUMBO Skate Park</h1><p><strong>Type:</strong> World Mission</p><p><strong>Bosses:</strong> Hollings</p>');
+  let mapMission4 = L.marker(convertCoords(3581, 1535), { icon: missionIcon })
+    .bindPopup('<h1>CERA Clinic</h1><p><strong>Type:</strong> World Mission</p><p><strong>Bosses:</strong> Stewart</p>');
 
-  let mapNamedElite1 = L.marker(convertCoords(771, 1259), { icon: namedEliteIcon }).bindPopup('<h1>Named Elite</h1>');
-  let mapNamedElite2 = L.marker(convertCoords(1086, 548), { icon: namedEliteIcon }).bindPopup('<h1>Named Elite</h1>');
-  let mapNamedElite3 = L.marker(convertCoords(1145, 1071), { icon: namedEliteIcon }).bindPopup('<h1>Named Elite</h1>');
-  let mapNamedElite4 = L.marker(convertCoords(2013, 310), { icon: namedEliteIcon }).bindPopup('<h1>Named Elite</h1>');
-  let mapNamedElite5 = L.marker(convertCoords(3403, 590), { icon: namedEliteIcon }).bindPopup('<h1>Named Elite</h1>');
-  let mapNamedElite6 = L.marker(convertCoords(2710, 1417), { icon: namedEliteIcon }).bindPopup('<h1>Named Elite</h1><p>Underground</p>');
-  let mapNamedElite7 = L.marker(convertCoords(3241, 1489), { icon: namedEliteIcon }).bindPopup('<h1>Named Elite</h1>');
+  let mapNamedElite1 = L.marker(convertCoords(771, 1259), { icon: namedEliteIcon })
+    .bindPopup('<h1>Named Elite</h1><p>Danver Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver Network cards.</p>');
+  let mapNamedElite2 = L.marker(convertCoords(1086, 548), { icon: namedEliteIcon })
+    .bindPopup('<h1>Named Elite</h1><p>Danver Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver Network cards.</p>');
+  let mapNamedElite3 = L.marker(convertCoords(1145, 1071), { icon: namedEliteIcon })
+    .bindPopup('<h1>Named Elite</h1><p>Danver Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver Network cards.</p>');
+  let mapNamedElite4 = L.marker(convertCoords(2013, 310), { icon: namedEliteIcon })
+    .bindPopup('<h1>Named Elite</h1><p>Danver Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver Network cards.</p>');
+  let mapNamedElite5 = L.marker(convertCoords(3403, 590), { icon: namedEliteIcon })
+    .bindPopup('<h1>Named Elite</h1><p>Danver Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver Network cards.</p>');
+  let mapNamedElite6 = L.marker(convertCoords(2710, 1417), { icon: namedEliteIcon })
+    .bindPopup('<h1>Named Elite</h1><p><strong>Location:</strong> Underground</p><p>Danver Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver Network cards.</p>');
+  let mapNamedElite7 = L.marker(convertCoords(3241, 1489), { icon: namedEliteIcon })
+    .bindPopup('<h1>Named Elite</h1><p>Danver Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver Network cards.</p>');
 
   let mapSafeHouse1 = L.marker(convertCoords(1162, 1291), { icon: safeHouseIcon }).bindPopup('<h1>The Lookout</h1><p>Safe House</p>');
   let mapSafeHouse2 = L.marker(convertCoords(3178, 517), { icon: safeHouseIcon }).bindPopup('<h1>The Retreat</h1><p>Safe House</p>');
