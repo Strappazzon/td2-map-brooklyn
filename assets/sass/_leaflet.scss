@@ -15,6 +15,11 @@
       margin-top: 0.33rem;
     }
   }
+  &-container {
+    a {
+      color: var(--link-color);
+    }
+  }
   &-marker-icon {
     filter: drop-shadow(1px 1px 2px var(--text-color));
   }
@@ -25,7 +30,6 @@
     &-content {
       margin: 0;
       a {
-        color: var(--link-color);
         text-decoration: none;
         &:hover {
           text-decoration: underline;
@@ -40,6 +44,7 @@
     .leaflet-bar {
       a,
       button {
+        color: var(--text-color);
         border-bottom: 0;
       }
       a:first-child,
@@ -75,6 +80,11 @@
     }
     &-toggle {
       background-image: url('../img/leaflet/layers.png');
+    }
+  }
+  &-control-attribution {
+    @media screen and (min-width: 768px) {
+      display: none;
     }
   }
 }

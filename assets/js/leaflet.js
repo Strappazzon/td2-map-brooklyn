@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     zoomSnap: 0.1,
     zoomDelta: 0.1,
     zoomControl: false,
-    attributionControl: false
+    attributionControl: true
   });
 
   // Controls
@@ -243,6 +243,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Controls
 
   centerViewButton.addTo(map);
+  map.attributionControl.setPrefix(null);
+  map.attributionControl.addAttribution('<a href="https://github.com/Strappazzon/td2-map-brooklyn/blob/master/.github/README.md#licensing" target="_blank">Credits</a>');
 
   // Initialize map
 
