@@ -37,7 +37,7 @@ body {
 }
 
 aside {
-  background: var(--bg-color--sidebar) url('img/bg-sidebar.jpg');
+  background: var(--bg-color--sidebar) url('../img/bg-sidebar.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -149,85 +149,5 @@ aside {
 @media screen and (max-width: 768px) {
   .sidebar {
     display: none;
-  }
-}
-
-/// Leaflet
-
-.leaflet {
-  height: 100dvh;
-  font-family: inherit;
-  background-color: var(--bg-color--map);
-  h1 {
-    font-size: 1.1rem;
-    margin: 0;
-    & + p {
-      margin-top: 0.33em;
-    }
-  }
-  p {
-    margin: 0;
-    & + p {
-      margin-top: 0.33rem;
-    }
-  }
-  &-marker-icon {
-    filter: drop-shadow(1px 1px 2px var(--text-color));
-  }
-  &-popup {
-    &-close-button {
-      display: none;
-    }
-    &-content {
-      margin: 0;
-      a {
-        color: var(--link-color);
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-      &-wrapper {
-        padding: 0.66rem;
-      }
-    }
-  }
-  &-touch {
-    .leaflet-bar {
-      a {
-        border-bottom: 0;
-      }
-      a:first-child {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-      }
-      a:last-child {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        border-bottom: 0;
-      }
-    }
-    .leaflet-bar,
-    .leaflet-control-layers {
-      border: 0;
-    }
-  }
-  &-bar,
-  &-control-layers,
-  &-popup-content-wrapper {
-    border-radius: 0;
-  }
-  &-popup-content-wrapper,
-  &-popup-tip {
-    background: var(--bg-color--sidebar);
-    color: var(--text-color);
-  }
-  &-control-layers {
-    @media screen and (min-width: 768px) {
-      display: none;
-    }
-    &-toggle {
-      background-image: url('img/leaflet/layers.png');
-    }
   }
 }
