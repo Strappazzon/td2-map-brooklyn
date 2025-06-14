@@ -13,16 +13,36 @@ document.addEventListener('DOMContentLoaded', () => {
     [ 2600, 4100 ]
   ];
 
+  const INITIAL_ZOOM = -1;
+
   let map = L.map('map', {
     crs: L.CRS.Simple,
     center: [ (mapBounds[ 1 ][ 0 ] / 2), (mapBounds[ 1 ][ 1 ] / 2) ],
-    zoom: -1,       // Initial zoom
+    zoom: INITIAL_ZOOM,
     minZoom: -1.75, // Most zoomed out
     maxZoom: 1,     // Most zoomed in
     zoomSnap: 0.1,
     zoomDelta: 0.1,
     zoomControl: false,
     attributionControl: false
+  });
+
+  // Controls
+
+  let centerViewButton = L.easyButton({
+    position: 'bottomleft',
+    states: [ {
+      stateName: 'center-view',
+      icon: '<span aria-hidden="true">&#128205;</span>',
+      title: 'Center map',
+      onClick: function (btn, map) {
+        map.setView(
+          [ (mapBounds[ 1 ][ 0 ] / 2), (mapBounds[ 1 ][ 1 ] / 2) ],
+          INITIAL_ZOOM
+        );
+        btn.state('center-view');
+      }
+    } ]
   });
 
   // Markers: Icons
@@ -219,6 +239,10 @@ document.addEventListener('DOMContentLoaded', () => {
       mapOverlays[ LAYER_ID ].addTo(map);
     });
   });
+
+  // Initialize Controls
+
+  centerViewButton.addTo(map);
 
   // Initialize map
 

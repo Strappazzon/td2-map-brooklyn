@@ -38,14 +38,17 @@
   }
   &-touch {
     .leaflet-bar {
-      a {
+      a,
+      button {
         border-bottom: 0;
       }
-      a:first-child {
+      a:first-child,
+      button:first-of-type {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
       }
-      a:last-child {
+      a:last-child,
+      button:last-of-type {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         border-bottom: 0;
