@@ -248,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   L.control.zoom({ position: 'bottomleft' }).addTo(map);
   L.imageOverlay('assets/img/map.jpg', mapBounds).addTo(map);
-  map.setMaxBounds(mapBounds);
 
   // Layers displayed by default
   mapComms.addTo(map);
