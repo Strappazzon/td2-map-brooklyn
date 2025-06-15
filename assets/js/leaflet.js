@@ -108,6 +108,21 @@ document.addEventListener('DOMContentLoaded', () => {
     ...iconOptions
   });
 
+  let nodeCompIcon = L.icon({
+    iconUrl: 'assets/img/markers/node-components.svg',
+    ...iconOptions
+  });
+
+  let nodeFoodIcon = L.icon({
+    iconUrl: 'assets/img/markers/node-food.svg',
+    ...iconOptions
+  });
+
+  let nodeWaterIcon = L.icon({
+    iconUrl: 'assets/img/markers/node-water.svg',
+    ...iconOptions
+  });
+
   let safeHouseIcon = L.icon({
     iconUrl: 'assets/img/markers/safe-house.svg',
     ...iconOptions
@@ -154,8 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapControlPoint4 = L.marker(convertCoords(3241, 1101), { icon: controlPointIcon }).bindPopup(md.render('# The Farm\n\nCleaners'));
 
   // let mapEcho1 = L.marker(convertCoords(0, 0), { icon: echoIcon }).bindPopup(md.render(''));
-  // let mapEcho2 = L.marker(convertCoords(0, 0), { icon: echoIcon }).bindPopup(md.render(''));
-  let mapEcho3 = L.marker(convertCoords(1710, 277), { icon: echoIcon }).bindPopup(md.render('# Faye\n\n**Requirements:** Collect all 16 Danver\'s Network cards.\n\n[Full guide.](https://redd.it/1kz9y7r)'));
+  let mapEcho2 = L.marker(convertCoords(3550, 1590), { icon: echoIcon })
+    .bindPopup(md.render('# Fire Doors\n\n**Location:** Inside CERA Clinic world mission.'));
+  let mapEcho3 = L.marker(convertCoords(1710, 277), { icon: echoIcon })
+    .bindPopup(md.render('# Faye\n\n**Requirements:** Collect all 16 Danver\'s Network cards.\n\n[Full guide.](https://redd.it/1kz9y7r)'));
+  // .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
 
   let mapHunterCipher = L.marker(convertCoords(2017, 636), { icon: hunterIcon })
     .bindPopup(md.render('# Hunter Spawn\n\n**Steps:** Shoot the word "ROBOTO" on the AC units and the Hunter will spawn.\n\n[Full guide.](https://redd.it/1kx76zh)\n\n**Mask:** Cipher'));
@@ -190,6 +208,19 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapNamedElite7 = L.marker(convertCoords(3241, 1489), { icon: namedEliteIcon })
     .bindPopup(md.render('# Named Elite\n\nDanver\'s Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver\'s Network cards.'));
 
+  let mapResCompNode1 = L.marker(convertCoords(857, 1188), { icon: nodeCompIcon }).bindPopup(md.render('# Components\n\nResource Node'));
+  let mapResCompNode2 = L.marker(convertCoords(839, 767), { icon: nodeCompIcon }).bindPopup(md.render('# Components\n\nResource Node'));
+  let mapResCompNode3 = L.marker(convertCoords(3402, 585), { icon: nodeCompIcon }).bindPopup(md.render('# Components\n\nResource Node'));
+
+  let mapResFoodNode1 = L.marker(convertCoords(1458, 953), { icon: nodeFoodIcon }).bindPopup(md.render('# Food\n\nResource Node'));
+  let mapResFoodNode2 = L.marker(convertCoords(2931, 904), { icon: nodeFoodIcon }).bindPopup(md.render('# Food\n\nResource Node'));
+  let mapResFoodNode3 = L.marker(convertCoords(3519, 1337), { icon: nodeFoodIcon }).bindPopup(md.render('# Food\n\nResource Node'));
+
+  let mapResWaterNode1 = L.marker(convertCoords(1186, 1667), { icon: nodeWaterIcon }).bindPopup(md.render('# Water\n\nResource Node'));
+  let mapResWaterNode2 = L.marker(convertCoords(1434, 1299), { icon: nodeWaterIcon }).bindPopup(md.render('# Water\n\nResource Node'));
+  let mapResWaterNode3 = L.marker(convertCoords(1896, 473), { icon: nodeWaterIcon }).bindPopup(md.render('# Water\n\nResource Node'));
+  let mapResWaterNode4 = L.marker(convertCoords(2249, 733), { icon: nodeWaterIcon }).bindPopup(md.render('# Water\n\nResource Node'));
+
   let mapSafeHouse1 = L.marker(convertCoords(1162, 1291), { icon: safeHouseIcon }).bindPopup(md.render('# The Lookout\n\nSafe House'));
   let mapSafeHouse2 = L.marker(convertCoords(3178, 517), { icon: safeHouseIcon }).bindPopup(md.render('# The Retreat\n\nSafe House'));
 
@@ -204,10 +235,15 @@ document.addEventListener('DOMContentLoaded', () => {
     mapCommsHistory1, mapCommsHistory2, mapCommsHistory3, mapCommsHistory4, mapCommsHistory5, mapCommsHistory6, mapCommsHistory7, mapCommsHistory8
   ]);
   let mapControlPoints = L.layerGroup([ mapControlPoint1, mapControlPoint2, mapControlPoint3, mapControlPoint4 ]);
-  let mapEcho = L.layerGroup([ mapEcho3 ]);
+  let mapEcho = L.layerGroup([ mapEcho2, mapEcho3 ]);
   let mapHunters = L.layerGroup([ mapHunterCipher, mapHunterLumen, mapHunterMerry, mapHunterNecronos, mapHunterRedtail, mapHunterTracker ]);
   let mapMissions = L.layerGroup([ mapMission1, mapMission2, mapMission3, mapMission4 ]);
   let mapNamedElites = L.layerGroup([ mapNamedElite1, mapNamedElite2, mapNamedElite3, mapNamedElite4, mapNamedElite5, mapNamedElite6, mapNamedElite7 ]);
+  let mapResources = L.layerGroup([
+    mapResCompNode1, mapResCompNode2, mapResCompNode3,
+    mapResFoodNode1, mapResFoodNode2, mapResFoodNode3,
+    mapResWaterNode1, mapResWaterNode2, mapResWaterNode3, mapResWaterNode4
+  ]);
   let mapSafeHouses = L.layerGroup([ mapSafeHouse1, mapSafeHouse2 ]);
   let mapSettlements = L.layerGroup([ mapSettlement1 ]);
 
@@ -218,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Hunters': mapHunters,
     'Missions': mapMissions,
     'Named Elites': mapNamedElites,
+    'Resource Node': mapResources,
     'Safe Houses': mapSafeHouses,
     'Settlements': mapSettlements
   };
@@ -278,6 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mapHunters.addTo(map);
   mapMissions.addTo(map);
   mapNamedElites.addTo(map);
+  mapResources.addTo(map);
   mapSafeHouses.addTo(map);
   mapSettlements.addTo(map);
 });
