@@ -37,6 +37,43 @@
       }
       &-wrapper {
         padding: 0.66rem;
+        .marker-image,
+        .marker-images {
+          margin: -0.66rem;
+          width: calc(100% + (0.66rem * 2));
+          .image-wrapper {
+            height: auto;
+            margin: 0 0 calc(1rem + (0.33rem / 2));
+            max-height: 200px;
+            width: 100%;
+            img {
+              max-height: inherit;
+              max-width: 100%;
+              object-fit: cover;
+              cursor: pointer;
+              &:hover {
+                opacity: 0.9;
+              }
+            }
+          }
+        }
+        .marker-image {
+          .image-wrapper {
+            img {
+              min-height: 200px;
+            }
+          }
+        }
+        .marker-images {
+          display: flex;
+          flex-flow: row nowrap;
+          .image-wrapper {
+            img {
+              min-height: 100px;
+              vertical-align: middle;
+            }
+          }
+        }
       }
     }
   }

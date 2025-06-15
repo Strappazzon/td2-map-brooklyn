@@ -13,6 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
     quotes: '""\'\'',
   });
 
+  // Lightbox options
+  const lightboxOptions = {
+    animationSlide: false,
+    captions: false,
+    captionsData: 'alt',
+    fadeSpeed: 100,
+    maxZoom: 2,
+    overlayOpacity: 0.9,
+    scrollZoom: false,
+    sourceAttr: 'src',
+    spinner: false,
+    showCounter: false,
+    swipeClose: false,
+    uniqueImages: false
+  };
+
+  const LIGHTBOX_SELECTOR = '.leaflet .image-wrapper img';
+
   // Config
 
   let mapBounds = [

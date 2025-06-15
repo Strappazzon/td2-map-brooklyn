@@ -1,0 +1,23 @@
+:root {
+  --bg-overlay: #0b0b0b;
+  --fg-overlay: #a9a9a9;
+}
+
+.sl-overlay {
+  background: var(--bg-overlay);
+}
+
+.sl-wrapper {
+  .sl-close {
+    color: var(--fg-overlay);
+  }
+  .sl-navigation button {
+    color: var(--fg-overlay);
+  }
+  .sl-close,
+  .sl-navigation button {
+    &:hover {
+      color: var(--bg-color);
+    }
+  }
+}
