@@ -211,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapResCompNode1 = L.marker(convertCoords(857, 1188), { icon: nodeCompIcon }).bindPopup(md.render('# Components\n\nResource Node'));
   let mapResCompNode2 = L.marker(convertCoords(839, 767), { icon: nodeCompIcon }).bindPopup(md.render('# Components\n\nResource Node'));
   let mapResCompNode3 = L.marker(convertCoords(3402, 585), { icon: nodeCompIcon }).bindPopup(md.render('# Components\n\nResource Node'));
+  let mapResCompNode4 = L.marker(convertCoords(2849, 1150), { icon: nodeCompIcon }).bindPopup(md.render('# Components\n\nResource Node'));
 
   let mapResFoodNode1 = L.marker(convertCoords(1458, 953), { icon: nodeFoodIcon }).bindPopup(md.render('# Food\n\nResource Node'));
   let mapResFoodNode2 = L.marker(convertCoords(2931, 904), { icon: nodeFoodIcon }).bindPopup(md.render('# Food\n\nResource Node'));
@@ -240,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapMissions = L.layerGroup([ mapMission1, mapMission2, mapMission3, mapMission4 ]);
   let mapNamedElites = L.layerGroup([ mapNamedElite1, mapNamedElite2, mapNamedElite3, mapNamedElite4, mapNamedElite5, mapNamedElite6, mapNamedElite7 ]);
   let mapResources = L.layerGroup([
-    mapResCompNode1, mapResCompNode2, mapResCompNode3,
+    mapResCompNode1, mapResCompNode2, mapResCompNode3, mapResCompNode4,
     mapResFoodNode1, mapResFoodNode2, mapResFoodNode3,
     mapResWaterNode1, mapResWaterNode2, mapResWaterNode3, mapResWaterNode4
   ]);
