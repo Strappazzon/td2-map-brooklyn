@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapControlPoint3 = L.marker(convertCoords(2692, 541), { icon: controlPointIcon }).bindPopup(md.render('# The Warehouse\n\nCleaners'));
   let mapControlPoint4 = L.marker(convertCoords(3241, 1101), { icon: controlPointIcon }).bindPopup(md.render('# The Farm\n\nCleaners'));
 
-  // let mapEcho1 = L.marker(convertCoords(0, 0), { icon: echoIcon }).bindPopup(md.render(''));
+  let mapEcho1 = L.marker(convertCoords(3740, 2120), { icon: echoIcon }).bindPopup(md.render('# Born\n\n**Location:** Inside The Art Museum main mission.'));
   let mapEcho2 = L.marker(convertCoords(3550, 1590), { icon: echoIcon })
     .bindPopup(md.render('# Fire Doors\n\n**Location:** Inside CERA Clinic world mission.'));
   let mapEcho3 = L.marker(convertCoords(1710, 277), { icon: echoIcon })
@@ -188,6 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapHunterTracker = L.marker(convertCoords(3507, 1145), { icon: hunterIcon })
     .bindPopup(md.render('# Hunter Spawn\n\n**Steps:** [Full guide.](https://redd.it/1kye8fv)\n\n**Mask:** Tracker'));
 
+  let mapMainMission1 = L.marker(convertCoords(4061, 1374), { icon: missionIcon }).bindPopup(md.render('# H5 Refinery\n\n**Type:** Main Mission\n\n**Bosses:** Violet, Jasinski'));
+  let mapMainMission2 = L.marker(convertCoords(3761, 2100), { icon: missionIcon }).bindPopup(md.render('# The Art Museum\n\n**Type:** Main Mission\n\n**Bosses:** Vinnie-Gogh, "Rat Queen", Donnie, Monet'));
+  let mapMainMission3 = L.marker(convertCoords(2941, 2150), { icon: missionIcon }).bindPopup(md.render('# Army Terminal\n\n**Type:** Main Mission\n\n**Bosses:** Johnny "Grey" Linder, LM-21 "Marauder"'));
   let mapMission1 = L.marker(convertCoords(656, 1364), { icon: missionIcon }).bindPopup(md.render('# Bridge Park Pier\n\n**Type:** World Mission\n\n**Boss:** Bombshell'));
   let mapMission2 = L.marker(convertCoords(1044, 2025), { icon: missionIcon }).bindPopup(md.render('# Clark Street\n\n**Type:** World Mission\n\n**Boss:** Auto'));
   let mapMission3 = L.marker(convertCoords(3715, 902), { icon: missionIcon }).bindPopup(md.render('# DUMBO Skate Park\n\n**Type:** World Mission\n\n**Boss:** Hollings'));
@@ -236,9 +239,12 @@ document.addEventListener('DOMContentLoaded', () => {
     mapCommsHistory1, mapCommsHistory2, mapCommsHistory3, mapCommsHistory4, mapCommsHistory5, mapCommsHistory6, mapCommsHistory7, mapCommsHistory8
   ]);
   let mapControlPoints = L.layerGroup([ mapControlPoint1, mapControlPoint2, mapControlPoint3, mapControlPoint4 ]);
-  let mapEcho = L.layerGroup([ mapEcho2, mapEcho3 ]);
+  let mapEcho = L.layerGroup([ mapEcho1, mapEcho2, mapEcho3 ]);
   let mapHunters = L.layerGroup([ mapHunterCipher, mapHunterLumen, mapHunterMerry, mapHunterNecronos, mapHunterRedtail, mapHunterTracker ]);
-  let mapMissions = L.layerGroup([ mapMission1, mapMission2, mapMission3, mapMission4 ]);
+  let mapMissions = L.layerGroup([
+    mapMainMission1, mapMainMission2, mapMainMission3,
+    mapMission1, mapMission2, mapMission3, mapMission4
+  ]);
   let mapNamedElites = L.layerGroup([ mapNamedElite1, mapNamedElite2, mapNamedElite3, mapNamedElite4, mapNamedElite5, mapNamedElite6, mapNamedElite7 ]);
   let mapResources = L.layerGroup([
     mapResCompNode1, mapResCompNode2, mapResCompNode3, mapResCompNode4,
