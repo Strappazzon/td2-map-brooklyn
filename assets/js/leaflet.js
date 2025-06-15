@@ -168,7 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapControlPoint3 = L.marker(convertCoords(2692, 541), { icon: controlPointIcon }).bindPopup(md.render('# The Warehouse\n\nCleaners'));
   let mapControlPoint4 = L.marker(convertCoords(3241, 1101), { icon: controlPointIcon }).bindPopup(md.render('# The Farm\n\nCleaners'));
 
-  let mapEcho1 = L.marker(convertCoords(3740, 2120), { icon: echoIcon }).bindPopup(md.render('# Born\n\n**Location:** Inside The Art Museum main mission.'));
+  let mapEcho1 = L.marker(convertCoords(3740, 2120), { icon: echoIcon })
+    .bindPopup(md.render('# Born\n\n**Location:** Inside The Art Museum main mission.'));
   let mapEcho2 = L.marker(convertCoords(3550, 1590), { icon: echoIcon })
     .bindPopup(md.render('# Fire Doors\n\n**Location:** Inside CERA Clinic world mission.'));
   let mapEcho3 = L.marker(convertCoords(1710, 277), { icon: echoIcon })
