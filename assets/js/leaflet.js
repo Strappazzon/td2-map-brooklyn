@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapNamedElite5 = L.marker(convertCoords(3403, 590), { icon: namedEliteIcon })
     .bindPopup(md.render('# Named Elite\n\nDanver\'s Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver\'s Network cards.'));
   let mapNamedElite6 = L.marker(convertCoords(2710, 1417), { icon: namedEliteIcon })
-    .bindPopup(md.render('# Named Elite\n\n**Location:** Underground\n\nDanver Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver\'s Network cards.'));
+    .bindPopup(md.render('# Named Elite\n\n**Location:** Underground\n\nDanver\'s Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver\'s Network cards.'));
   let mapNamedElite7 = L.marker(convertCoords(3241, 1489), { icon: namedEliteIcon })
     .bindPopup(md.render('# Named Elite\n\nDanver\'s Network card farming spot. Every 30 minutes a random boss will spawn here and drop one of the 16 Danver\'s Network cards.'));
 
