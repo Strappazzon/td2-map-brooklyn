@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   let settlementBridgeIcon = L.icon({
-    iconUrl: 'assets/img/markers/bridge.svg',
+    iconUrl: 'assets/img/markers/bridge.png',
     ...iconOptions
   });
 
