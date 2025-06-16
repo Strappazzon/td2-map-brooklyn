@@ -173,8 +173,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapEcho2 = L.marker(convertCoords(3550, 1590), { icon: echoIcon })
     .bindPopup(md.render('# Fire Doors\n\n**Location:** Inside CERA Clinic world mission.'));
   let mapEcho3 = L.marker(convertCoords(1710, 277), { icon: echoIcon })
-    .bindPopup(md.render('# Faye\n\n**Requirements:** Collect all 16 Danver\'s Network cards.\n\n[Full guide.](https://redd.it/1kz9y7r)'));
-  // .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+    .bindPopup(
+      md.render(
+        '<div class="marker-image"><div class="image-wrapper"><img src="assets/img/screenshots/echo-faye.jpg" alt="ECHO: Faye"></div></div>\n\n' +
+        '# Faye\n\n**Requirements:** Collect all 16 Danver\'s Network cards.\n\n[Full guide.](https://redd.it/1kz9y7r)'
+      )
+    )
+    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
 
   let mapHunterCipher = L.marker(convertCoords(2017, 636), { icon: hunterIcon })
     .bindPopup(md.render('# Hunter Spawn\n\n**Steps:** Shoot the word "ROBOTO" on the AC units and the Hunter will spawn.\n\n[Full guide.](https://redd.it/1kx76zh)\n\n**Mask:** Cipher'));
