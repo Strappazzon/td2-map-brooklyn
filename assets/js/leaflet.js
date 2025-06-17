@@ -133,6 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ...iconOptions
   });
 
+  let shdCacheIcon = L.icon({
+    iconUrl: 'assets/img/markers/shd-tech.png',
+    ...iconOptions
+  });
+
   // Markers: Definitions
 
   let mapCommsBridge1 = L.marker(convertCoords(2233, 1155), { icon: commsIcon }).bindPopup(md.render('# Resources\n\nBridge'));
@@ -178,8 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '<div class="marker-image"><div class="image-wrapper"><img src="assets/img/screenshots/echo-faye.jpg" alt="ECHO: Faye"></div></div>\n\n' +
         '# Faye\n\n**Requirements:** Collect all 16 Danver\'s Network cards.\n\n[Full guide.](https://redd.it/1kz9y7r)'
       )
-    )
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+    ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
 
   let mapHunterCipher = L.marker(convertCoords(2017, 636), { icon: hunterIcon })
     .bindPopup(
@@ -214,8 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '**Steps:** Hit all nine switches then go back to the listening outpost and interact with the PC. Go back up and the Hunter will spawn ahead of you.' +
         '\n\n[Full guide.](https://redd.it/1kx49yp)'
       )
-    )
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+    ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
   let mapHunterTracker = L.marker(convertCoords(3507, 1145), { icon: hunterIcon })
     .bindPopup(
       md.render(
@@ -268,6 +271,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let mapSettlement1 = L.marker(convertCoords(2305, 1244), { icon: settlementBridgeIcon }).bindPopup(md.render('# The Bridge\n\nSettlement'));
 
+  let mapShdCache1 = L.marker(convertCoords(1201, 1183), { icon: shdCacheIcon })
+    .bindPopup(
+      md.render(
+        '<div class="marker-image"><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-1.jpg" alt="SHD Tech Cache"></div></div>\n\n' +
+        '# SHD Tech Cache\n\n**Location:** Underground\n\n' +
+        '**Steps:** Follow the tunnel. The first gate is opened by shooting the yellow box in front of it. The second gate is opened by shooting the yellow box hidden behind a piece of white cloth on the left behind the gate.' +
+        '\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=733)'
+      )
+    )
+    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+  let mapShdCache2 = L.marker(convertCoords(1557, 1180), { icon: shdCacheIcon })
+    .bindPopup(
+      md.render(
+        '<div class="marker-images"><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-2_1.jpg" alt="Generator"></div><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-2_2.jpg" alt="SHD Tech Cache"></div></div>\n\n' +
+        '# SHD Tech Cache\n\n' +
+        '**Steps:** Turn on the generator to open the gate and shoot down the rope to reach the cache.' +
+        '\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=665)'
+      )
+    ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+  let mapShdCache3 = L.marker(convertCoords(1995, 1381), { icon: shdCacheIcon })
+    .bindPopup(
+      md.render(
+        '<div class="marker-images"><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-3_1.jpg" alt="Truck"></div><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-3_2.jpg" alt="Generator"></div><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-3_3.jpg" alt="SHD Tech Cache"></div></div>\n\n' +
+        '# SHD Tech Cache\n\n' +
+        '**Steps:** Climb up the truck, open the first gate by shooting the lock then follow the path and turn on the generator on the left. Go back the way you came, turn right at the gate and interact with the computer. The second gate is now open and will allow you to shoot the lock on the blue door.' +
+        '\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=568)'
+      )
+    ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+  let mapShdCache4 = L.marker(convertCoords(1365, 1775), { icon: shdCacheIcon })
+    .bindPopup(
+      md.render(
+        '<div class="marker-images"><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-4_1.jpg" alt="Door"></div><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-4_2.jpg" alt="Valves"></div><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-4_3.jpg" alt="SHD Tech Cache"></div></div>\n\n' +
+        '# SHD Tech Cache\n\n**Location:** Underground\n\n' +
+        '**Steps:** Take the first tunnel on the left and shoot the lock on the door behind the bars on the left. Go inside that door and turn the valves: Green, Grey, Red. The water will recede allowing you to reach the cache.' +
+        '\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=816)'
+      )
+    )
+    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+  let mapShdCache5 = L.marker(convertCoords(934, 1758), { icon: shdCacheIcon })
+    .bindPopup(
+      md.render(
+        '<div class="marker-images"><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-5_1.jpg" alt="Fuse 1"></div><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-5_2.jpg" alt="Fuse 2"></div><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-5_3.jpg" alt="SHD Tech Cache"></div></div>\n\n' +
+        '# SHD Tech Cache\n\n' +
+        '**Steps:** Enter the alley and climb the wall on the left and take out the fuse. Climb the wall where the fuse box is and go up the scaffolding towards the cache. Put the fuse in to open the gate and access the cache.' +
+        '\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=928)'
+      )
+    ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+
   // Markers: Overlays
 
   let mapComms = L.layerGroup([
@@ -291,6 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ]);
   let mapSafeHouses = L.layerGroup([ mapSafeHouse1, mapSafeHouse2 ]);
   let mapSettlements = L.layerGroup([ mapSettlement1 ]);
+  let mapShdCaches = L.layerGroup([ mapShdCache1, mapShdCache2, mapShdCache3, mapShdCache4, mapShdCache5 ]);
 
   let mapOverlays = {
     'Comms': mapComms,
@@ -301,7 +353,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'Named Elites': mapNamedElites,
     'Resource Node': mapResources,
     'Safe Houses': mapSafeHouses,
-    'Settlements': mapSettlements
+    'Settlements': mapSettlements,
+    'SHD Tech Caches': mapShdCaches
   };
 
   let layerControl = L.control.layers({}, mapOverlays, { position: 'topleft' }).addTo(map);
@@ -363,4 +416,5 @@ document.addEventListener('DOMContentLoaded', () => {
   mapResources.addTo(map);
   mapSafeHouses.addTo(map);
   mapSettlements.addTo(map);
+  mapShdCaches.addTo(map);
 });
