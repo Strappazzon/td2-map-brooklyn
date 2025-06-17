@@ -182,17 +182,49 @@ document.addEventListener('DOMContentLoaded', () => {
     .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
 
   let mapHunterCipher = L.marker(convertCoords(2017, 636), { icon: hunterIcon })
-    .bindPopup(md.render('# Hunter Spawn\n\n**Steps:** Shoot the word "ROBOTO" on the AC units and the Hunter will spawn.\n\n[Full guide.](https://redd.it/1kx76zh)\n\n**Mask:** Cipher'));
+    .bindPopup(
+      md.render(
+        '<div class="marker-images"><div class="image-wrapper"><img src="assets/img/screenshots/hunter-cipher_1.jpg" alt="Location"></div><div class="image-wrapper"><img src="assets/img/screenshots/hunter-cipher_2.jpg" alt="Sequence"></div></div>\n\n' +
+        '# Hunter Spawn\n\n**Mask:** Cipher\n\n**Steps:** Shoot the word "ROBOTO" on the AC units and the Hunter will spawn.\n\n[Full guide.](https://redd.it/1kx76zh)'
+      )
+    ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
   let mapHunterLumen = L.marker(convertCoords(1792, 745), { icon: hunterIcon })
-    .bindPopup(md.render('# Hunter Spawn\n\n**Steps:** Trip the switch inside the garage and follow the UV lights. The Hunter will spawn at the final location.\n\n[Full guide.](https://redd.it/1kwzqez)\n\n**Mask:** Lumen'));
+    .bindPopup(
+      md.render(
+        '<div class="marker-image"><div class="image-wrapper"><img src="assets/img/screenshots/hunter-lumen_1.jpg" alt="Garage Location"></div></div>\n\n' +
+        '# Hunter Spawn\n\n**Mask:** Lumen\n\n**Requirements:** Go there after 9 PM.\n\n' +
+        '\n\n**Steps:** Trip the switch inside the garage and follow the UV lights. The Hunter will spawn at the final location.\n\n[Full guide.](https://redd.it/1kwzqez)'
+      )
+    ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
   let mapHunterMerry = L.marker(convertCoords(1917, 323), { icon: hunterIcon })
-    .bindPopup(md.render('# Hunter Spawn\n\n**Steps:** Pick up the Legs, Torso, Tail and Head of a Merry-Go-Round horse and assemble them at the Merry-Go-Round where then the Hunter will spawn.\n\n[Full guide.](https://redd.it/1kx6yjh)\n\n**Mask:** Merry'));
+    .bindPopup(md.render('# Hunter Spawn\n\n**Mask:** Merry\n\n**Steps:** Pick up the Legs, Torso, Tail and Head of a Merry-Go-Round horse and assemble them at the Merry-Go-Round where then the Hunter will spawn.\n\n[Full guide.](https://redd.it/1kx6yjh)'));
   let mapHunterNecronos = L.marker(convertCoords(2886, 588), { icon: hunterIcon })
-    .bindPopup(md.render('# Hunter Spawn\n\n**Requirements:** Complete all prior 7 Hunter encounters.\n\n**Steps:** [Full guide.](https://redd.it/1kyek7o)\n\n**Mask:** Necronos'));
+    .bindPopup(
+      md.render(
+        '# Hunter Spawn\n\n**Mask:** Necronos\n\n**Requirements:** Complete all prior 7 Hunter encounters.\n\n' +
+        '**Steps:** Go to the Division 1 starting safe house. Interact with the whiteboard and follow the UV lights to the rooftop where the Hunter will engage.' +
+        '\n\n[Full guide.](https://redd.it/1kyek7o)'
+      )
+    );
   let mapHunterRedtail = L.marker(convertCoords(2898, 823), { icon: hunterIcon })
-    .bindPopup(md.render('# Hunter Spawn\n\n**Steps:** [Full guide.](https://redd.it/1kx49yp)\n\n**Mask:** Redtail'));
+    .bindPopup(
+      md.render(
+        '<div class="marker-images"><div class="image-wrapper"><img src="assets/img/screenshots/hunter-redtail_1.jpg" alt="Switches"></div><div class="image-wrapper"><img src="assets/img/screenshots/hunter-redtail_2.jpg" alt="Outpost Entrance"></div><div class="image-wrapper"><img src="assets/img/screenshots/hunter-redtail_3.jpg" alt="Outpost"></div></div>\n\n' +
+        '# Hunter Spawn\n\n**Mask:** Redtail\n\n' +
+        '**Steps:** Hit all nine switches then go back to the listening outpost and interact with the PC. Go back up and the Hunter will spawn ahead of you.' +
+        '\n\n[Full guide.](https://redd.it/1kx49yp)'
+      )
+    )
+    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
   let mapHunterTracker = L.marker(convertCoords(3507, 1145), { icon: hunterIcon })
-    .bindPopup(md.render('# Hunter Spawn\n\n**Steps:** [Full guide.](https://redd.it/1kye8fv)\n\n**Mask:** Tracker'));
+    .bindPopup(
+      md.render(
+        '<div class="marker-image"><div class="image-wrapper"><img src="assets/img/screenshots/hunter-tracker_1.jpg" alt="Entrance"></div></div>\n\n' +
+        '# Hunter Spawn\n\n**Mask:** Tracker\n\n' +
+        '**Steps:** Enter the 192 Building from the southern entrance. Move towards the corresponding locations (like a Konami code): W, A, W, D, S, D, W, A, W, D, W, A, S, D, W. Interact with the "RISE" switch.' +
+        '\n\n[Full guide.](https://redd.it/1kye8fv)'
+      )
+    );
 
   let mapMainMission1 = L.marker(convertCoords(4061, 1374), { icon: missionIcon }).bindPopup(md.render('# H5 Refinery\n\n**Type:** Main Mission\n\n**Bosses:** Violet, Jasinski'));
   let mapMainMission2 = L.marker(convertCoords(3761, 2100), { icon: missionIcon }).bindPopup(md.render('# The Art Museum\n\n**Type:** Main Mission\n\n**Bosses:** Vinnie-Gogh, "Rat Queen", Donnie, Monet'));
