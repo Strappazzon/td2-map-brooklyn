@@ -32,7 +32,6 @@ copyrighted materials have been used in a way that goes beyond fair use, please 
   - [The Division 2 Interactive Map](https://the-division-2-map.com/)
   - [The Division](https://www.ubisoft.com/en-us/game/the-division/the-division-1)
   - [SVG Repo](https://www.svgrepo.com/)
-- [Adjust](https://icons8.com/icon/0e6Oroh5Uyg9/adjust) icon from [Icons8](https://icons8.com/)
 - Logo adapted from The Division 2 Promo Toolkit
 
 By contributing to this repository, you agree that the content you contribute may be provided under the terms of the licenses used in this repository.
