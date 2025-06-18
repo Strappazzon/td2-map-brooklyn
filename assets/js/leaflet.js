@@ -88,8 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
     ...iconOptions
   });
 
-  let controlPointIcon = L.icon({
-    iconUrl: 'assets/img/markers/control-point.svg',
+  let controlPointIconCleaners = L.icon({
+    iconUrl: 'assets/img/markers/control-point_cleaners.png',
+    ...iconOptions
+  });
+
+  let controlPointIconRikers = L.icon({
+    iconUrl: 'assets/img/markers/control-point_rikers.png',
     ...iconOptions
   });
 
@@ -168,10 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapCommsHistory7 = L.marker(convertCoords(2765, 692), { icon: commsIcon }).bindPopup(md.render('# Free\n\nHistory'));
   let mapCommsHistory8 = L.marker(convertCoords(3165, 550), { icon: commsIcon }).bindPopup(md.render('# Baby\n\nHistory'));
 
-  let mapControlPoint1 = L.marker(convertCoords(1676, 1887), { icon: controlPointIcon }).bindPopup(md.render('# Cadman Plaza\n\nRikers'));
-  let mapControlPoint2 = L.marker(convertCoords(1519, 697), { icon: controlPointIcon }).bindPopup(md.render('# Fulton Ferry Market\n\nRikers'));
-  let mapControlPoint3 = L.marker(convertCoords(2692, 541), { icon: controlPointIcon }).bindPopup(md.render('# The Warehouse\n\nCleaners'));
-  let mapControlPoint4 = L.marker(convertCoords(3241, 1101), { icon: controlPointIcon }).bindPopup(md.render('# The Farm\n\nCleaners'));
+  let mapControlPoint1 = L.marker(convertCoords(1676, 1887), { icon: controlPointIconRikers }).bindPopup(md.render('# Cadman Plaza\n\nRikers'));
+  let mapControlPoint2 = L.marker(convertCoords(1519, 697), { icon: controlPointIconRikers }).bindPopup(md.render('# Fulton Ferry Market\n\nRikers'));
+  let mapControlPoint3 = L.marker(convertCoords(2692, 541), { icon: controlPointIconCleaners }).bindPopup(md.render('# The Warehouse\n\nCleaners'));
+  let mapControlPoint4 = L.marker(convertCoords(3241, 1101), { icon: controlPointIconCleaners }).bindPopup(md.render('# The Farm\n\nCleaners'));
 
   let mapEcho1 = L.marker(convertCoords(3740, 2120), { icon: echoIcon })
     .bindPopup(md.render('# Born\n\n**Location:** Inside The Art Museum main mission.'));
