@@ -25,6 +25,10 @@ body {
     &:hover {
       text-decoration: underline;
     }
+    &.disabled {
+      color: var(--scrollbar-fg);
+      text-decoration: line-through;
+    }
     &.secondary {
       border: 1px dotted var(--text-color);
       padding: 0.125em 0.5em;

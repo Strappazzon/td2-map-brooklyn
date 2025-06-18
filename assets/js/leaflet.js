@@ -70,6 +70,24 @@ document.addEventListener('DOMContentLoaded', () => {
     } ]
   });
 
+  // Neighborhoods
+
+  let labelOptions = {
+    className: 'leaflet-neighborhood',
+    iconSize: [ 300, 40 ],
+    iconAnchor: [ 150, 20 ]
+  };
+
+  let labelBrooklynHeights = L.divIcon({
+    html: 'Brooklyn Heights',
+    ...labelOptions
+  });
+
+  let labelDumbo = L.divIcon({
+    html: 'DUMBO',
+    ...labelOptions
+  });
+
   // Markers: Icons
 
   let iconOptions = {
@@ -142,6 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
     iconUrl: 'assets/img/markers/shd-tech.png',
     ...iconOptions
   });
+
+  // Neighborhoods: Definitions
+
+  let mapNeighborhoodBrooklynHeights = L.marker(convertCoords(1404, 1423), { icon: labelBrooklynHeights, interactive: false, keyboard: false });
+  let mapNeighborhoodDumbo = L.marker(convertCoords(3100, 871), { icon: labelDumbo, interactive: false, keyboard: false });
 
   // Markers: Definitions
 
@@ -327,6 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Markers: Overlays
 
+  let mapNeighborhoods = L.layerGroup([ mapNeighborhoodBrooklynHeights, mapNeighborhoodDumbo ]);
+
   let mapComms = L.layerGroup([
     mapCommsBridge1, mapCommsBridge2, mapCommsBridge3, mapCommsBridge4, mapCommsBridge5, mapCommsBridge6,
     mapCommsHostiles1, mapCommsHostiles2, mapCommsHostiles3, mapCommsHostiles4, mapCommsHostiles5, mapCommsHostiles6, mapCommsHostiles7, mapCommsHostiles8, mapCommsHostiles9, mapCommsHostiles10,
@@ -384,6 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const HIDEALL_BTN = document.querySelector('.filters-toggle #hideall');
   const SHOWALL_BTN = document.querySelector('.filters-toggle #showall');
+  const ZONESTG_BTN = document.querySelector('.filters-toggle #zonestg');
 
   HIDEALL_BTN.addEventListener('click', () => {
     TOGGLE_CHK.forEach(chk => {
@@ -401,6 +427,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  let neighborhoodsVisible = true;
+
+  ZONESTG_BTN.addEventListener('click', () => {
+    if (neighborhoodsVisible === true) {
+      map.removeLayer(mapNeighborhoods);
+      ZONESTG_BTN.classList.add('disabled');
+      neighborhoodsVisible = false;
+    } else {
+      map.addLayer(mapNeighborhoods);
+      ZONESTG_BTN.classList.remove('disabled');
+      neighborhoodsVisible = true;
+    }
+  });
+
   // Initialize Controls
 
   centerViewButton.addTo(map);
@@ -412,7 +452,10 @@ document.addEventListener('DOMContentLoaded', () => {
   L.control.zoom({ position: 'bottomleft' }).addTo(map);
   L.imageOverlay('assets/img/map.jpg', mapBounds).addTo(map);
 
-  // Layers displayed by default
+  // Default Layers
+
+  if (neighborhoodsVisible) { mapNeighborhoods.addTo(map); };
+
   mapComms.addTo(map);
   mapControlPoints.addTo(map);
   mapEcho.addTo(map);
