@@ -149,23 +149,24 @@ document.addEventListener('DOMContentLoaded', () => {
   let mapCommsBridge2 = L.marker(convertCoords(2271, 1184), { icon: commsIcon }).bindPopup(md.render('# Fishy\n\nBridge'));
   let mapCommsBridge3 = L.marker(convertCoords(2240, 1217), { icon: commsIcon }).bindPopup(md.render('# Sarah\n\nBridge'));
   let mapCommsBridge4 = L.marker(convertCoords(2359, 1210), { icon: commsIcon }).bindPopup(md.render('# Reunited\n\nBridge'));
-  let mapCommsBridge5 = L.marker(convertCoords(2335, 1286), { icon: commsIcon }).bindPopup(md.render('# Maral\n\nBridge'));
+  let mapCommsBridge5 = L.marker(convertCoords(2312, 1290), { icon: commsIcon }).bindPopup(md.render('# Maral\n\nBridge'));
   let mapCommsBridge6 = L.marker(convertCoords(2229, 1338), { icon: commsIcon }).bindPopup(md.render('# Marauders\n\nBridge'));
   let mapCommsHostiles1 = L.marker(convertCoords(1630, 2257), { icon: commsIcon }).bindPopup(md.render('# Negotiations\n\nHostiles'));
   let mapCommsHostiles2 = L.marker(convertCoords(456, 1283), { icon: commsIcon }).bindPopup(md.render('# Tech\n\nHostiles'));
   let mapCommsHostiles3 = L.marker(convertCoords(2721, 1379), { icon: commsIcon }).bindPopup(md.render('# Meret\n\nHostiles'));
-  let mapCommsHostiles4 = L.marker(convertCoords(2869, 1185), { icon: commsIcon }).bindPopup(md.render('# Collab\n\nHostiles'));
+  let mapCommsHostiles4 = L.marker(convertCoords(2812, 1151), { icon: commsIcon }).bindPopup(md.render('# Collab\n\nHostiles'));
   let mapCommsHostiles5 = L.marker(convertCoords(3556, 1326), { icon: commsIcon }).bindPopup(md.render('# Clinic\n\nHostiles'));
   let mapCommsHostiles6 = L.marker(convertCoords(3700, 1257), { icon: commsIcon }).bindPopup(md.render('# Attack\n\nHostiles'));
   let mapCommsHostiles7 = L.marker(convertCoords(3558, 1005), { icon: commsIcon }).bindPopup(md.render('# SFX\n\nHostiles'));
   let mapCommsHostiles8 = L.marker(convertCoords(3793, 1049), { icon: commsIcon }).bindPopup(md.render('# Director\n\nHostiles'));
   let mapCommsHostiles9 = L.marker(convertCoords(3432, 708), { icon: commsIcon }).bindPopup(md.render('# Guard Rails\n\nHostiles'));
+  let mapCommsHostiles10 = L.marker(convertCoords(3105, 1476), { icon: commsIcon }).bindPopup(md.render('# Grant\n\nHostiles'));
   let mapCommsFriendly1 = L.marker(convertCoords(383, 1355), { icon: commsIcon }).bindPopup(md.render('# Power Stations\n\nFriendly'));
   let mapCommsFriendly2 = L.marker(convertCoords(740, 856), { icon: commsIcon }).bindPopup(md.render('# Expectations\n\nFriendly'));
   let mapCommsFriendly3 = L.marker(convertCoords(2324, 509), { icon: commsIcon }).bindPopup(md.render('# Cleaners\n\nFriendly'));
   let mapCommsFriendly4 = L.marker(convertCoords(3520, 1548), { icon: commsIcon }).bindPopup(md.render('# Sacrifice\n\nFriendly'));
   let mapCommsHistory1 = L.marker(convertCoords(548, 1663), { icon: commsIcon }).bindPopup(md.render('# Territory\n\nHistory'));
-  let mapCommsHistory2 = L.marker(convertCoords(1466, 1921), { icon: commsIcon }).bindPopup(md.render('# Hostage\n\nHistory'));
+  let mapCommsHistory2 = L.marker(convertCoords(1475, 1933), { icon: commsIcon }).bindPopup(md.render('# Hostage\n\nHistory'));
   let mapCommsHistory3 = L.marker(convertCoords(1610, 1445), { icon: commsIcon }).bindPopup(md.render('# Ready\n\nHistory'));
   let mapCommsHistory4 = L.marker(convertCoords(1172, 1293), { icon: commsIcon }).bindPopup(md.render('# Building Bridges\n\nHistory'));
   let mapCommsHistory5 = L.marker(convertCoords(1248, 969), { icon: commsIcon }).bindPopup(md.render('# Weapons\n\nHistory'));
@@ -328,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let mapComms = L.layerGroup([
     mapCommsBridge1, mapCommsBridge2, mapCommsBridge3, mapCommsBridge4, mapCommsBridge5, mapCommsBridge6,
-    mapCommsHostiles1, mapCommsHostiles2, mapCommsHostiles3, mapCommsHostiles4, mapCommsHostiles5, mapCommsHostiles6, mapCommsHostiles7, mapCommsHostiles8, mapCommsHostiles9,
+    mapCommsHostiles1, mapCommsHostiles2, mapCommsHostiles3, mapCommsHostiles4, mapCommsHostiles5, mapCommsHostiles6, mapCommsHostiles7, mapCommsHostiles8, mapCommsHostiles9, mapCommsHostiles10,
     mapCommsFriendly1, mapCommsFriendly2, mapCommsFriendly3, mapCommsFriendly4,
     mapCommsHistory1, mapCommsHistory2, mapCommsHistory3, mapCommsHistory4, mapCommsHistory5, mapCommsHistory6, mapCommsHistory7, mapCommsHistory8
   ]);
