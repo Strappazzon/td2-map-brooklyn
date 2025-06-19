@@ -221,6 +221,18 @@ document.addEventListener('DOMContentLoaded', () => {
         '# Hunter Spawn\n\n**Mask:** Cipher\n\n**Steps:** Shoot the word "ROBOTO" on the AC units and the Hunter will spawn.\n\n[Full guide.](https://redd.it/1kx76zh)'
       )
     ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+  let mapHunterConqueror = L.marker(convertCoords(842, 1311), { icon: hunterIcon })
+    .bindPopup(
+      md.render(
+        '# Hunter Spawn\n\n**Mask:** Conqueror\n\n**Steps:** Interact with the stuffed animals after detonating all 7 of them and the Hunter will spawn.\n\n[Full guide.](https://youtu.be/KhMcKx75kdc?t=53)'
+      )
+    ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+  let mapHunterCraver = L.marker(convertCoords(937, 609), { icon: hunterIcon })
+    .bindPopup(
+      md.render(
+        '# Hunter Spawn\n\n**Mask:** Craver\n\n**Steps:** Interact with the 4 tanks after collecting them and the Hunter will spawn.\n\n[Full guide.](https://youtu.be/R6A8DEWbboI?t=41)'
+      )
+    );
   let mapHunterLumen = L.marker(convertCoords(1792, 745), { icon: hunterIcon })
     .bindPopup(
       md.render(
@@ -360,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ]);
   let mapControlPoints = L.layerGroup([ mapControlPoint1, mapControlPoint2, mapControlPoint3, mapControlPoint4 ]);
   let mapEcho = L.layerGroup([ mapEcho1, mapEcho2, mapEcho3 ]);
-  let mapHunters = L.layerGroup([ mapHunterCipher, mapHunterLumen, mapHunterMerry, mapHunterNecronos, mapHunterRedtail, mapHunterTracker ]);
+  let mapHunters = L.layerGroup([ mapHunterCipher, mapHunterConqueror, mapHunterCraver, mapHunterLumen, mapHunterMerry, mapHunterNecronos, mapHunterRedtail, mapHunterTracker ]);
   let mapMissions = L.layerGroup([
     mapMainMission1, mapMainMission2, mapMainMission3,
     mapMission1, mapMission2, mapMission3, mapMission4
