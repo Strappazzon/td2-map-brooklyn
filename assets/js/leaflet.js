@@ -359,6 +359,29 @@ document.addEventListener('DOMContentLoaded', () => {
         '\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=928)'
       )
     ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+  let mapShdCache6 = L.marker(convertCoords(1842, 698), { icon: shdCacheIcon })
+    .bindPopup(
+      md.render(
+        '<div class="marker-images"><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-6_1.jpg" alt="Scaffolding"></div><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-6_2.jpg" alt="Yellow Box"></div><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-6_3.jpg" alt="Generator"></div></div>\n\n' +
+        '# SHD Tech Cache\n\n**Location:** On the roof\n\n' +
+        '**Steps:** Go up the scaffolding and shoot the yellow box behind the ventilation duct, then climb up the ladder. Turn on the generator in front of the graffiti to open the gate and access the cache.' +
+        '\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=477)'
+      )
+    ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+  let mapShdCache7 = L.marker(convertCoords(2140, 867), { icon: shdCacheIcon })
+    .bindPopup(md.render('# SHD Tech Cache\n\n**Location:** Undergroundn\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=359)'));
+  let mapShdCache8 = L.marker(convertCoords(3513, 763), { icon: shdCacheIcon })
+    .bindPopup(
+      md.render(
+        '<div class="marker-images"><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-8_1.jpg" alt="Entrance"></div><div class="image-wrapper"><img src="assets/img/screenshots/shd-cache-8_2.jpg" alt="SHD Tech Cache"></div></div>\n\n' +
+        '# SHD Tech Cache\n\n**Location:** On the roof\n\n' +
+        '\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=106)'
+      )
+    ).on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+  let mapShdCache9 = L.marker(convertCoords(3120, 846), { icon: shdCacheIcon })
+    .bindPopup(md.render('# SHD Tech Cache\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=156)'));
+  let mapShdCache10 = L.marker(convertCoords(2986, 1285), { icon: shdCacheIcon })
+    .bindPopup(md.render('# SHD Tech Cache\n\n**Location:** Underground\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=213)'));
 
   // Markers: Overlays
 
@@ -385,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ]);
   let mapSafeHouses = L.layerGroup([ mapSafeHouse1, mapSafeHouse2 ]);
   let mapSettlements = L.layerGroup([ mapSettlement1 ]);
-  let mapShdCaches = L.layerGroup([ mapShdCache1, mapShdCache2, mapShdCache3, mapShdCache4, mapShdCache5 ]);
+  let mapShdCaches = L.layerGroup([ mapShdCache1, mapShdCache2, mapShdCache3, mapShdCache4, mapShdCache5, mapShdCache6, mapShdCache7, mapShdCache8, mapShdCache9, mapShdCache10 ]);
 
   let mapOverlays = {
     'Comms': mapComms,
