@@ -19,10 +19,10 @@ Currently being served over [GitHub Pages](https://pages.github.com/).
 ## Licensing
 
 The content of this website is licensed under the [CC BY 4.0 License](../LICENSE-CONTENT.txt).  
-Content can be found in the `/*.html`, `/assets/img/` and `/assets/leaflet.js` folders.
+Content can be found in the `/*.html`, `/assets/img/` and `/assets/js/leaflet.js` folders.
 
 The underlying source code used to format and display that content on <https://strappazzon.github.io/td2-map-brooklyn/> is licensed under the [MIT License](../LICENSE-CODE.txt).  
-Source code and configuration files can be found in the `/assets/sass/` and in the root of this repository.
+Source code and configuration files can be found in the `/assets/css/`, `/assets/js/`, `/assets/sass/` and in the root of this repository.
 
 This website uses assets from various sources listed below, which are owned by their respective creators. The usage of these materials
 does not negatively affect the original creators' ability to market or profit from their copyrighted material. If you believe that
