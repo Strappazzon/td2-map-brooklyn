@@ -57,7 +57,8 @@ layout: none
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.EasyButton/2.4.0/easy-button.min.js" integrity="sha512-Tndo4y/YJooD/mGXS9D6F1YyBcSyrWnnSWQ5Z9IcKt6bljicjyka9qcP99qMFbQ5+omfOtwwIapv1DjBCZcTJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.2/markdown-it.min.js" integrity="sha512-ohlWmsCxOu0bph1om5eDL0jm/83eH09fvqLDhiEdiqfDeJbEvz4FSbeY0gLJSVJwQAp0laRhTXbUQG+ZUuifUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.3/simple-lightbox.min.js" integrity="sha512-Vtot07oogPy4e0JzAfUgyvia0fATgR1PWWNG89EeQgPXmaIhjGQIFijUVxRn0TScCMCH57Y7eJSixmYYDJkJ1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script defer type="module" src="{{ '/assets/js/leaflet.js' | relative_url }}?{{ site.time | date: '%s%N' }}"></script>
+	<script defer src="{{ '/assets/js/leaflet.js' | relative_url }}?{{ site.time | date: '%s%N' }}"></script>
+	<script defer src="{{ '/assets/js/search.js' | relative_url }}?{{ site.time | date: '%s%N' }}"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -146,6 +147,19 @@ layout: none
 									<input type="checkbox" checked="true" data-layer="SHD Tech Caches">
 									SHD Tech Caches
 								</label>
+							</div>
+						</section>
+						<section class="search">
+							<span class="heading" role="heading">Search</span>
+							<div class="search-container d-flex flex-row flex-nowrap align-items-stretch">
+								<a role="button" id="search-clear" class="button primary" hidden="true">X</a>
+								<input type="text" id="search-input" class="search-input" autocomplete="off" placeholder="Search the map..." minlength="3" pattern="[A-z0-9\s]+">
+								<a role="button" id="search-submit" class="button primary">Search</a>
+							</div>
+							<div class="search-results d-flex flex-row flex-wrap">
+								<div class="nomatch" hidden="true">
+									<span>No results found.</span>
+								</div>
 							</div>
 						</section>
 					</div>
