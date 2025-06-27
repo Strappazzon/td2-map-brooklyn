@@ -184,40 +184,40 @@ const MARKERS = {
   mapHunterConqueror: {
     coords: [ 842, 1311 ],
     title: "# Hunter Spawn",
-    description: "**Mask:** Conqueror\n\n**Steps:** Interact with the stuffed animals after detonating all 7 of them and the Hunter will spawn.\n\n[Full guide.](https://youtu.be/KhMcKx75kdc?t=53)"
+    description: "**Mask:** Conqueror\n\n**Steps:** Detonate 7 stuffed animals across Brooklyn, then interact with a monkey plush to spawn the Hunter.\n\n[Full guide.](https://youtu.be/KhMcKx75kdc?t=53)"
   },
   mapHunterCraver: {
     coords: [ 937, 609 ],
     title: "# Hunter Spawn",
-    description: "**Mask:** Craver\n\n**Steps:** Interact with the 4 tanks after collecting them and the Hunter will spawn.\n\n[Full guide.](https://youtu.be/R6A8DEWbboI?t=41)"
+    description: "**Mask:** Craver\n\n**Steps:** Collect 4 canisters across Brooklyn Heights. Once all canisters are gathered, place them on the boat and the Hunter will spawn.\n\n[Full guide.](https://youtu.be/R6A8DEWbboI?t=41)"
   },
   mapHunterLumen: {
     coords: [ 1792, 745 ],
     images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-lumen_1.jpg\" alt=\"Garage Location\"></div></div>",
     title: "# Hunter Spawn",
-    description: "**Mask:** Lumen\n\n**Requirements:** Go there after 9 PM.\n\n**Steps:** Trip the switch inside the garage and follow the UV lights. The Hunter will spawn at the final location.\n\n[Full guide.](https://redd.it/1kwzqez)"
+    description: "**Mask:** Lumen\n\n**Requirements:** Night time.\n\n**Steps:** Trip the switch inside the garage and follow the UV lights. The Hunter will spawn at the final location.\n\n[Full guide.](https://redd.it/1kwzqez)"
   },
   mapHunterMerry: {
     coords: [ 1917, 323 ],
     title: "# Hunter Spawn",
-    description: "**Mask:** Merry\n\n**Steps:** Pick up the Legs, Torso, Tail and Head of a Merry-Go-Round horse and assemble them at the Merry-Go-Round where then the Hunter will spawn.\n\n[Full guide.](https://redd.it/1kx6yjh)"
+    description: "**Mask:** Merry\n\n**Steps:** Collect 7 parts of a carousel horse, then assemble them at the Merry-Go-Round where the Hunter will spawn.\n\n[Full guide.](https://redd.it/1kx6yjh)"
   },
   mapHunterNecronos: {
     coords: [ 2886, 588 ],
     title: "# Hunter Spawn",
-    description: "**Mask:** Necronos\n\n**Requirements:** Complete all prior 7 Hunter encounters.\n\n**Steps:** Go to the Division 1 starting safe house. Interact with the whiteboard and follow the UV lights to the rooftop where the Hunter will engage.\n\n[Full guide.](https://redd.it/1kyek7o)"
+    description: "**Mask:** Necronos\n\n**Requirements:** Complete all prior 7 Hunter encounters.\n\n**Steps:** Go to The Division 1 starting safe house (near **The Warehouse** Control Point) and interact with the whiteboard inside. Follow the UV lights to the rooftop where the Hunter will engage.\n\n[Full guide.](https://redd.it/1kyek7o)"
   },
   mapHunterRedtail: {
     coords: [ 2898, 823 ],
     images: "<div class=\"marker-images\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_1.jpg\" alt=\"Switches\"></div><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_2.jpg\" alt=\"Outpost Entrance\"></div><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_3.jpg\" alt=\"Outpost\"></div></div>",
     title: "# Hunter Spawn",
-    description: "**Mask:** Redtail\n\n**Steps:** Hit all nine switches then go back to the listening outpost and interact with the PC. Go back up and the Hunter will spawn ahead of you.\n\n[Full guide.](https://redd.it/1kx49yp)"
+    description: "**Mask:** Redtail\n\n**Steps:** Disable nine antennas across Brooklyn then go to the listening outpost and interact with the PC to trigger the alarm. Go back to the surface and the Hunter will spawn ahead of you.\n\n[Full guide.](https://redd.it/1kx49yp)"
   },
   mapHunterTracker: {
     coords: [ 3507, 1145 ],
     images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-tracker_1.jpg\" alt=\"Entrance\"></div></div>",
     title: "# Hunter Spawn",
-    description: "**Mask:** Tracker\n\n**Steps:** Enter the 192 Building from the southern entrance. Move towards the corresponding locations (like a Konami code): W, A, W, D, S, D, W, A, W, D, W, A, S, D, W. Interact with the \"RISE\" switch.\n\n[Full guide.](https://redd.it/1kye8fv)"
+    description: "**Mask:** Tracker\n\n**Steps:** Enter the 192 Building from the southern entrance (near **The Farm** Control Point), then follow a set of movements to activate the \"RISE\" switch and spawn the Hunter.\n\n[Full guide.](https://redd.it/1kye8fv)"
   },
   mapMainMission1: {
     coords: [ 4061, 1374 ],
