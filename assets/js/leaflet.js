@@ -842,25 +842,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const SHOWALL_BTN = document.querySelector('.filters-toggle #showall');
   const ZONESTG_BTN = document.querySelector('.filters-toggle #zonestg');
 
-  HIDEALL_BTN.addEventListener('click', () => {
+  function hideAllMarkers() {
     TOGGLE_CHK.forEach(chk => {
-      chk.checked = false;
       const LAYER_ID = chk.dataset.layer;
+
+      chk.checked = false;
       mapOverlays[ LAYER_ID ].removeFrom(map);
     });
-  });
-
-  SHOWALL_BTN.addEventListener('click', () => {
+  }
+  function showAllMarkers() {
     TOGGLE_CHK.forEach(chk => {
-      chk.checked = true;
       const LAYER_ID = chk.dataset.layer;
+
+      chk.checked = true;
       mapOverlays[ LAYER_ID ].addTo(map);
     });
-  });
-
-  let neighborhoodsVisible = true;
-
-  ZONESTG_BTN.addEventListener('click', () => {
+  }
+  function toggleZones() {
     if (neighborhoodsVisible === true) {
       map.removeLayer(mapNeighborhoods);
       ZONESTG_BTN.classList.add('disabled');
@@ -869,6 +867,31 @@ document.addEventListener('DOMContentLoaded', () => {
       map.addLayer(mapNeighborhoods);
       ZONESTG_BTN.classList.remove('disabled');
       neighborhoodsVisible = true;
+    }
+  }
+
+  HIDEALL_BTN.addEventListener('click', hideAllMarkers);
+  HIDEALL_BTN.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      hideAllMarkers();
+    }
+  });
+  SHOWALL_BTN.addEventListener('click', showAllMarkers);
+  SHOWALL_BTN.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      showAllMarkers();
+    }
+  });
+
+  let neighborhoodsVisible = true;
+
+  ZONESTG_BTN.addEventListener('click', toggleZones);
+  ZONESTG_BTN.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleZones();
     }
   });
 

@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     quotes: '""\'\'',
   });
 
+  const CLEAR_BTN = document.querySelector('#search-clear');
   const SEARCH_INPUT = document.querySelector('#search-input');
   const SEARCH_BTN = document.querySelector('#search-submit');
-  const CLEAR_BTN = document.querySelector('#search-clear');
   const SEARCH_RESULTS = document.querySelector('.search-results');
   const SEARCH_NOMATCH = SEARCH_RESULTS.querySelector('.nomatch');
 
@@ -52,6 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function clearResults() {
+    SEARCH_INPUT.value = '';
+    CLEAR_BTN.hidden = true;
+    SEARCH_NOMATCH.hidden = true;
+    SEARCH_RESULTS.querySelectorAll('.search-result')
+      .forEach(e => e.remove());
+  }
+
   function doSearch() {
     const SEARCH_QUERY = SEARCH_INPUT.value.trim().toLowerCase();
 
@@ -72,15 +80,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   SEARCH_BTN.addEventListener('click', doSearch);
+  SEARCH_BTN.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      doSearch();
+    }
+  });
+
   SEARCH_INPUT.addEventListener('keydown', e => {
     if (e.key === 'Enter') doSearch();
   });
 
-  CLEAR_BTN.addEventListener('click', () => {
-    SEARCH_INPUT.value = '';
-    CLEAR_BTN.hidden = true;
-    SEARCH_NOMATCH.hidden = true;
-    SEARCH_RESULTS.querySelectorAll('.search-result')
-      .forEach(e => e.remove());
+  CLEAR_BTN.addEventListener('click', clearResults);
+  CLEAR_BTN.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      clearResults();
+    }
   });
 });
