@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const SEARCH_BTN = document.querySelector('#search-submit');
   const CLEAR_BTN = document.querySelector('#search-clear');
   const SEARCH_RESULTS = document.querySelector('.search-results');
-  const SEARCH_NOMATCH = document.querySelector('.nomatch');
+  const SEARCH_NOMATCH = SEARCH_RESULTS.querySelector('.nomatch');
 
   function showResults(results) {
     SEARCH_RESULTS.querySelectorAll('.search-result')
-      .forEach(el => el.remove());
+      .forEach(e => e.remove());
 
     if (results.length === 0) {
       SEARCH_NOMATCH.hidden = false;
@@ -36,12 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
     results.forEach(({ key, title, description }) => {
       const RESULT_DIV = document.createElement('div');
       const COORDS = MARKERS[ key ].coords;
+
       RESULT_DIV.className = 'search-result';
       RESULT_DIV.innerHTML = `${md.render(title)}${md.render(description)}`;
       RESULT_DIV.dataset.coords = COORDS.join(',');
+
       RESULT_DIV.addEventListener('click', () => {
         const [ LAT, LNG ] = RESULT_DIV.dataset.coords.split(',').map(Number);
         const ZOOM = 18;
+
         window.leafletMap.setView(convertCoords(...[ LAT, LNG ]), ZOOM, { animate: true });
       });
 
@@ -51,18 +54,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function doSearch() {
     const SEARCH_QUERY = SEARCH_INPUT.value.trim().toLowerCase();
+
     if (SEARCH_QUERY.length < 3) return;
 
-    const results = [];
+    const RESULTS = [];
+
     for (const [ key, marker ] of Object.entries(MARKERS)) {
       const title = marker.title || '';
       const description = marker.description || '';
+
       if (title.toLowerCase().includes(SEARCH_QUERY) || description.toLowerCase().includes(SEARCH_QUERY)) {
-        results.push({ key, title, description });
+        RESULTS.push({ key, title, description });
       }
     }
 
-    showResults(results);
+    showResults(RESULTS);
   }
 
   SEARCH_BTN.addEventListener('click', doSearch);
@@ -74,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     SEARCH_INPUT.value = '';
     CLEAR_BTN.hidden = true;
     SEARCH_NOMATCH.hidden = true;
-    SEARCH_RESULTS.querySelectorAll('.search-result').forEach(el => el.remove());
+    SEARCH_RESULTS.querySelectorAll('.search-result')
+      .forEach(e => e.remove());
   });
 });
