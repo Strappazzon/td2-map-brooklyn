@@ -61,9 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function doSearch() {
+    const SEARCH_PATTERN = /^[A-z0-9\s]+$/i;
     const SEARCH_QUERY = SEARCH_INPUT.value.trim().toLowerCase();
 
-    if (SEARCH_QUERY.length < 3) return;
+    if (SEARCH_QUERY.length < 3 || !SEARCH_PATTERN.test(SEARCH_QUERY)) return;
 
     const RESULTS = [];
 
