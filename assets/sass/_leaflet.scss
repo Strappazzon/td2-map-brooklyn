@@ -119,9 +119,27 @@
     border-radius: 0;
   }
   &-popup-content-wrapper,
-  &-popup-tip {
+  &-popup-tip,
+  &-tooltip {
     background: var(--bg-color--sidebar);
     color: var(--text-color);
+  }
+  &-tooltip {
+    border: 0;
+    border-radius: 0;
+    font-size: 0.875rem;
+    &-bottom:before {
+      border-bottom-color: var(--bg-color--sidebar);
+    }
+    &-left:before {
+      border-left-color: var(--bg-color--sidebar);
+    }
+    &-right:before {
+      border-right-color: var(--bg-color--sidebar);
+    }
+    &-top:before {
+      border-top-color: var(--bg-color--sidebar);
+    }
   }
   &-control-layers {
     @media screen and (min-width: 768px) {

@@ -587,6 +587,13 @@ document.addEventListener('DOMContentLoaded', () => {
     ...iconOptions
   });
 
+  // Tooltips
+
+  let tooltipOptions = {
+    offset: [ 20, -16 ],
+    opacity: 1
+  };
+
   // Markers: Overlays
 
   const OVERLAY_CONFIG = {
@@ -672,10 +679,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (MARKER_DATA.images) {
         marker = L.marker(convertCoords(...MARKER_DATA.coords), { icon: markerIcon })
+          .bindTooltip((MARKER_DATA.title).replace(/^#\s/i, ''), { ...tooltipOptions })
           .bindPopup(md.render(MARKER_DATA.images + '\n\n' + MARKER_DATA.title + '\n\n' + MARKER_DATA.description))
           .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
       } else {
         marker = L.marker(convertCoords(...MARKER_DATA.coords), { icon: markerIcon })
+          .bindTooltip((MARKER_DATA.title).replace(/^#\s/i, ''), { ...tooltipOptions })
           .bindPopup(md.render(MARKER_DATA.title + '\n\n' + MARKER_DATA.description));
       }
 
