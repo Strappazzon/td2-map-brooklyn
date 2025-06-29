@@ -195,7 +195,7 @@ const MARKERS = {
     coords: [ 1792, 745 ],
     images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-lumen_1.jpg\" alt=\"Garage Location\"></div></div>",
     title: "# Hunter Spawn",
-    description: "**Mask:** Lumen\n\n**Requirements:** Night time.\n\n**Steps:** Trip the switch inside the garage and follow the UV lights. The Hunter will spawn at the final location.\n\n[Full guide.](https://redd.it/1kwzqez)"
+    description: "**Mask:** Lumen\n\n**Requirements:** Night time\n\n**Steps:** Trip the switch inside the garage and follow the UV lights. The Hunter will spawn at the final location.\n\n[Full guide.](https://redd.it/1kwzqez)"
   },
   mapHunterMerry: {
     coords: [ 1917, 323 ],
