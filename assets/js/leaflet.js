@@ -473,6 +473,12 @@ document.addEventListener('DOMContentLoaded', () => {
     zoomSnap: 0.1,
     zoomDelta: 0.1,
     zoomControl: false,
+    fullscreenControl: true,
+    fullscreenControlOptions: {
+      position: 'bottomleft',
+      title: 'Full screen',
+      titleCancel: 'Exit full screen'
+    },
     attributionControl: true
   });
 
