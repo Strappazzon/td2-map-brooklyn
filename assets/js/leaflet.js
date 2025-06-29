@@ -587,239 +587,126 @@ document.addEventListener('DOMContentLoaded', () => {
     ...iconOptions
   });
 
+  // Markers: Overlays
+
+  const OVERLAY_CONFIG = {
+    'Comms': {
+      keys: [
+        'mapCommsBridge1', 'mapCommsBridge2', 'mapCommsBridge3', 'mapCommsBridge4', 'mapCommsBridge5', 'mapCommsBridge6',
+        'mapCommsHostiles1', 'mapCommsHostiles2', 'mapCommsHostiles3', 'mapCommsHostiles4', 'mapCommsHostiles5', 'mapCommsHostiles6', 'mapCommsHostiles7', 'mapCommsHostiles8', 'mapCommsHostiles9', 'mapCommsHostiles10',
+        'mapCommsFriendly1', 'mapCommsFriendly2', 'mapCommsFriendly3', 'mapCommsFriendly4',
+        'mapCommsHistory1', 'mapCommsHistory2', 'mapCommsHistory3', 'mapCommsHistory4', 'mapCommsHistory5', 'mapCommsHistory6', 'mapCommsHistory7', 'mapCommsHistory8'
+      ],
+      icon: commsIcon
+    },
+    'Control Points': {
+      keys: [
+        'mapControlPoint1', 'mapControlPoint2', 'mapControlPoint3', 'mapControlPoint4'
+      ],
+      icon: null
+    },
+    'ECHO': {
+      keys: [
+        'mapEcho1', 'mapEcho2', 'mapEcho3'
+      ],
+      icon: echoIcon
+    },
+    'Hunters': {
+      keys: [
+        'mapHunterCipher', 'mapHunterConqueror', 'mapHunterCraver', 'mapHunterLumen', 'mapHunterMerry', 'mapHunterNecronos', 'mapHunterRedtail', 'mapHunterTracker'
+      ],
+      icon: hunterIcon
+    },
+    'Missions': {
+      keys: [
+        'mapMainMission1', 'mapMainMission2', 'mapMainMission3', 'mapMission1', 'mapMission2', 'mapMission3', 'mapMission4'
+      ],
+      icon: missionIcon
+    },
+    'Named Elites': {
+      keys: [
+        'mapNamedElite1', 'mapNamedElite2', 'mapNamedElite3', 'mapNamedElite4', 'mapNamedElite5', 'mapNamedElite6', 'mapNamedElite7'
+      ],
+      icon: namedEliteIcon
+    },
+    'Resource Node': {
+      keys: [
+        'mapResCompNode1', 'mapResCompNode2', 'mapResCompNode3', 'mapResCompNode4',
+        'mapResFoodNode1', 'mapResFoodNode2', 'mapResFoodNode3',
+        'mapResWaterNode1', 'mapResWaterNode2', 'mapResWaterNode3', 'mapResWaterNode4'
+      ],
+      icon: null
+    },
+    'Safe Houses': {
+      keys: [
+        'mapSafeHouse1', 'mapSafeHouse2'
+      ],
+      icon: safeHouseIcon
+    },
+    'Settlements': {
+      keys: [
+        'mapSettlement1'
+      ],
+      icon: settlementBridgeIcon
+    },
+    'SHD Tech Caches': {
+      keys: [
+        'mapShdCache1', 'mapShdCache2', 'mapShdCache3', 'mapShdCache4', 'mapShdCache5', 'mapShdCache6', 'mapShdCache7', 'mapShdCache8', 'mapShdCache9', 'mapShdCache10'
+      ],
+      icon: shdCacheIcon
+    }
+  };
+
+  // Markers: Definitions
+
+  let mapMarkers = {};
+  let mapOverlays = {};
+
+  for (const [ overlayName, { keys, icon } ] of Object.entries(OVERLAY_CONFIG)) {
+    let markers = [];
+
+    for (const K of keys) {
+      const MARKER_DATA = MARKERS[ K ];
+      let markerIcon = icon || getMarkerIcon(K);
+      let marker;
+
+      if (MARKER_DATA.images) {
+        marker = L.marker(convertCoords(...MARKER_DATA.coords), { icon: markerIcon })
+          .bindPopup(md.render(MARKER_DATA.images + '\n\n' + MARKER_DATA.title + '\n\n' + MARKER_DATA.description))
+          .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
+      } else {
+        marker = L.marker(convertCoords(...MARKER_DATA.coords), { icon: markerIcon })
+          .bindPopup(md.render(MARKER_DATA.title + '\n\n' + MARKER_DATA.description));
+      }
+
+      markers.push(marker);
+      mapMarkers[ K ] = marker;
+    }
+
+    mapOverlays[ overlayName ] = L.layerGroup(markers);
+  }
+
+  function getMarkerIcon(key) {
+    if (key.startsWith('mapControlPoint')) {
+      if (MARKERS[ key ].description === 'Rikers') return controlPointIconRikers;
+      if (MARKERS[ key ].description === 'Cleaners') return controlPointIconCleaners;
+    }
+
+    if (key.startsWith('mapResCompNode')) return nodeCompIcon;
+    if (key.startsWith('mapResFoodNode')) return nodeFoodIcon;
+    if (key.startsWith('mapResWaterNode')) return nodeWaterIcon;
+  }
+
+  let layerControl = L.control.layers({}, mapOverlays, { position: 'topleft' }).addTo(map);
+
   // Neighborhoods: Definitions
 
   let mapNeighborhoodBrooklynHeights = L.marker(convertCoords(1404, 1423), { icon: labelBrooklynHeights, interactive: false, keyboard: false });
   let mapNeighborhoodDumbo = L.marker(convertCoords(3100, 871), { icon: labelDumbo, interactive: false, keyboard: false });
 
-  // Markers: Definitions
-
-  let mapCommsBridge1 = L.marker(convertCoords(...MARKERS.mapCommsBridge1.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsBridge1.title + '\n\n' + MARKERS.mapCommsBridge1.description));
-  let mapCommsBridge2 = L.marker(convertCoords(...MARKERS.mapCommsBridge2.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsBridge2.title + '\n\n' + MARKERS.mapCommsBridge2.description));
-  let mapCommsBridge3 = L.marker(convertCoords(...MARKERS.mapCommsBridge3.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsBridge3.title + '\n\n' + MARKERS.mapCommsBridge3.description));
-  let mapCommsBridge4 = L.marker(convertCoords(...MARKERS.mapCommsBridge4.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsBridge4.title + '\n\n' + MARKERS.mapCommsBridge4.description));
-  let mapCommsBridge5 = L.marker(convertCoords(...MARKERS.mapCommsBridge5.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsBridge5.title + '\n\n' + MARKERS.mapCommsBridge5.description));
-  let mapCommsBridge6 = L.marker(convertCoords(...MARKERS.mapCommsBridge6.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsBridge6.title + '\n\n' + MARKERS.mapCommsBridge6.description));
-  let mapCommsHostiles1 = L.marker(convertCoords(...MARKERS.mapCommsHostiles1.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHostiles1.title + '\n\n' + MARKERS.mapCommsHostiles1.description));
-  let mapCommsHostiles2 = L.marker(convertCoords(...MARKERS.mapCommsHostiles2.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHostiles2.title + '\n\n' + MARKERS.mapCommsHostiles2.description));
-  let mapCommsHostiles3 = L.marker(convertCoords(...MARKERS.mapCommsHostiles3.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHostiles3.title + '\n\n' + MARKERS.mapCommsHostiles3.description));
-  let mapCommsHostiles4 = L.marker(convertCoords(...MARKERS.mapCommsHostiles4.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHostiles4.title + '\n\n' + MARKERS.mapCommsHostiles4.description));
-  let mapCommsHostiles5 = L.marker(convertCoords(...MARKERS.mapCommsHostiles5.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHostiles5.title + '\n\n' + MARKERS.mapCommsHostiles5.description));
-  let mapCommsHostiles6 = L.marker(convertCoords(...MARKERS.mapCommsHostiles6.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHostiles6.title + '\n\n' + MARKERS.mapCommsHostiles6.description));
-  let mapCommsHostiles7 = L.marker(convertCoords(...MARKERS.mapCommsHostiles7.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHostiles7.title + '\n\n' + MARKERS.mapCommsHostiles7.description));
-  let mapCommsHostiles8 = L.marker(convertCoords(...MARKERS.mapCommsHostiles8.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHostiles8.title + '\n\n' + MARKERS.mapCommsHostiles8.description));
-  let mapCommsHostiles9 = L.marker(convertCoords(...MARKERS.mapCommsHostiles9.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHostiles9.title + '\n\n' + MARKERS.mapCommsHostiles9.description));
-  let mapCommsHostiles10 = L.marker(convertCoords(...MARKERS.mapCommsHostiles10.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHostiles10.title + '\n\n' + MARKERS.mapCommsHostiles10.description));
-  let mapCommsFriendly1 = L.marker(convertCoords(...MARKERS.mapCommsFriendly1.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsFriendly1.title + '\n\n' + MARKERS.mapCommsFriendly1.description));
-  let mapCommsFriendly2 = L.marker(convertCoords(...MARKERS.mapCommsFriendly2.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsFriendly2.title + '\n\n' + MARKERS.mapCommsFriendly2.description));
-  let mapCommsFriendly3 = L.marker(convertCoords(...MARKERS.mapCommsFriendly3.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsFriendly3.title + '\n\n' + MARKERS.mapCommsFriendly3.description));
-  let mapCommsFriendly4 = L.marker(convertCoords(...MARKERS.mapCommsFriendly4.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsFriendly4.title + '\n\n' + MARKERS.mapCommsFriendly4.description));
-  let mapCommsHistory1 = L.marker(convertCoords(...MARKERS.mapCommsHistory1.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHistory1.title + '\n\n' + MARKERS.mapCommsHistory1.description));
-  let mapCommsHistory2 = L.marker(convertCoords(...MARKERS.mapCommsHistory2.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHistory2.title + '\n\n' + MARKERS.mapCommsHistory2.description));
-  let mapCommsHistory3 = L.marker(convertCoords(...MARKERS.mapCommsHistory3.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHistory3.title + '\n\n' + MARKERS.mapCommsHistory3.description));
-  let mapCommsHistory4 = L.marker(convertCoords(...MARKERS.mapCommsHistory4.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHistory4.title + '\n\n' + MARKERS.mapCommsHistory4.description));
-  let mapCommsHistory5 = L.marker(convertCoords(...MARKERS.mapCommsHistory5.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHistory5.title + '\n\n' + MARKERS.mapCommsHistory5.description));
-  let mapCommsHistory6 = L.marker(convertCoords(...MARKERS.mapCommsHistory6.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHistory6.title + '\n\n' + MARKERS.mapCommsHistory6.description));
-  let mapCommsHistory7 = L.marker(convertCoords(...MARKERS.mapCommsHistory7.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHistory7.title + '\n\n' + MARKERS.mapCommsHistory7.description));
-  let mapCommsHistory8 = L.marker(convertCoords(...MARKERS.mapCommsHistory8.coords), { icon: commsIcon })
-    .bindPopup(md.render(MARKERS.mapCommsHistory8.title + '\n\n' + MARKERS.mapCommsHistory8.description));
-
-  let mapControlPoint1 = L.marker(convertCoords(...MARKERS.mapControlPoint1.coords), { icon: controlPointIconRikers })
-    .bindPopup(md.render(MARKERS.mapControlPoint1.title + '\n\n' + MARKERS.mapControlPoint1.description));
-  let mapControlPoint2 = L.marker(convertCoords(...MARKERS.mapControlPoint2.coords), { icon: controlPointIconRikers })
-    .bindPopup(md.render(MARKERS.mapControlPoint2.title + '\n\n' + MARKERS.mapControlPoint2.description));
-  let mapControlPoint3 = L.marker(convertCoords(...MARKERS.mapControlPoint3.coords), { icon: controlPointIconCleaners })
-    .bindPopup(md.render(MARKERS.mapControlPoint3.title + '\n\n' + MARKERS.mapControlPoint3.description));
-  let mapControlPoint4 = L.marker(convertCoords(...MARKERS.mapControlPoint4.coords), { icon: controlPointIconCleaners })
-    .bindPopup(md.render(MARKERS.mapControlPoint4.title + '\n\n' + MARKERS.mapControlPoint4.description));
-
-  let mapEcho1 = L.marker(convertCoords(...MARKERS.mapEcho1.coords), { icon: echoIcon })
-    .bindPopup(md.render(MARKERS.mapEcho1.title + '\n\n' + MARKERS.mapEcho2.description));
-  let mapEcho2 = L.marker(convertCoords(...MARKERS.mapEcho2.coords), { icon: echoIcon })
-    .bindPopup(md.render(MARKERS.mapEcho2.title + '\n\n' + MARKERS.mapEcho2.description));
-  let mapEcho3 = L.marker(convertCoords(...MARKERS.mapEcho3.coords), { icon: echoIcon })
-    .bindPopup(md.render(MARKERS.mapEcho3.images + '\n\n' + MARKERS.mapEcho3.title + '\n\n' + MARKERS.mapEcho3.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-
-  let mapHunterCipher = L.marker(convertCoords(...MARKERS.mapHunterCipher.coords), { icon: hunterIcon })
-    .bindPopup(md.render(MARKERS.mapHunterCipher.images + '\n\n' + MARKERS.mapHunterCipher.title + '\n\n' + MARKERS.mapHunterCipher.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-  let mapHunterConqueror = L.marker(convertCoords(...MARKERS.mapHunterConqueror.coords), { icon: hunterIcon })
-    .bindPopup(md.render(+ MARKERS.mapHunterConqueror.title + '\n\n' + MARKERS.mapHunterConqueror.description));
-  let mapHunterCraver = L.marker(convertCoords(...MARKERS.mapHunterCraver.coords), { icon: hunterIcon })
-    .bindPopup(md.render(MARKERS.mapHunterCraver.title + '\n\n' + MARKERS.mapHunterCraver.description));
-  let mapHunterLumen = L.marker(convertCoords(...MARKERS.mapHunterLumen.coords), { icon: hunterIcon })
-    .bindPopup(md.render(MARKERS.mapHunterLumen.images + '\n\n' + MARKERS.mapHunterLumen.title + '\n\n' + MARKERS.mapHunterLumen.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-  let mapHunterMerry = L.marker(convertCoords(...MARKERS.mapHunterMerry.coords), { icon: hunterIcon })
-    .bindPopup(md.render(MARKERS.mapHunterMerry.title + '\n\n' + MARKERS.mapHunterMerry.description));
-  let mapHunterNecronos = L.marker(convertCoords(...MARKERS.mapHunterNecronos.coords), { icon: hunterIcon })
-    .bindPopup(md.render(MARKERS.mapHunterNecronos.title + '\n\n' + MARKERS.mapHunterNecronos.description));
-  let mapHunterRedtail = L.marker(convertCoords(...MARKERS.mapHunterRedtail.coords), { icon: hunterIcon })
-    .bindPopup(md.render(MARKERS.mapHunterRedtail.images + '\n\n' + MARKERS.mapHunterRedtail.title + '\n\n' + MARKERS.mapHunterRedtail.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-  let mapHunterTracker = L.marker(convertCoords(...MARKERS.mapHunterTracker.coords), { icon: hunterIcon })
-    .bindPopup(md.render(MARKERS.mapHunterTracker.title + '\n\n' + MARKERS.mapHunterTracker.description));
-
-  let mapMainMission1 = L.marker(convertCoords(...MARKERS.mapMainMission1.coords), { icon: missionIcon })
-    .bindPopup(md.render(MARKERS.mapMainMission1.title + '\n\n' + MARKERS.mapMainMission1.description));
-  let mapMainMission2 = L.marker(convertCoords(...MARKERS.mapMainMission2.coords), { icon: missionIcon })
-    .bindPopup(md.render(MARKERS.mapMainMission2.title + '\n\n' + MARKERS.mapMainMission2.description));
-  let mapMainMission3 = L.marker(convertCoords(...MARKERS.mapMainMission3.coords), { icon: missionIcon })
-    .bindPopup(md.render(MARKERS.mapMainMission3.title + '\n\n' + MARKERS.mapMainMission3.description));
-  let mapMission1 = L.marker(convertCoords(...MARKERS.mapMission1.coords), { icon: missionIcon })
-    .bindPopup(md.render(MARKERS.mapMission1.title + '\n\n' + MARKERS.mapMission1.description));
-  let mapMission2 = L.marker(convertCoords(...MARKERS.mapMission2.coords), { icon: missionIcon })
-    .bindPopup(md.render(MARKERS.mapMission2.title + '\n\n' + MARKERS.mapMission2.description));
-  let mapMission3 = L.marker(convertCoords(...MARKERS.mapMission3.coords), { icon: missionIcon })
-    .bindPopup(md.render(MARKERS.mapMission3.title + '\n\n' + MARKERS.mapMission3.description));
-  let mapMission4 = L.marker(convertCoords(...MARKERS.mapMission4.coords), { icon: missionIcon })
-    .bindPopup(md.render(MARKERS.mapMission4.title + '\n\n' + MARKERS.mapMission4.description));
-
-  let mapNamedElite1 = L.marker(convertCoords(...MARKERS.mapNamedElite1.coords), { icon: namedEliteIcon })
-    .bindPopup(md.render(MARKERS.mapNamedElite1.title + '\n\n' + MARKERS.mapNamedElite1.description));
-  let mapNamedElite2 = L.marker(convertCoords(...MARKERS.mapNamedElite2.coords), { icon: namedEliteIcon })
-    .bindPopup(md.render(MARKERS.mapNamedElite2.title + '\n\n' + MARKERS.mapNamedElite2.description));
-  let mapNamedElite3 = L.marker(convertCoords(...MARKERS.mapNamedElite3.coords), { icon: namedEliteIcon })
-    .bindPopup(md.render(MARKERS.mapNamedElite3.title + '\n\n' + MARKERS.mapNamedElite3.description));
-  let mapNamedElite4 = L.marker(convertCoords(...MARKERS.mapNamedElite4.coords), { icon: namedEliteIcon })
-    .bindPopup(md.render(MARKERS.mapNamedElite4.title + '\n\n' + MARKERS.mapNamedElite4.description));
-  let mapNamedElite5 = L.marker(convertCoords(...MARKERS.mapNamedElite5.coords), { icon: namedEliteIcon })
-    .bindPopup(md.render(MARKERS.mapNamedElite5.title + '\n\n' + MARKERS.mapNamedElite5.description));
-  let mapNamedElite6 = L.marker(convertCoords(...MARKERS.mapNamedElite6.coords), { icon: namedEliteIcon })
-    .bindPopup(md.render(MARKERS.mapNamedElite6.title + '\n\n' + MARKERS.mapNamedElite6.description));
-  let mapNamedElite7 = L.marker(convertCoords(...MARKERS.mapNamedElite7.coords), { icon: namedEliteIcon })
-    .bindPopup(md.render(MARKERS.mapNamedElite7.title + '\n\n' + MARKERS.mapNamedElite7.description));
-
-  let mapResCompNode1 = L.marker(convertCoords(...MARKERS.mapResCompNode1.coords), { icon: nodeCompIcon })
-    .bindPopup(md.render(MARKERS.mapResCompNode1.title + '\n\n' + MARKERS.mapResCompNode1.description));
-  let mapResCompNode2 = L.marker(convertCoords(...MARKERS.mapResCompNode2.coords), { icon: nodeCompIcon })
-    .bindPopup(md.render(MARKERS.mapResCompNode2.title + '\n\n' + MARKERS.mapResCompNode2.description));
-  let mapResCompNode3 = L.marker(convertCoords(...MARKERS.mapResCompNode3.coords), { icon: nodeCompIcon })
-    .bindPopup(md.render(MARKERS.mapResCompNode3.title + '\n\n' + MARKERS.mapResCompNode3.description));
-  let mapResCompNode4 = L.marker(convertCoords(...MARKERS.mapResCompNode4.coords), { icon: nodeCompIcon })
-    .bindPopup(md.render(MARKERS.mapResCompNode4.title + '\n\n' + MARKERS.mapResCompNode4.description));
-
-  let mapResFoodNode1 = L.marker(convertCoords(...MARKERS.mapResFoodNode1.coords), { icon: nodeFoodIcon })
-    .bindPopup(md.render(MARKERS.mapResFoodNode1.title + '\n\n' + MARKERS.mapResFoodNode1.description));
-  let mapResFoodNode2 = L.marker(convertCoords(...MARKERS.mapResFoodNode2.coords), { icon: nodeFoodIcon })
-    .bindPopup(md.render(MARKERS.mapResFoodNode2.title + '\n\n' + MARKERS.mapResFoodNode2.description));
-  let mapResFoodNode3 = L.marker(convertCoords(...MARKERS.mapResFoodNode3.coords), { icon: nodeFoodIcon })
-    .bindPopup(md.render(MARKERS.mapResFoodNode3.title + '\n\n' + MARKERS.mapResFoodNode3.description));
-
-  let mapResWaterNode1 = L.marker(convertCoords(...MARKERS.mapResWaterNode1.coords), { icon: nodeWaterIcon })
-    .bindPopup(md.render(MARKERS.mapResWaterNode1.title + '\n\n' + MARKERS.mapResWaterNode1.description));
-  let mapResWaterNode2 = L.marker(convertCoords(...MARKERS.mapResWaterNode2.coords), { icon: nodeWaterIcon })
-    .bindPopup(md.render(MARKERS.mapResWaterNode2.title + '\n\n' + MARKERS.mapResWaterNode2.description));
-  let mapResWaterNode3 = L.marker(convertCoords(...MARKERS.mapResWaterNode3.coords), { icon: nodeWaterIcon })
-    .bindPopup(md.render(MARKERS.mapResWaterNode3.title + '\n\n' + MARKERS.mapResWaterNode3.description));
-  let mapResWaterNode4 = L.marker(convertCoords(...MARKERS.mapResWaterNode4.coords), { icon: nodeWaterIcon })
-    .bindPopup(md.render(MARKERS.mapResWaterNode4.title + '\n\n' + MARKERS.mapResWaterNode4.description));
-
-  let mapSafeHouse1 = L.marker(convertCoords(...MARKERS.mapSafeHouse1.coords), { icon: safeHouseIcon })
-    .bindPopup(md.render(MARKERS.mapSafeHouse1.title + '\n\n' + MARKERS.mapSafeHouse1.description));
-  let mapSafeHouse2 = L.marker(convertCoords(...MARKERS.mapSafeHouse2.coords), { icon: safeHouseIcon })
-    .bindPopup(md.render(MARKERS.mapSafeHouse2.title + '\n\n' + MARKERS.mapSafeHouse2.description));
-
-  let mapSettlement1 = L.marker(convertCoords(...MARKERS.mapSettlement1.coords), { icon: settlementBridgeIcon })
-    .bindPopup(md.render(MARKERS.mapSettlement1.title + '\n\n' + MARKERS.mapSettlement1.description));
-
-  let mapShdCache1 = L.marker(convertCoords(...MARKERS.mapShdCache1.coords), { icon: shdCacheIcon })
-    .bindPopup(md.render(MARKERS.mapShdCache1.images + '\n\n' + MARKERS.mapShdCache1.title + '\n\n' + MARKERS.mapShdCache1.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-  let mapShdCache2 = L.marker(convertCoords(...MARKERS.mapShdCache2.coords), { icon: shdCacheIcon })
-    .bindPopup(md.render(MARKERS.mapShdCache2.images + '\n\n' + MARKERS.mapShdCache2.title + '\n\n' + MARKERS.mapShdCache2.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-  let mapShdCache3 = L.marker(convertCoords(...MARKERS.mapShdCache3.coords), { icon: shdCacheIcon })
-    .bindPopup(md.render(MARKERS.mapShdCache3.images + '\n\n' + MARKERS.mapShdCache3.title + '\n\n' + MARKERS.mapShdCache3.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-  let mapShdCache4 = L.marker(convertCoords(...MARKERS.mapShdCache4.coords), { icon: shdCacheIcon })
-    .bindPopup(md.render(MARKERS.mapShdCache4.images + '\n\n' + MARKERS.mapShdCache4.title + '\n\n' + MARKERS.mapShdCache4.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-  let mapShdCache5 = L.marker(convertCoords(...MARKERS.mapShdCache5.coords), { icon: shdCacheIcon })
-    .bindPopup(md.render(MARKERS.mapShdCache5.images + '\n\n' + MARKERS.mapShdCache5.title + '\n\n' + MARKERS.mapShdCache5.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-  let mapShdCache6 = L.marker(convertCoords(...MARKERS.mapShdCache6.coords), { icon: shdCacheIcon })
-    .bindPopup(md.render(MARKERS.mapShdCache6.images + '\n\n' + MARKERS.mapShdCache6.title + '\n\n' + MARKERS.mapShdCache6.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-  let mapShdCache7 = L.marker(convertCoords(...MARKERS.mapShdCache7.coords), { icon: shdCacheIcon })
-    .bindPopup(md.render(MARKERS.mapShdCache7.title + '\n\n' + MARKERS.mapShdCache7.description));
-  let mapShdCache8 = L.marker(convertCoords(...MARKERS.mapShdCache8.coords), { icon: shdCacheIcon })
-    .bindPopup(md.render(MARKERS.mapShdCache8.images + '\n\n' + MARKERS.mapShdCache8.title + '\n\n' + MARKERS.mapShdCache8.description))
-    .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-  let mapShdCache9 = L.marker(convertCoords(...MARKERS.mapShdCache9.coords), { icon: shdCacheIcon })
-    .bindPopup(md.render(MARKERS.mapShdCache9.title + '\n\n' + MARKERS.mapShdCache9.description));
-  let mapShdCache10 = L.marker(convertCoords(...MARKERS.mapShdCache10.coords), { icon: shdCacheIcon })
-    .bindPopup(md.render(MARKERS.mapShdCache10.title + '\n\n' + MARKERS.mapShdCache10.description));
-
-  // Markers: Overlays
+  // Neighborhoods: Layers
 
   let mapNeighborhoods = L.layerGroup([ mapNeighborhoodBrooklynHeights, mapNeighborhoodDumbo ]);
-
-  let mapComms = L.layerGroup([
-    mapCommsBridge1, mapCommsBridge2, mapCommsBridge3, mapCommsBridge4, mapCommsBridge5, mapCommsBridge6,
-    mapCommsHostiles1, mapCommsHostiles2, mapCommsHostiles3, mapCommsHostiles4, mapCommsHostiles5, mapCommsHostiles6, mapCommsHostiles7, mapCommsHostiles8, mapCommsHostiles9, mapCommsHostiles10,
-    mapCommsFriendly1, mapCommsFriendly2, mapCommsFriendly3, mapCommsFriendly4,
-    mapCommsHistory1, mapCommsHistory2, mapCommsHistory3, mapCommsHistory4, mapCommsHistory5, mapCommsHistory6, mapCommsHistory7, mapCommsHistory8
-  ]);
-  let mapControlPoints = L.layerGroup([ mapControlPoint1, mapControlPoint2, mapControlPoint3, mapControlPoint4 ]);
-  let mapEcho = L.layerGroup([ mapEcho1, mapEcho2, mapEcho3 ]);
-  let mapHunters = L.layerGroup([ mapHunterCipher, mapHunterConqueror, mapHunterCraver, mapHunterLumen, mapHunterMerry, mapHunterNecronos, mapHunterRedtail, mapHunterTracker ]);
-  let mapMissions = L.layerGroup([
-    mapMainMission1, mapMainMission2, mapMainMission3,
-    mapMission1, mapMission2, mapMission3, mapMission4
-  ]);
-  let mapNamedElites = L.layerGroup([ mapNamedElite1, mapNamedElite2, mapNamedElite3, mapNamedElite4, mapNamedElite5, mapNamedElite6, mapNamedElite7 ]);
-  let mapResources = L.layerGroup([
-    mapResCompNode1, mapResCompNode2, mapResCompNode3, mapResCompNode4,
-    mapResFoodNode1, mapResFoodNode2, mapResFoodNode3,
-    mapResWaterNode1, mapResWaterNode2, mapResWaterNode3, mapResWaterNode4
-  ]);
-  let mapSafeHouses = L.layerGroup([ mapSafeHouse1, mapSafeHouse2 ]);
-  let mapSettlements = L.layerGroup([ mapSettlement1 ]);
-  let mapShdCaches = L.layerGroup([ mapShdCache1, mapShdCache2, mapShdCache3, mapShdCache4, mapShdCache5, mapShdCache6, mapShdCache7, mapShdCache8, mapShdCache9, mapShdCache10 ]);
-
-  let mapOverlays = {
-    'Comms': mapComms,
-    'Control Points': mapControlPoints,
-    'ECHO': mapEcho,
-    'Hunters': mapHunters,
-    'Missions': mapMissions,
-    'Named Elites': mapNamedElites,
-    'Resource Node': mapResources,
-    'Safe Houses': mapSafeHouses,
-    'Settlements': mapSettlements,
-    'SHD Tech Caches': mapShdCaches
-  };
-
-  let layerControl = L.control.layers({}, mapOverlays, { position: 'topleft' }).addTo(map);
 
   // Markers: Sidebar filters
 
@@ -909,15 +796,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Default Layers
 
   if (neighborhoodsVisible) { mapNeighborhoods.addTo(map); };
-
-  mapComms.addTo(map);
-  mapControlPoints.addTo(map);
-  mapEcho.addTo(map);
-  mapHunters.addTo(map);
-  mapMissions.addTo(map);
-  mapNamedElites.addTo(map);
-  mapResources.addTo(map);
-  mapSafeHouses.addTo(map);
-  mapSettlements.addTo(map);
-  mapShdCaches.addTo(map);
+  Object.values(mapOverlays).forEach(layerGroup => layerGroup.addTo(map));
 });
