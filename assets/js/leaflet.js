@@ -612,7 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       icon: commsIcon
     },
-    'Control Points': {
+    'Control Point': {
       keys: [
         'mapControlPoint1', 'mapControlPoint2', 'mapControlPoint3', 'mapControlPoint4'
       ],
@@ -624,19 +624,19 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       icon: echoIcon
     },
-    'Hunters': {
+    'Hunter': {
       keys: [
         'mapHunterCipher', 'mapHunterConqueror', 'mapHunterCraver', 'mapHunterLumen', 'mapHunterMerry', 'mapHunterNecronos', 'mapHunterRedtail', 'mapHunterTracker'
       ],
       icon: hunterIcon
     },
-    'Missions': {
+    'Mission': {
       keys: [
         'mapMainMission1', 'mapMainMission2', 'mapMainMission3', 'mapMission1', 'mapMission2', 'mapMission3', 'mapMission4'
       ],
       icon: missionIcon
     },
-    'Named Elites': {
+    'Named Elite': {
       keys: [
         'mapNamedElite1', 'mapNamedElite2', 'mapNamedElite3', 'mapNamedElite4', 'mapNamedElite5', 'mapNamedElite6', 'mapNamedElite7'
       ],
@@ -650,19 +650,19 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       icon: null
     },
-    'Safe Houses': {
+    'Safe House': {
       keys: [
         'mapSafeHouse1', 'mapSafeHouse2'
       ],
       icon: safeHouseIcon
     },
-    'Settlements': {
+    'Settlement': {
       keys: [
         'mapSettlement1'
       ],
       icon: settlementBridgeIcon
     },
-    'SHD Tech Caches': {
+    'SHD Tech Cache': {
       keys: [
         'mapShdCache1', 'mapShdCache2', 'mapShdCache3', 'mapShdCache4', 'mapShdCache5', 'mapShdCache6', 'mapShdCache7', 'mapShdCache8', 'mapShdCache9', 'mapShdCache10'
       ],
