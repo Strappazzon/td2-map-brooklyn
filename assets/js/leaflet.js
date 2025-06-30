@@ -273,6 +273,12 @@ const MARKERS = {
     title: "# Antenna Switch",
     description: "Part of the Redtail Hunter puzzle.\n\n**Location:** On the right of the SHD Tech Cache."
   },
+  mapKeyMaint1: {
+    coords: [ 2615, 1194 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/key-maint_1.jpg\" alt=\"Rooftop Maintenance Key\"></div></div>",
+    title: "# Rooftop Maintenance Key",
+    description: "Used to access the gate on the rooftop."
+  },
   mapMainMission1: {
     coords: [ 4061, 1374 ],
     title: "# H5 Refinery",
@@ -607,6 +613,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ...iconOptions
   });
 
+  let keyIcon = L.icon({
+    iconUrl: 'assets/img/markers/key.png',
+    ...iconOptions
+  });
+
   let missionIcon = L.icon({
     iconUrl: 'assets/img/markers/mission.svg',
     ...iconOptions
@@ -688,6 +699,12 @@ document.addEventListener('DOMContentLoaded', () => {
         'mapHunterCipher', 'mapHunterConqueror', 'mapHunterCraver', 'mapHunterLumen', 'mapHunterMerry', 'mapHunterNecronos', 'mapHunterRedtail', 'mapHunterTracker'
       ],
       icon: hunterIcon
+    },
+    'Key': {
+      keys: [
+        'mapKeyMaint1'
+      ],
+      icon: keyIcon
     },
     'Misc': {
       keys: [
