@@ -209,7 +209,7 @@ const MARKERS = {
   },
   mapHunterRedtail: {
     coords: [ 2898, 823 ],
-    images: "<div class=\"marker-images\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_1.jpg\" alt=\"Switches\"></div><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_2.jpg\" alt=\"Outpost Entrance\"></div><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_3.jpg\" alt=\"Outpost\"></div></div>",
+    images: "<div class=\"marker-images\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_1.jpg\" alt=\"Outpost Entrance\"></div><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_2.jpg\" alt=\"Outpost\"></div></div>",
     title: "# Hunter Spawn",
     description: "**Mask:** Redtail\n\n**Steps:** Disable nine antennas across Brooklyn then go to the listening outpost and interact with the PC to trigger the alarm. Go back to the surface and the Hunter will spawn ahead of you.\n\n[Full guide.](https://redd.it/1kx49yp)"
   },
@@ -218,6 +218,60 @@ const MARKERS = {
     images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-tracker_1.jpg\" alt=\"Entrance\"></div></div>",
     title: "# Hunter Spawn",
     description: "**Mask:** Tracker\n\n**Steps:** Enter the 192 Building from the southern entrance (near **The Farm** Control Point), then follow a set of movements to activate the \"RISE\" switch and spawn the Hunter.\n\n[Full guide.](https://redd.it/1kye8fv)"
+  },
+  mapHunterRedtailClue1: {
+    coords: [ 1686, 915 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_clue-1.jpg\" alt=\"Antenna Switch\"></div></div>",
+    title: "# Antenna Switch",
+    description: "Part of the Redtail Hunter puzzle."
+  },
+  mapHunterRedtailClue2: {
+    coords: [ 1796, 581 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_clue-2.jpg\" alt=\"Antenna Switch\"></div></div>",
+    title: "# Antenna Switch",
+    description: "Part of the Redtail Hunter puzzle.\n\n**Location:** On the roof"
+  },
+  mapHunterRedtailClue3: {
+    coords: [ 2468, 645 ],
+    images: "<div class=\"marker-images\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_clue-3_1.jpg\" alt=\"Yellow Box\"></div><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_clue-3_2.jpg\" alt=\"Antenna Switch\"></div></div>",
+    title: "# Antenna Switch",
+    description: "Part of the Redtail Hunter puzzle."
+  },
+  mapHunterRedtailClue4: {
+    coords: [ 2311, 928 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_clue-4.jpg\" alt=\"Antenna Switch\"></div></div>",
+    title: "# Antenna Switch",
+    description: "Part of the Redtail Hunter puzzle. Access by climbing a truck."
+  },
+  mapHunterRedtailClue5: {
+    coords: [ 2799, 1174 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_clue-5.jpg\" alt=\"Antenna Switch\"></div></div>",
+    title: "# Antenna Switch",
+    description: "Part of the Redtail Hunter puzzle. Access by shooting three yellow boxes."
+  },
+  mapHunterRedtailClue6: {
+    coords: [ 3118, 1449 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_clue-6.jpg\" alt=\"Antenna Switch\"></div></div>",
+    title: "# Antenna Switch",
+    description: "Part of the Redtail Hunter puzzle."
+  },
+  mapHunterRedtailClue7: {
+    coords: [ 3278, 1208 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_clue-7.jpg\" alt=\"Antenna Switch\"></div></div>",
+    title: "# Antenna Switch",
+    description: "Part of the Redtail Hunter puzzle."
+  },
+  mapHunterRedtailClue8: {
+    coords: [ 3562, 1038 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_clue-8.jpg\" alt=\"Antenna Switch\"></div></div>",
+    title: "# Antenna Switch",
+    description: "Part of the Redtail Hunter puzzle."
+  },
+  mapHunterRedtailClue9: {
+    coords: [ 3487, 750 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-redtail_clue-9.jpg\" alt=\"Antenna Switch\"></div></div>",
+    title: "# Antenna Switch",
+    description: "Part of the Redtail Hunter puzzle.\n\n**Location:** On the right of the SHD Tech Cache."
   },
   mapMainMission1: {
     coords: [ 4061, 1374 ],
@@ -558,6 +612,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ...iconOptions
   });
 
+  let miscIcon = L.icon({
+    iconUrl: 'assets/img/markers/misc.png',
+    ...iconOptions
+  });
+
   let namedEliteIcon = L.icon({
     iconUrl: 'assets/img/markers/named-elite.png',
     ...iconOptions
@@ -629,6 +688,12 @@ document.addEventListener('DOMContentLoaded', () => {
         'mapHunterCipher', 'mapHunterConqueror', 'mapHunterCraver', 'mapHunterLumen', 'mapHunterMerry', 'mapHunterNecronos', 'mapHunterRedtail', 'mapHunterTracker'
       ],
       icon: hunterIcon
+    },
+    'Misc': {
+      keys: [
+        'mapHunterRedtailClue1', 'mapHunterRedtailClue2', 'mapHunterRedtailClue3', 'mapHunterRedtailClue4', 'mapHunterRedtailClue5', 'mapHunterRedtailClue6', 'mapHunterRedtailClue7', 'mapHunterRedtailClue8', 'mapHunterRedtailClue9'
+      ],
+      icon: miscIcon
     },
     'Mission': {
       keys: [
