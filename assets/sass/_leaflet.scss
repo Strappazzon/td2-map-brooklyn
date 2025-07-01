@@ -34,6 +34,11 @@
   }
   &-marker-icon {
     filter: drop-shadow(1px 1px 2px var(--text-color));
+    @media not all and (hover: none) {
+      &:not(.leaflet-neighborhood):hover {
+        border-image: url('../img/markers/outline.png') 24 / 32px / 6px stretch;
+      }
+    }
   }
   &-popup {
     &-close-button {

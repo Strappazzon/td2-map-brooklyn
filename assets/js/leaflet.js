@@ -562,6 +562,13 @@ document.addEventListener('DOMContentLoaded', () => {
     } ]
   });
 
+  // Tooltips
+
+  let tooltipOptions = {
+    offset: [ 28, -16 ],
+    opacity: 1
+  };
+
   // Neighborhoods
 
   let labelOptions = {
@@ -662,13 +669,6 @@ document.addEventListener('DOMContentLoaded', () => {
     iconUrl: 'assets/img/markers/shd-tech.png',
     ...iconOptions
   });
-
-  // Tooltips
-
-  let tooltipOptions = {
-    offset: [ 20, -16 ],
-    opacity: 1
-  };
 
   // Markers: Overlays
 
