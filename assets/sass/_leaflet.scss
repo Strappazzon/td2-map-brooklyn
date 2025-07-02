@@ -117,6 +117,14 @@
     .leaflet-control-layers {
       border: 0;
     }
+    .leaflet-control-layers-toggle {
+      background-image: url('../img/leaflet/layers.png');
+    }
+  }
+  &-retina {
+    .leaflet-control-layers-toggle {
+      background-image: url('../img/leaflet/layers-2x.png');
+    }
   }
   &-bar,
   &-control-layers,
