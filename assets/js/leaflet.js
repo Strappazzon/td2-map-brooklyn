@@ -763,16 +763,18 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const K of keys) {
       const MARKER_DATA = MARKERS[ K ];
       let markerIcon = icon || getMarkerIcon(K);
-      let marker;
+      let marker = L.marker(convertCoords(...MARKER_DATA.coords), { icon: markerIcon });
+
+      if (window.isMobile === false) {
+        marker = marker.bindTooltip((MARKER_DATA.title).replace(/^#\s/i, ''), { ...tooltipOptions });
+      }
 
       if (MARKER_DATA.images) {
-        marker = L.marker(convertCoords(...MARKER_DATA.coords), { icon: markerIcon })
-          .bindTooltip((MARKER_DATA.title).replace(/^#\s/i, ''), { ...tooltipOptions })
+        marker = marker
           .bindPopup(md.render(MARKER_DATA.images + '\n\n' + MARKER_DATA.title + '\n\n' + MARKER_DATA.description))
           .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
       } else {
-        marker = L.marker(convertCoords(...MARKER_DATA.coords), { icon: markerIcon })
-          .bindTooltip((MARKER_DATA.title).replace(/^#\s/i, ''), { ...tooltipOptions })
+        marker = marker
           .bindPopup(md.render(MARKER_DATA.title + '\n\n' + MARKER_DATA.description));
       }
 
