@@ -488,6 +488,21 @@ document.addEventListener('DOMContentLoaded', () => {
     return [ mapBounds[ 1 ][ 0 ] - y, x ];
   }
 
+  // Get marker ID from URL
+  function getQueryParam(paramName) {
+    const PAGE_URL = new URL(window.location.href);
+
+    return PAGE_URL.searchParams.get(paramName);
+  }
+
+  // Delete marker ID from URL
+  function delQueryParam(paramName) {
+    const CURRENT_URL = new URL(window.location.href);
+    CURRENT_URL.searchParams.delete(paramName);
+
+    window.history.replaceState({}, '', CURRENT_URL);
+  }
+
   // Convert Markdown to HTML
   const md = window.markdownit({
     breaks: true,
@@ -764,6 +779,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const MARKER_DATA = MARKERS[ K ];
       let markerIcon = icon || getMarkerIcon(K);
       let marker = L.marker(convertCoords(...MARKER_DATA.coords), { icon: markerIcon });
+      let copyBtn = '<a id="copy" class="button secondary copy" title="Copy link to this marker">#</a>';
 
       if (window.isMobile === false) {
         marker = marker.bindTooltip((MARKER_DATA.title).replace(/^#\s/i, ''), { ...tooltipOptions });
@@ -771,11 +787,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (MARKER_DATA.images) {
         marker = marker
-          .bindPopup(md.render(MARKER_DATA.images + '\n\n' + MARKER_DATA.title + '\n\n' + MARKER_DATA.description))
+          .bindPopup(md.render(MARKER_DATA.images + '\n\n' + MARKER_DATA.title + copyBtn + '\n\n' + MARKER_DATA.description))
           .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
       } else {
         marker = marker
-          .bindPopup(md.render(MARKER_DATA.title + '\n\n' + MARKER_DATA.description));
+          .bindPopup(md.render(MARKER_DATA.title + copyBtn + '\n\n' + MARKER_DATA.description));
       }
 
       markers.push(marker);
@@ -881,6 +897,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Copy link to marker
+  map.on('popupopen', (e) => {
+    const POPUP = e.popup.getElement();
+    const COPYBTN = POPUP ? POPUP.querySelector('#copy') : null;
+
+    if (!COPYBTN) return;
+
+    let markerKey = null;
+    for (const [ key, marker ] of Object.entries(mapMarkers)) {
+      if (marker.getLatLng().equals(e.popup._latlng)) {
+        markerKey = key;
+
+        break;
+      }
+    }
+
+    if (!markerKey) return;
+
+    COPYBTN.addEventListener('click', e => {
+      e.preventDefault();
+
+      const CURRENT_URL = new URL(window.location.href);
+
+      CURRENT_URL.searchParams.set('locId', markerKey);
+      navigator.clipboard.writeText(CURRENT_URL.toString());
+    });
+  });
+
   // Initialize Controls
 
   centerViewButton.addTo(map);
@@ -896,4 +940,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (neighborhoodsVisible) { mapNeighborhoods.addTo(map); };
   Object.values(mapOverlays).forEach(layerGroup => layerGroup.addTo(map));
+
+  // Go to marker if an ID was provided in the query param
+
+  const LOCATION_ID = getQueryParam('locId');
+
+  if (LOCATION_ID && mapMarkers[ LOCATION_ID ]) {
+    const MARKER = mapMarkers[ LOCATION_ID ];
+
+    function panAndOpen() {
+      map.setView(MARKER.getLatLng(), 0, { animate: true });
+      MARKER.openPopup();
+
+      // Remove the param from URL after opening the popup
+      delQueryParam('locId');
+    }
+
+    map._loaded ? panAndOpen() : map.once('load', panAndOpen);
+  }
 });

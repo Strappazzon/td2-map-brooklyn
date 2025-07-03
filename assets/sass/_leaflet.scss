@@ -91,6 +91,17 @@
             }
           }
         }
+        h1 {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.33em;
+          .copy {
+            font-weight: 400;
+            font-size: 0.875em;
+          }
+        }
       }
     }
   }
