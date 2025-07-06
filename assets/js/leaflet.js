@@ -384,6 +384,11 @@ const MARKERS = {
     title: "# Food",
     description: "Resource Node"
   },
+  mapResFoodNode4: {
+    coords: [ 1703, 1313 ],
+    title: "# Food",
+    description: "Resource Node"
+  },
   mapResWaterNode1: {
     coords: [ 1186, 1667 ],
     title: "# Water",
@@ -742,7 +747,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Resource Node': {
       keys: [
         'mapResCompNode1', 'mapResCompNode2', 'mapResCompNode3', 'mapResCompNode4',
-        'mapResFoodNode1', 'mapResFoodNode2', 'mapResFoodNode3',
+        'mapResFoodNode1', 'mapResFoodNode2', 'mapResFoodNode3', 'mapResFoodNode4',
         'mapResWaterNode1', 'mapResWaterNode2', 'mapResWaterNode3', 'mapResWaterNode4'
       ],
       icon: null
