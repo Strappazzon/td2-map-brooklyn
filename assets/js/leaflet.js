@@ -191,6 +191,30 @@ const MARKERS = {
     title: "# Hunter Spawn",
     description: "**Mask:** Craver\n\n**Steps:** Collect 4 canisters across Brooklyn Heights. Once all canisters are gathered, place them on the boat and the Hunter will spawn.\n\n[Full guide.](https://youtu.be/R6A8DEWbboI?t=41)"
   },
+  mapHunterCraverClue1: {
+    coords: [ 1461, 920 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-craver_clue-1.jpg\" alt=\"Canister\"></div></div>",
+    title: "# Canister",
+    description: "Part of the Craver Hunter puzzle."
+  },
+  mapHunterCraverClue2: {
+    coords: [ 1720, 1290 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-craver_clue-2.jpg\" alt=\"Canister\"></div></div>",
+    title: "# Canister",
+    description: "Part of the Craver Hunter puzzle."
+  },
+  mapHunterCraverClue3: {
+    coords: [ 1459, 1285 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-craver_clue-3.jpg\" alt=\"Canister\"></div></div>",
+    title: "# Canister",
+    description: "Part of the Craver Hunter puzzle."
+  },
+  mapHunterCraverClue4: {
+    coords: [ 1159, 1683 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-craver_clue-4.jpg\" alt=\"Canister\"></div></div>",
+    title: "# Canister",
+    description: "Part of the Craver Hunter puzzle."
+  },
   mapHunterLumen: {
     coords: [ 1792, 745 ],
     images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-lumen_1.jpg\" alt=\"Garage Location\"></div></div>",
@@ -728,7 +752,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'Misc': {
       keys: [
-        'mapHunterRedtailClue1', 'mapHunterRedtailClue2', 'mapHunterRedtailClue3', 'mapHunterRedtailClue4', 'mapHunterRedtailClue5', 'mapHunterRedtailClue6', 'mapHunterRedtailClue7', 'mapHunterRedtailClue8', 'mapHunterRedtailClue9'
+        'mapHunterRedtailClue1', 'mapHunterRedtailClue2', 'mapHunterRedtailClue3', 'mapHunterRedtailClue4', 'mapHunterRedtailClue5', 'mapHunterRedtailClue6', 'mapHunterRedtailClue7', 'mapHunterRedtailClue8', 'mapHunterRedtailClue9',
+        'mapHunterCraverClue1', 'mapHunterCraverClue2', 'mapHunterCraverClue3', 'mapHunterCraverClue4'
       ],
       icon: miscIcon
     },
