@@ -823,6 +823,112 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let mapNeighborhoods = L.layerGroup([ mapNeighborhoodBrooklynHeights, mapNeighborhoodDumbo ]);
 
+  // Borders: Definitions
+
+  let mapBordersData = {
+    bridge: [
+      [ 2045, 1096 ], // Start, End of DUMBO
+      [ 2189, 1338 ],
+      [ 2177, 1388 ], // End of Brooklyn Heights
+      [ 2394, 1444 ],
+      [ 2463, 1192 ]
+    ],
+    brooklynHeights: [
+      [ 1596, 348 ],
+      [ 1369, 493 ],
+      [ 1220, 326 ],
+      [ 533, 791 ],
+      [ 700, 1004 ],
+      [ 553, 1167 ],
+      [ 274, 972 ],
+      [ 6, 1332 ], // Top-left corner
+      [ 815, 1947 ],
+      [ 698, 2146 ],
+      [ 994, 2238 ],
+      [ 1028, 2193 ],
+      [ 1268, 2338 ],
+      [ 1296, 2293 ],
+      [ 1674, 2525 ],
+      [ 1754, 2529 ], // Bottom-left corner
+      [ 1884, 2002 ],
+      [ 2116, 2054 ],
+      [ 2177, 1812 ],
+      [ 1988, 1758 ],
+      [ 2177, 1388 ]
+    ],
+    dumbo: [
+      [ 2045, 1096 ], // Start of The Bridge
+      [ 2154, 1072 ],
+      [ 2375, 1169 ],
+      [ 2393, 1143 ],
+      [ 2468, 1167 ],
+      [ 2463, 1192 ], // End of The Bridge
+      [ 2613, 1297 ],
+      [ 2547, 1533 ],
+      [ 2755, 1596 ],
+      [ 2751, 1629 ],
+      [ 2927, 1667 ],
+      [ 3101, 1665 ],
+      [ 3090, 1509 ],
+      [ 3266, 1610 ],
+      [ 3285, 1705 ],
+      [ 3565, 1786 ], // Bottom-right corner
+      [ 3659, 1304 ],
+      [ 3711, 1316 ],
+      [ 3733, 1201 ],
+      [ 3675, 1185 ],
+      [ 3691, 1108 ],
+      [ 3777, 1132 ],
+      [ 3783, 1110 ],
+      [ 3943, 1151 ],
+      [ 3975, 999 ],
+      [ 3910, 981 ],
+      [ 3916, 941 ],
+      [ 3876, 930 ],
+      [ 3914, 744 ], // Top-right corner
+      [ 3519, 642 ],
+      [ 3530, 544 ],
+      [ 3274, 481 ],
+      [ 3255, 369 ],
+      [ 2954, 282 ],
+      [ 2834, 328 ],
+      [ 2471, 238 ],
+      [ 2345, 396 ],
+      [ 2111, 340 ],
+      [ 2135, 259 ],
+      [ 2012, 225 ],
+      [ 2039, 144 ],
+      [ 1842, 87 ],
+      [ 1816, 160 ],
+      [ 1644, 185 ],
+      [ 1535, 257 ], // Top-left corner
+      [ 1596, 348 ], // Start of Brooklyn Heights
+      [ 1709, 510 ],
+      [ 1702, 542 ],
+      [ 1854, 727 ],
+      [ 1862, 780 ],
+      [ 2045, 1096 ] // Start of The Bridge
+    ]
+  };
+
+  // Borders: Layers
+
+  let bordersPolylines = [];
+
+  for (const coords of Object.values(mapBordersData)) {
+    bordersPolylines.push(
+      L.polyline(coords.map(([ x, y ]) => convertCoords(x, y)), {
+        color: '#f5f5f5',
+        weight: 2,
+        opacity: 0.33,
+        interactive: false,
+        keyboard: false
+      })
+    );
+  }
+
+  let mapBorders = L.layerGroup(bordersPolylines);
+
   // Markers: Sidebar filters
 
   const TOGGLE_CHK = document.querySelectorAll('.filters input[type="checkbox"]');
@@ -852,6 +958,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mapOverlays[ LAYER_ID ].removeFrom(map);
     });
   }
+
   function showAllMarkers() {
     TOGGLE_CHK.forEach(chk => {
       const LAYER_ID = chk.dataset.layer;
@@ -860,13 +967,16 @@ document.addEventListener('DOMContentLoaded', () => {
       mapOverlays[ LAYER_ID ].addTo(map);
     });
   }
+
   function toggleZones() {
     if (neighborhoodsVisible === true) {
       map.removeLayer(mapNeighborhoods);
+      map.removeLayer(mapBorders);
       ZONESTG_BTN.classList.add('disabled');
       neighborhoodsVisible = false;
     } else {
       map.addLayer(mapNeighborhoods);
+      map.addLayer(mapBorders);
       ZONESTG_BTN.classList.remove('disabled');
       neighborhoodsVisible = true;
     }
@@ -879,6 +989,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hideAllMarkers();
     }
   });
+
   SHOWALL_BTN.addEventListener('click', showAllMarkers);
   SHOWALL_BTN.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -938,7 +1049,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Default Layers
 
-  if (neighborhoodsVisible) { mapNeighborhoods.addTo(map); };
+  if (neighborhoodsVisible) {
+    mapBorders.addTo(map);
+    mapNeighborhoods.addTo(map);
+  };
+
   Object.values(mapOverlays).forEach(layerGroup => layerGroup.addTo(map));
 
   // Go to marker if an ID was provided in the query param
