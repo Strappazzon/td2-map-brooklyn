@@ -82,11 +82,16 @@ layout: none
 							<hr>
 							<div class="map-switcher d-flex flex-row flex-wrap align-items-center justify-content-center">
 								<a href="https://division2map.com/" class="button secondary">
-									Washington D.C. Map
+									Washington D.C.
 								</a>
 								<a href="https://division2map.com/nyc" class="button secondary">
-									New York Map
+									New York
 								</a>
+								{% comment %}
+								<a href="{{ '/survival' | relative_url }}" class="button secondary">
+									Survival
+								</a>
+								{% endcomment %}
 							</div>
 							<hr>
 							<p>{{ site.meta.description }}</p>
