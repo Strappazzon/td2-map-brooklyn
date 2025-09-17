@@ -1,0 +1,83 @@
+name: Deploy Redirect
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Redirects
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5.0.0
+
+      - name: Create Redirects
+        run: |
+          mkdir -p _site
+
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en" dir="ltr">
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <title>Redirecting...</title>
+              <meta http-equiv="refresh" content="0; url=https://td2map.strappazzon.xyz/brooklyn/">
+              <link rel="canonical" href="https://td2map.strappazzon.xyz/brooklyn/">
+            </head>
+            <body>
+              <p>The Division 2 Brooklyn map has <a href="https://td2map.strappazzon.xyz/brooklyn/">moved here</a>.</p>
+              <script>
+                const PARAMS = window.location.search + window.location.hash;
+                const NEW_URL = 'https://td2map.strappazzon.xyz/brooklyn/' + PARAMS;
+                window.location.href = NEW_URL;
+              </script>
+            </body>
+          </html>
+          EOF
+
+          cat > _site/404.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en" dir="ltr">
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <title>Redirecting...</title>
+              <meta http-equiv="refresh" content="0; url=https://td2map.strappazzon.xyz/brooklyn/">
+              <link rel="canonical" href="https://td2map.strappazzon.xyz/brooklyn/">
+            </head>
+            <body>
+              <p>The Division 2 Brooklyn map has <a href="https://td2map.strappazzon.xyz/brooklyn/">moved here</a>.</p>
+              <script>
+                const PARAMS = window.location.search + window.location.hash;
+                const NEW_URL = 'https://td2map.strappazzon.xyz/brooklyn/' + PARAMS;
+                window.location.href = NEW_URL;
+              </script>
+            </body>
+          </html>
+          EOF
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5

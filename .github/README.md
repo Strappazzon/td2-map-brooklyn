@@ -14,8 +14,6 @@
 Powered by [Jekyll](https://jekyllrb.com/), a static site generator (SSG) written in Ruby.
 Theme inspired by [Map Genie](https://division2map.com/).
 
-Currently being served over [GitHub Pages](https://pages.github.com/).
-
 ## Licensing
 
 The content of this website is licensed under the [CC BY 4.0 License](../LICENSE-CONTENT.txt).  
