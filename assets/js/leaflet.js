@@ -615,6 +615,11 @@ const MARKERS = {
     images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/ug-entrance-22.jpg\" alt=\"underground Entrance\"></div></div>",
     title: "# Underground Entrance",
     description: "Underground\n\nThe entrance will lead to a [Named Elite](?locId=mapNamedElite6).\n\n**Note:** This is not marked on the in-game mega map."
+  },
+  goblin1: {
+    coords: [ 2762, 1017 ],
+    title: "# Hoarder",
+    description: "Rare chance to spawn."
   }
 };
 
@@ -830,6 +835,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ...iconOptions
   });
 
+  let goblinIcon = L.icon({
+    iconUrl: 'assets/img/markers/goblin.png',
+    ...iconOptions
+  });
+
   // Markers: Overlays
 
   const OVERLAY_CONFIG = {
@@ -917,6 +927,12 @@ document.addEventListener('DOMContentLoaded', () => {
         'mapUnderground13', 'mapUnderground14', 'mapUnderground15', 'mapUnderground16', 'mapUnderground17', 'mapUnderground18', 'mapUnderground19', 'mapUnderground20', 'mapUnderground21', 'mapUnderground22'
       ],
       icon: undergroundIcon
+    },
+    'Loot Goblin': {
+      keys: [
+        'goblin1'
+      ],
+      icon: goblinIcon
     }
   };
 
