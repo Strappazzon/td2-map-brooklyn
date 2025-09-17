@@ -504,6 +504,117 @@ const MARKERS = {
     coords: [ 2986, 1285 ],
     title: "# SHD Tech Cache",
     description: "**Location:** Underground\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=213)"
+  },
+  mapUnderground1: {
+    coords: [ 1742, 712 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground2: {
+    coords: [ 1607, 840 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground3: {
+    coords: [ 1523, 896 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground4: {
+    coords: [ 1145, 1189 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground5: {
+    coords: [ 813, 1492 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground6: {
+    coords: [ 653, 1653 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground7: {
+    coords: [ 773, 1821 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground8: {
+    coords: [ 1306, 1305 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground9: {
+    coords: [ 1375, 987 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground10: {
+    coords: [ 1238, 1755 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground11: {
+    coords: [ 1449, 1691 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground12: {
+    coords: [ 1655, 1593 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground13: {
+    coords: [ 1916, 662 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground14: {
+    coords: [ 2109, 647 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground15: {
+    coords: [ 2096, 884 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground16: {
+    coords: [ 3244, 773 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground17: {
+    coords: [ 3427, 651 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground18: {
+    coords: [ 3456, 835 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground19: {
+    coords: [ 2911, 1315 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground20: {
+    coords: [ 3136, 1180 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground21: {
+    coords: [ 3237, 1408 ],
+    title: "# Underground Entrance",
+    description: "Underground"
+  },
+  mapUnderground22: {
+    coords: [ 2656, 1282 ],
+    images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/ug-entrance-22.jpg\" alt=\"underground Entrance\"></div></div>",
+    title: "# Underground Entrance",
+    description: "Underground\n\nThe entrance will lead to a [Named Elite](?locId=mapNamedElite6).\n\n**Note:** This is not marked on the in-game mega map."
   }
 };
 
@@ -714,6 +825,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ...iconOptions
   });
 
+  let undergroundIcon = L.icon({
+    iconUrl: 'assets/img/markers/ug.png',
+    ...iconOptions
+  });
+
   // Markers: Overlays
 
   const OVERLAY_CONFIG = {
@@ -794,6 +910,13 @@ document.addEventListener('DOMContentLoaded', () => {
         'mapShdCache1', 'mapShdCache2', 'mapShdCache3', 'mapShdCache4', 'mapShdCache5', 'mapShdCache6', 'mapShdCache7', 'mapShdCache8', 'mapShdCache9', 'mapShdCache10'
       ],
       icon: shdCacheIcon
+    },
+    'Underground': {
+      keys: [
+        'mapUnderground1', 'mapUnderground2', 'mapUnderground3', 'mapUnderground4', 'mapUnderground5', 'mapUnderground6', 'mapUnderground7', 'mapUnderground8', 'mapUnderground9', 'mapUnderground10', 'mapUnderground11', 'mapUnderground12',
+        'mapUnderground13', 'mapUnderground14', 'mapUnderground15', 'mapUnderground16', 'mapUnderground17', 'mapUnderground18', 'mapUnderground19', 'mapUnderground20', 'mapUnderground21', 'mapUnderground22'
+      ],
+      icon: undergroundIcon
     }
   };
 
