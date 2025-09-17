@@ -67,6 +67,7 @@
 	"editor.rulers": [],
 	"explorer.fileNesting.enabled": true,
 	"explorer.fileNesting.patterns": {
+		".markdownlint.yml": ".markdownlint-cli2.yml",
 		"Gemfile": "Gemfile.lock"
 	},
 	"files.associations": {
