@@ -487,7 +487,7 @@ const MARKERS = {
   mapShdCache7: {
     coords: [ 2140, 867 ],
     title: "# SHD Tech Cache",
-    description: "**Location:** Undergroundn\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=359)"
+    description: "**Location:** Underground\n\n[Full guide.](https://youtu.be/LxnpGCox7_c?t=359)"
   },
   mapShdCache8: {
     coords: [ 3513, 763 ],
