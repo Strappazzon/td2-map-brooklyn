@@ -229,7 +229,7 @@ const MARKERS = {
   mapHunterNecronos: {
     coords: [ 2886, 588 ],
     title: "# Hunter Spawn",
-    description: "**Mask:** Necronos\n\n**Requirements:** Complete all prior 7 Hunter encounters.\n\n**Steps:** Go to The Division 1 starting safe house (near **The Warehouse** Control Point) and interact with the whiteboard inside. Follow the UV lights to the rooftop where the Hunter will engage.\n\n[Full guide.](https://redd.it/1kyek7o)"
+    description: "**Mask:** Necronos\n\n**Requirements:** Complete all prior 7 Hunter encounters.\n\n**Steps:** Go to The Division 1 starting safe house (near [The Warehouse](?locId=mapControlPoint3) Control Point) and interact with the whiteboard inside. Follow the UV lights to the rooftop where the Hunter will engage.\n\n[Full guide.](https://redd.it/1kyek7o)"
   },
   mapHunterRedtail: {
     coords: [ 2898, 823 ],
@@ -241,7 +241,7 @@ const MARKERS = {
     coords: [ 3507, 1145 ],
     images: "<div class=\"marker-image\"><div class=\"image-wrapper\"><img src=\"assets/img/screenshots/hunter-tracker_1.jpg\" alt=\"Entrance\"></div></div>",
     title: "# Hunter Spawn",
-    description: "**Mask:** Tracker\n\n**Steps:** Enter the 192 Building from the southern entrance (near **The Farm** Control Point), then follow a set of movements to activate the \"RISE\" switch and spawn the Hunter.\n\n[Full guide.](https://redd.it/1kye8fv)"
+    description: "**Mask:** Tracker\n\n**Steps:** Enter the 192 Building from the southern entrance (near [The Farm](?locId=mapControlPoint4) Control Point), then follow a set of movements to activate the \"RISE\" switch and spawn the Hunter.\n\n[Full guide.](https://redd.it/1kye8fv)"
   },
   mapHunterRedtailClue1: {
     coords: [ 1686, 915 ],
