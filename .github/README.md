@@ -29,6 +29,7 @@ copyrighted materials have been used in a way that goes beyond fair use, please 
 - Map markers from:
   - [The Division 2 Interactive Map](https://the-division-2-map.com/)
   - [The Division](https://www.ubisoft.com/en-us/game/the-division/the-division-1)
+  - [The Division 2](https://www.ubisoft.com/en-us/game/the-division/the-division-2)
   - [SVG Repo](https://www.svgrepo.com/)
 - Logo adapted from The Division 2 Promo Toolkit
 
