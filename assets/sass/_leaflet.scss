@@ -105,6 +105,28 @@
             }
           }
         }
+        textarea {
+          resize: none;
+          width: 100%;
+          margin-top: 0.33rem;
+          padding: 0.25em 0.5em;
+          font-family: inherit;
+          font-size: 1em;
+          background: transparent;
+          border-radius: 0;
+          border-color: var(--accent-color);
+          color: var(--text-color--secondary);
+          &:focus {
+            box-shadow: 0 0 0 0.2rem var(--accent-color--secondary);
+            outline: 0;
+          }
+          & + .button {
+            display: block;
+            margin-top: 0.33em;
+            padding: 0.25em 0.5em;
+            text-align: center;
+          }
+        }
       }
     }
   }

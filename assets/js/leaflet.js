@@ -949,9 +949,12 @@ document.addEventListener('DOMContentLoaded', () => {
       let markerIcon = icon || getMarkerIcon(K);
       let marker = L.marker(convertCoords(...MARKER_DATA.coords), { icon: markerIcon });
       let markerCnt = new String();
-      let btnsTitle = '<div>' + noteBtn + copyBtn + '</div>';
       let copyBtn = '<a id="copy" class="button secondary" title="Copy link to this marker">#</a>';
-      let btnsTitle = '<div>' + copyBtn + '</div>';
+      let noteBtn = '<a id="note" class="button secondary" title="Add note to this marker">A</a>';
+      let buttons = '<div>' + noteBtn + copyBtn + '</div>';
+      let noteTxt = '<textarea id="note-text" placeholder="Type your note..." autocomplete="off"></textarea>';
+      let saveBtn = '<a id="save" class="button primary" title="Save current note">Save</a>';
+      let notes = '<div class="notes d-none">' + noteTxt + saveBtn + '</div>';
 
       if (window.isMobile === false) {
         marker = marker.bindTooltip((MARKER_DATA.title).replace(/^#\s/i, ''), { ...tooltipOptions });
@@ -961,7 +964,7 @@ document.addEventListener('DOMContentLoaded', () => {
         markerCnt += MARKER_DATA.images + '\n\n';
       }
 
-      markerCnt += MARKER_DATA.title + btnsTitle + '\n\n' + MARKER_DATA.description + '\n\n' + noteTxt;
+      markerCnt += MARKER_DATA.title + buttons + '\n\n' + MARKER_DATA.description + '\n\n' + notes;
 
       marker = marker.bindPopup(md.render(markerCnt));
 
@@ -1181,6 +1184,70 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       toggleZones();
     }
+  });
+
+  // Add note to marker
+  map.on('popupopen', (e) => {
+    const POPUP = e.popup.getElement();
+    const NOTEBTN = POPUP ? POPUP.querySelector('#note') : null;
+    const NOTECNT = POPUP ? POPUP.querySelector('.notes') : null;
+    const NOTETXT = POPUP ? POPUP.querySelector('#note-text') : null;
+    const SAVEBTN = POPUP ? POPUP.querySelector('#save') : null;
+
+    if (![ NOTEBTN, NOTECNT, NOTETXT, SAVEBTN ].some(Boolean)) return;
+
+    let markerKey = null;
+    for (const [ key, marker ] of Object.entries(mapMarkers)) {
+      if (marker.getLatLng().equals(e.popup._latlng)) {
+        markerKey = key;
+
+        break;
+      }
+    }
+
+    if (!markerKey) return;
+
+    NOTEBTN.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      const HIDDEN = NOTECNT.classList.contains('d-none');
+      const CURRENT_NOTE = await window.markerNotesDatabase.getNote(markerKey);
+
+      NOTETXT.value = CURRENT_NOTE;
+
+      if (HIDDEN) {
+        NOTECNT.classList.remove('d-none');
+        NOTEBTN.textContent = 'X';
+        NOTEBTN.title = 'Discard note';
+        NOTETXT.focus();
+      } else {
+        NOTECNT.classList.add('d-none');
+        NOTEBTN.textContent = 'A';
+        NOTEBTN.title = 'Add note to this marker';
+      }
+    });
+
+    SAVEBTN.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      const NOTE_TEXT = NOTETXT.value.trim();
+
+      try {
+        if (NOTE_TEXT === new String()) {
+          await window.markerNotesDatabase.deleteNote(markerKey);
+        } else {
+          await window.markerNotesDatabase.saveNote(markerKey, NOTE_TEXT);
+        }
+
+        SAVEBTN.textContent = '\u{2714} Saved';
+        setTimeout(() => { SAVEBTN.textContent = 'Save'; }, 2000);
+      } catch (err) {
+        console.error('Failed to save marker note:', err);
+
+        SAVEBTN.textContent = '\u{2A2F} Error';
+        setTimeout(() => { SAVEBTN.textContent = 'Save'; }, 2000);
+      }
+    });
   });
 
   // Copy link to marker
