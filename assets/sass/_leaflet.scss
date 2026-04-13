@@ -97,9 +97,12 @@
           align-items: center;
           justify-content: space-between;
           gap: 0.33em;
-          .copy {
+          .button {
             font-weight: 400;
             font-size: 0.875em;
+            &:first-of-type {
+              margin-right: 0.25em;
+            }
           }
         }
       }

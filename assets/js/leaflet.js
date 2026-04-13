@@ -948,19 +948,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const MARKER_DATA = MARKERS[ K ];
       let markerIcon = icon || getMarkerIcon(K);
       let marker = L.marker(convertCoords(...MARKER_DATA.coords), { icon: markerIcon });
-      let copyBtn = '<a id="copy" class="button secondary copy" title="Copy link to this marker">#</a>';
+      let markerCnt = new String();
+      let btnsTitle = '<div>' + noteBtn + copyBtn + '</div>';
+      let copyBtn = '<a id="copy" class="button secondary" title="Copy link to this marker">#</a>';
+      let btnsTitle = '<div>' + copyBtn + '</div>';
 
       if (window.isMobile === false) {
         marker = marker.bindTooltip((MARKER_DATA.title).replace(/^#\s/i, ''), { ...tooltipOptions });
       }
 
       if (MARKER_DATA.images) {
-        marker = marker
-          .bindPopup(md.render(MARKER_DATA.images + '\n\n' + MARKER_DATA.title + copyBtn + '\n\n' + MARKER_DATA.description))
-          .on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
-      } else {
-        marker = marker
-          .bindPopup(md.render(MARKER_DATA.title + copyBtn + '\n\n' + MARKER_DATA.description));
+        markerCnt += MARKER_DATA.images + '\n\n';
+      }
+
+      markerCnt += MARKER_DATA.title + btnsTitle + '\n\n' + MARKER_DATA.description + '\n\n' + noteTxt;
+
+      marker = marker.bindPopup(md.render(markerCnt));
+
+      if (MARKER_DATA.images) {
+        marker.on('popupopen', () => { const lightbox = new SimpleLightbox(LIGHTBOX_SELECTOR, { ...lightboxOptions }); });
       }
 
       markers.push(marker);
