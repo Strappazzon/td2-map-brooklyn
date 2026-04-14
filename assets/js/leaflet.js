@@ -951,10 +951,10 @@ document.addEventListener('DOMContentLoaded', () => {
       let markerCnt = new String();
       let copyBtn = '<a id="copy" class="button secondary" title="Copy link to this marker">#</a>';
       let noteBtn = '<a id="note" class="button secondary" title="Add note to this marker">A</a>';
-      let buttons = '<div>' + noteBtn + copyBtn + '</div>';
+      let buttons = `<div>${noteBtn}${copyBtn}</div>`;
       let noteTxt = '<textarea id="note-text" placeholder="Type your note..." autocomplete="off"></textarea>';
       let saveBtn = '<a id="save" class="button primary" title="Save current note">Save</a>';
-      let notes = '<div class="notes d-none">' + noteTxt + saveBtn + '</div>';
+      let notes = `<div class="notes d-none">${noteTxt}${saveBtn}</div>`;
 
       if (window.isMobile === false) {
         marker = marker.bindTooltip((MARKER_DATA.title).replace(/^#\s/i, ''), { ...tooltipOptions });
