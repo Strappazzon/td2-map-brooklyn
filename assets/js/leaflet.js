@@ -1220,6 +1220,9 @@ document.addEventListener('DOMContentLoaded', () => {
         NOTEBTN.textContent = 'X';
         NOTEBTN.title = 'Discard note';
         NOTETXT.focus();
+
+        // Adjust popup position again
+        mapMarkers[ markerKey ]._popup._adjustPan();
       } else {
         NOTECNT.classList.add('d-none');
         NOTEBTN.textContent = 'A';
